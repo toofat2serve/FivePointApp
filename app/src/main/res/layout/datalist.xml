@@ -69,7 +69,8 @@
 			android:gravity="center_horizontal"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:textColor="#FFFFFF"
-			android:textColorHint="#9EE3FF" />
+			android:textColorHint="#9EE3FF"
+			android:selectAllOnFocus="true"/>
 
 	</LinearLayout>
 

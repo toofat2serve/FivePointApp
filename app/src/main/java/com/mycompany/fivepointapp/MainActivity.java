@@ -108,6 +108,18 @@ public class MainActivity extends Activity {
         Log.i("ME", "...Initialized.");
     }
 
+    public void ClearEditText(View view) {
+       // et.selectAll();
+        if (view instanceof EditText) {
+            EditText et = (EditText) view;
+            et.requestFocus();
+            et.selectAll();
+            if (!(et.getText().toString() == "")) {
+                et.selectAll();
+            }
+        }
+    }
+
     public void ClickEdit(View _v) {
         Log.i("ME", "Starting Edit...");
         if (FormFilledRight(mandos)) {
@@ -157,7 +169,7 @@ public class MainActivity extends Activity {
         ArrayList<Double> inputs = calculateSteps(i.DLRV, i.DRange, i.Steps);
         ArrayList<Double> expecteds = calculateSteps(i.CLRV, i.CRange, i.Steps);
         for (count = 0; (count < i.Steps); count++) {
-            cr.storeData(count, inputs.get(count), expecteds.get(count), null, null);
+            cr.storeData(count, inputs.get(count), expecteds.get(count), 0.0, 0.0);
 
         }
         Log.i("ME", "... Test Data Creation Complete.");
@@ -226,7 +238,7 @@ public class MainActivity extends Activity {
         Double cl = Double.parseDouble(e_clrv.getText().toString());
         Double cu = Double.parseDouble(e_curv.getText().toString());
         Integer st = Integer.parseInt(e_steps.getText().toString());
-        Boolean il = rg_linsq.getCheckedRadioButtonId() == 2131099684;
+        Boolean il = rg_linsq.getCheckedRadioButtonId() == (Integer) 2131099684;
         CalRecord cr = new CalRecord(new Instrument(id, se, ma, mo, dl, du, "", cl, cu, "", st, il));
         Log.i("ME", cr.Device.toString());
         Log.i("ME", "... Collection Complete.");
@@ -300,9 +312,7 @@ public class MainActivity extends Activity {
 
             c3.addTextChangedListener(new TextWatcher() {
                 public void afterTextChanged(Editable s) {
-                    HashMap<String,String> hm = new HashMap<>();
-                    hm.put("Read",s.toString());
-                    data.set(position,hm);
+
 
                 }
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -318,7 +328,19 @@ public class MainActivity extends Activity {
                 @Override
                 public boolean onEditorAction(TextView view, int actionID, KeyEvent event) {
                     if (actionID == EditorInfo.IME_ACTION_DONE) {
-                        Log.i("ME", view.toString());
+                        if (view instanceof  EditText) {
+                            EditText et = (EditText) view;
+                            String s = et.getText().toString();
+                            HashMap hm = new HashMap();
+                            hm = data.get(position);
+                            Log.i("ME", "hm = data.get(position) : \n" + hm.entrySet());
+                            hm.put("Read",s);
+
+
+                            data.set(position,hm);
+                        }
+                        cr.Data = data;
+                        Log.i("ME", "Data Update: \n" + cr.toString());
                         view.clearFocus();
                     }
                     return false;
