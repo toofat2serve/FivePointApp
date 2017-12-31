@@ -1,0 +1,465 @@
+[
+    {
+        "outputFile": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 41,
+                    "endOffset": 92
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 849,
+                        "endColumn": 41,
+                        "endOffset": 886
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 97,
+                    "endColumn": 49,
+                    "endOffset": 142
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 25,
+                        "startColumn": 4,
+                        "startOffset": 932,
+                        "endColumn": 49,
+                        "endOffset": 977
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 147,
+                    "endColumn": 49,
+                    "endOffset": 192
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 263,
+                        "endColumn": 49,
+                        "endOffset": 308
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 197,
+                    "endColumn": 39,
+                    "endOffset": 232
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 723,
+                        "endColumn": 39,
+                        "endOffset": 758
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 237,
+                    "endColumn": 38,
+                    "endOffset": 271
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 891,
+                        "endColumn": 38,
+                        "endOffset": 925
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 276,
+                    "endColumn": 41,
+                    "endOffset": 313
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 221,
+                        "endColumn": 41,
+                        "endOffset": 258
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 318,
+                    "endColumn": 37,
+                    "endOffset": 351
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 645,
+                        "endColumn": 37,
+                        "endOffset": 678
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 356,
+                    "endColumn": 45,
+                    "endOffset": 397
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 45,
+                        "endOffset": 96
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 402,
+                    "endColumn": 45,
+                    "endOffset": 443
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 803,
+                        "endColumn": 45,
+                        "endOffset": 844
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 448,
+                    "endColumn": 52,
+                    "endOffset": 496
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 982,
+                        "endColumn": 52,
+                        "endOffset": 1030
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 501,
+                    "endColumn": 39,
+                    "endOffset": 536
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 763,
+                        "endColumn": 39,
+                        "endOffset": 798
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 541,
+                    "endColumn": 46,
+                    "endOffset": 583
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 513,
+                        "endColumn": 46,
+                        "endOffset": 555
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 588,
+                    "endColumn": 47,
+                    "endOffset": 631
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 465,
+                        "endColumn": 47,
+                        "endOffset": 508
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 636,
+                    "endColumn": 35,
+                    "endOffset": 667
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 313,
+                        "endColumn": 35,
+                        "endOffset": 344
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 672,
+                    "endColumn": 37,
+                    "endOffset": 705
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 143,
+                        "endColumn": 37,
+                        "endOffset": 176
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 710,
+                    "endColumn": 39,
+                    "endOffset": 745
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 181,
+                        "endColumn": 39,
+                        "endOffset": 216
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 750,
+                    "endColumn": 39,
+                    "endOffset": 785
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 683,
+                        "endColumn": 39,
+                        "endOffset": 718
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 790,
+                    "endColumn": 37,
+                    "endOffset": 823
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 607,
+                        "endColumn": 37,
+                        "endOffset": 640
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 828,
+                    "endColumn": 41,
+                    "endOffset": 865
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 101,
+                        "endColumn": 41,
+                        "endOffset": 138
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 870,
+                    "endColumn": 46,
+                    "endOffset": 912
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 560,
+                        "endColumn": 46,
+                        "endOffset": 602
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 917,
+                    "endColumn": 39,
+                    "endOffset": 952
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 425,
+                        "endColumn": 39,
+                        "endOffset": 460
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 957,
+                    "endColumn": 39,
+                    "endOffset": 992
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 385,
+                        "endColumn": 39,
+                        "endOffset": 420
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 997,
+                    "endColumn": 35,
+                    "endOffset": 1028
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 349,
+                        "endColumn": 35,
+                        "endOffset": 380
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1033,
+                    "endLine": 26,
+                    "endColumn": 9,
+                    "endOffset": 1107
+                },
+                "from": {
+                    "file": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 3,
+                        "endColumn": 9,
+                        "endOffset": 129
+                    }
+                }
+            }
+        ]
+    }
+]

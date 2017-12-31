@@ -1,0 +1,42 @@
+{
+    "logs": [
+        {
+            "outputFile": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "-1",
+                        "startColumns": "-1",
+                        "startOffsets": "-1"
+                    },
+                    "to": {
+                        "startLines": "26",
+                        "startColumns": "4",
+                        "startOffsets": "1103",
+                        "endLines": "27",
+                        "endColumns": "9",
+                        "endOffsets": "1177"
+                    }
+                },
+                {
+                    "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "-1,-1,27,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,1035,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "endColumns": "-1,-1,69,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "endOffsets": "-1,-1,1100,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,97,147,217,267,307,346,388,426,472,518,571,611,658,706,742,780,820,860,898,940,987,1027,1067",
+                        "endColumns": "41,49,69,49,39,38,41,37,45,45,52,39,46,47,35,37,39,39,37,41,46,39,39,35",
+                        "endOffsets": "92,142,212,262,302,341,383,421,467,513,566,606,653,701,737,775,815,855,893,935,982,1022,1062,1098"
+                    }
+                }
+            ]
+        }
+    ]
+}

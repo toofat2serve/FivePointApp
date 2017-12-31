@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="equip_id">Equip ID</string>
+    <string name="serial">Serial</string>
+    <string name="make">Make</string>
+    <string name="model">Model</string>
+    <string name="device">Device</string>
+    <string name="calibrator">Calibrator</string>
+    <string name="lrv">LRV</string>
+    <string name="urv">URV</string>
+    <string name="units">Units</string>
+    <string name="steps">Steps</string>
+    <string name="linearity">Linearity</string>
+    <string name="linear_">Linear (/)</string>
+    <string name="square_">Square (√)</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="reset">Reset</string>
+    <string name="clear">Clear</string>
+    <string name="input">Input</string>
+    <string name="expected">Expected</string>
+    <string name="actual">Actual</string>
+    <string name="dev_">Dev %</string>
+
+
+    <string name="app_name">FivePointApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="calibration_progress">Calibration Progress</string>
+
+</resources>

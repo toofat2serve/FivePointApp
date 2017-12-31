@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="45dp"
+	android:orientation="horizontal"
+	android:layout_gravity="top"
+	android:background="#FFFFFF">
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:background="#000000"
+		android:layout_margin="1dp"
+		android:layout_weight="1.0"
+		android:gravity="center_vertical|center_horizontal"
+		android:padding="2dp">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:text="Input"
+			android:id="@+id/t_c1_input"
+			android:gravity="center_horizontal"
+			android:singleLine="true"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:background="#000000"
+		android:layout_margin="1dp"
+		android:layout_weight="1.0"
+		android:gravity="center_vertical|center_horizontal"
+		android:padding="2dp">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:text="Expected"
+			android:id="@+id/t_c2_exp"
+			android:gravity="center_horizontal"
+			android:singleLine="true"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:background="#000000"
+		android:layout_margin="1dp"
+		android:layout_weight="1.0"
+		android:gravity="center_vertical|center_horizontal">
+
+		<EditText
+			android:id="@+id/e_c3_read"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:imeOptions="actionDone"
+			android:inputType="numberDecimal|numberSigned"
+			android:maxLines="1"
+			android:textAlignment="center"
+			android:gravity="center_horizontal"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textColor="#FFFFFF"
+			android:textColorHint="#9EE3FF" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_height="match_parent"
+		android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:background="#000000"
+		android:layout_margin="1dp"
+		android:layout_weight="1.0"
+		android:gravity="center_vertical|center_horizontal"
+		android:padding="2dp">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:text="Dev"
+			android:id="@+id/t_c4_dev"
+			android:gravity="center_horizontal"
+			android:singleLine="true"/>
+
+	</LinearLayout>
+
+</LinearLayout>
+
