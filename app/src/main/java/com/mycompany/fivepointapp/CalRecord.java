@@ -49,28 +49,28 @@ public class CalRecord
 		Data.add(position, hm);
 	
 	}
-	
 	private ArrayList<Double> calculateSteps(Double lrv, Double rng, Integer stps, Boolean linear) {
-        Double increment = (rng / (stps - 1));
-        Double stepValue = lrv;
-        Integer count;
-        ArrayList<Double> al;
-
-        al = new ArrayList<Double>();
-        for (count = 0; (count < stps); count++) {
-            al.add(count, stepValue);
-            stepValue += increment;
-			stepValue = linear ? stepValue : Math.sqrt(stepValue);
-        }
-        return al;
-    }
+		ArrayList<Double> al = new ArrayList<Double>(stps);
+		Double dblStps = stps.doubleValue();
+		for (Integer i = 0; i < stps; i++)
+		{
+			Double mlt = i / (dblStps-1.0);
+			if (!linear)
+			{
+				mlt = Math.pow(mlt, 2.0);
+			}
+			Double stepValue = lrv + (rng * mlt);
+			al.add(stepValue);
+		}	
+		return al;
+	}
 
     public CalRecord createTestData() {
         Log.i("ME", "Creating Test Data...");
         Integer count;
         Instrument i = this.Device;
         ArrayList<Double> inputs = calculateSteps(i.DLRV, i.DRange, i.Steps, i.IsLinear);
-        ArrayList<Double> expecteds = calculateSteps(i.CLRV, i.CRange, i.Steps, i.IsLinear);
+        ArrayList<Double> expecteds = calculateSteps(i.CLRV, i.CRange, i.Steps, true);
         for (count = 0; (count < i.Steps); count++) {
             this.storeData(count, inputs.get(count), expecteds.get(count), 0.0, 0.0);
         }
@@ -91,8 +91,6 @@ public class CalRecord
 			HashMap m = (HashMap) it.next();
 			str += m.toString() + "\n";
 		}
-		
-		
 		return str;
 	}
 	

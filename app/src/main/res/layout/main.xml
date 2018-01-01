@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:gravity="center">
-	
-
-	<EditText
-		android:id="@+id/e_test"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:ems="10"
-		android:imeOptions="actionDone"
-		android:inputType="number"
-		android:visibility="gone"/>
 
 	<LinearLayout
 		android:id="@+id/lv_rows"
@@ -370,8 +359,6 @@
 					android:clipToPadding="false"
 					android:background="@drawable/blankbg"/>
 
-
-
 			</LinearLayout>
 
 		</LinearLayout>
@@ -465,9 +452,8 @@
 			</LinearLayout>
 
 		</LinearLayout>
-	
-		
-	<ViewSwitcher
+
+		<ViewSwitcher
 			android:id="@+id/vs_save_edit"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -492,11 +478,11 @@
 					android:orientation="horizontal">
 
 					<Button
-						android:id="@+id/btn_save"
+						android:id="@+id/btn_cal"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:onClick="ClickSave"
-						android:text="@string/save"/>
+						android:onClick="clickCal"
+						android:text="Calibrate"/>
 
 				</LinearLayout>
 
@@ -512,7 +498,8 @@
 						android:id="@+id/btn_reset"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:text="@string/reset"/>
+						android:text="@string/reset"
+						android:onClick="clickReset"/>
 
 				</LinearLayout>
 
@@ -528,7 +515,8 @@
 						android:id="@+id/btn_clr"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:text="@string/clear"/>
+						android:text="@string/clear"
+						android:onClick="clickClear"/>
 
 				</LinearLayout>
 
@@ -553,46 +541,59 @@
 						android:id="@+id/btn_edit"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:onClick="ClickEdit"
+						android:onClick="clickEdit"
 						android:text="@string/edit"/>
 
 				</LinearLayout>
 
+
+
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
-					android:layout_margin="1dp"
-					android:layout_weight="1"
+					android:layout_gravity="center_vertical"
 					android:background="#303030"
-					android:orientation="horizontal">
+					android:orientation="vertical"
+					android:id="@+id/lv_progress"
+					android:layout_margin="1dp"
+					android:layout_weight="1">
 
-					<LinearLayout
+					<TextView
+						android:id="@+id/t_pb_cal"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center_horizontal"
+						android:text="@string/calibration_progress"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<ProgressBar
+						android:id="@+id/pb_calibration"
+						style="?android:attr/progressBarStyleHorizontal"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:layout_gravity="center_vertical"
-						android:background="#303030"
-						android:orientation="vertical">
-
-						<TextView
-							android:id="@+id/t_pb_cal"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_gravity="center_horizontal"
-							android:text="@string/calibration_progress"
-							android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-						<ProgressBar
-							android:id="@+id/pb_calibration"
-							style="?android:attr/progressBarStyleHorizontal"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:layout_gravity="bottom"
-							android:paddingLeft="10dp"
-							android:paddingRight="10dp"/>
-
-					</LinearLayout>
+						android:layout_gravity="bottom"
+						android:paddingLeft="10dp"
+						android:paddingRight="10dp"/>
 
 				</LinearLayout>
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_vertical"
+					android:background="#303030"
+					android:orientation="horizontal"
+					android:id="@+id/lh_save_data"
+					android:visibility="gone"
+					android:layout_weight="1">
+					<Button
+						android:id="@+id/btn_save"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:onClick="clickSave"
+						android:text="Save Data Set"/>
+
+				</LinearLayout>
+
 
 			</LinearLayout>
 
@@ -650,12 +651,13 @@
 				android:textAppearance="?android:attr/textAppearanceMedium"/>
 
 		</LinearLayout>
-	
+
 		<ListView
 			android:id="@+id/listview_dataset"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"/>
 
 	</LinearLayout>
+
 </LinearLayout>
 

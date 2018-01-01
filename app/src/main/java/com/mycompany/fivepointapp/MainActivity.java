@@ -1,18 +1,16 @@
 package com.mycompany.fivepointapp;
 
 import android.app.*;
+import android.content.*;
 import android.graphics.*;
 import android.os.*;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.*;
 import android.view.*;
-import android.widget.*;
-
-import java.util.*;
-
-import android.content.*;
 import android.view.inputmethod.*;
+import android.widget.*;
+import java.util.*;
+import java.io.*;
+import android.media.*;
 
 public class MainActivity extends Activity
 {
@@ -26,59 +24,34 @@ public class MainActivity extends Activity
     public EditText e_curv;
     public EditText e_steps;
     public RadioGroup rg_linsq;
-    public Button btn_save;
+    public RadioButton rb_lin;
+	public RadioButton rb_squ;
+	public Button btn_save;
     public Button btn_edit;
     public Button btn_reset;
     public Button btn_clr;
-    public ViewSwitcher vs_save_edit;
-    public Boolean focusLocked;
-    public CalRecord cr;
-    public ArrayList<EditText> mandos;
-    public ProgressBar pb_calibration;
-    public EditText e_test;
-    public Adapter lv_ds_adapter;
-    public ListView lv_dataset;
-	public ArrayList<String> units_values;
 	public Spinner spin_dunit;
 	public Spinner spin_cunit;
-    public RadioButton rb_lin;
-	public RadioButton rb_squ;
+	public ViewSwitcher vs_save_edit;
+	public ViewSwitcher vs_save_data;
+	public ProgressBar pb_calibration;
+    public Adapter lv_ds_adapter;
+    public ListView lv_dataset;
 	public LinearLayout ll;
+	public LinearLayout ll_pb;
+	public LinearLayout ll_sd;
+	public ArrayList<String> units_values;
+	public ArrayList<EditText> mandos;
+    public Boolean focusLocked;
+	public Boolean doneFlag;
+    public CalRecord cr;
 
 	@Override
     protected void onCreate(Bundle savedInstanceState)
 	{
+		Log.i("ME", "Initializing...");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        focusLocked = false;
-        cr = new CalRecord();
-        init();
-
-    }
-
-	public void showSoftKeyboard(View view)
-	{
-		if (view.requestFocus())
-		{
-			InputMethodManager imm = (InputMethodManager)
-				getSystemService(Context.INPUT_METHOD_SERVICE);
-			imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
-		}
-	}
-
-	public void hideSoftKeyboard(View view)
-	{
-
-		InputMethodManager imm = (InputMethodManager)
-			getSystemService(Context.INPUT_METHOD_SERVICE);
-		IBinder token = view.getWindowToken();
-		imm.hideSoftInputFromWindow(token, 0);
-
-	}
-
-    public void init()
-	{
-        Log.i("ME", "Initializing...");
+        setContentView(R.layout.main);        
         e_id = (EditText) findViewById(R.id.e_id);
         e_serial = (EditText) findViewById(R.id.e_serial);
         e_make = (EditText) findViewById(R.id.e_make);
@@ -92,8 +65,7 @@ public class MainActivity extends Activity
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_reset = (Button) findViewById(R.id.btn_reset);
         btn_clr = (Button) findViewById(R.id.btn_clr);
-        vs_save_edit = (ViewSwitcher) findViewById(R.id.vs_save_edit);  
-        e_test = (EditText) findViewById(R.id.e_test);
+        vs_save_edit = (ViewSwitcher) findViewById(R.id.vs_save_edit);
         pb_calibration = (ProgressBar) findViewById(R.id.pb_calibration);
         lv_dataset = (ListView) findViewById(R.id.listview_dataset);
 	  	spin_dunit = (Spinner) findViewById(R.id.spin_dunit);
@@ -101,7 +73,8 @@ public class MainActivity extends Activity
 		rb_lin = (RadioButton) findViewById(R.id.rb_lin);
 		rb_squ = (RadioButton) findViewById(R.id.rb_squ);
 		ll = (LinearLayout) findViewById(R.id.lh_row_1);
-
+		ll_pb = (LinearLayout) findViewById(R.id.lv_progress);
+		ll_sd = (LinearLayout) findViewById(R.id.lh_save_data);
 		mandos = new ArrayList<EditText>();
 		mandos.add(e_dlrv);
         mandos.add(e_durv);
@@ -118,77 +91,97 @@ public class MainActivity extends Activity
 		units_values.add("Amps");
 		units_values.add("Ohms");
 		units_values.add("GPM");
+		focusLocked = false;
+		doneFlag = false;
+        cr = new CalRecord();
 		spin_dunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
 		spin_cunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
 		spin_dunit.setSelection(0);
 		spin_cunit.setSelection(3);
-		spin_dunit.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
-
-				@Override
-				public void onItemSelected(AdapterView<?> p1, View p2, int p3, long p4)
-				{
-
-				}
-
-				@Override
-				public void onNothingSelected(AdapterView<?> p1)
-				{
-					// TODO: Implement this method
-
-				}
-			});
-
-
-
-		lv_dataset.setOnItemClickListener(new ListView.OnItemClickListener() {
-
-				@Override
-				public void onItemClick(AdapterView<?> vs, View v, int pos, long id)
-				{
-					Log.i("ME", "LV : " + vs.toString());
-					Log.i("ME", "LV : " + v.toString());
-					Log.i("ME", "LV : " + String.valueOf(pos));
-					Log.i("ME", "LV : " + String.valueOf(id));
-				}
-			});
-
-        e_test.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-
-				@Override
-				public void onFocusChange(View p1, boolean p2)
-				{
-					if (!p2)
-					{
-						pb_calibration.setProgress(Integer.parseInt(e_test.getText().toString()));
-					}
-				}
-			});
-
-        btn_reset.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View _v)
-				{
-					Log.i("ME", "Starting reset...");
-					ClearForm((ViewGroup) findViewById(R.id.lv_rows));
-					CalRecord cr = new CalRecord();
-					FillForm(cr.Device);
-					Log.i("ME", cr.Device.toString() + "\n...Reset Complete.");
-				}
-			});
-
-        btn_clr.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View _v)
-				{
-					Log.i("ME", "Clearing...");
-					ClearForm((ViewGroup) findViewById(R.id.lv_rows));
-					Log.i("ME", "...Cleared.");
-				}
-			});
-
         Log.i("ME", "...Initialized.");
     }
 
+	public void clickReset(View view)
+	{
+		Log.i("ME", "Starting reset...");
+		ClearForm((ViewGroup) findViewById(R.id.lv_rows));
+		CalRecord cr = new CalRecord();
+		FillForm(cr.Device);
+		Log.i("ME", cr.Device.toString() + "\n...Reset Complete.");
+	}
+
+	public void clickClear(View view)
+	{
+		Log.i("ME", "Clearing...");
+		ClearForm((ViewGroup) findViewById(R.id.lv_rows));
+		Log.i("ME", "...Cleared.");
+	}
+
+	public void clickCal(View view)
+	{
+        Log.i("ME", "Starting Save...");
+        if (FormFilledRight(mandos))
+		{
+            ArrayList al;
+            cr = CollectForm();
+            al = cr.Data;
+            lv_dataset.setAdapter(new DataSetViewAdapter(cr.Data));
+            FocusControl(true);
+            vs_save_edit.showNext();
+			peekaboo(true);
+        }
+        Log.i("ME", "... Save Complete.");
+    }
+
+	public void clickEdit(View view)
+	{
+        Log.i("ME", "Starting Edit...");
+        if (FormFilledRight(mandos))
+		{
+            FocusControl(false);
+            vs_save_edit.showNext();
+        }
+        if (!cr.Data.isEmpty())
+		{
+            cr.Data.clear();
+            lv_dataset.setAdapter(new DataSetViewAdapter(cr.Data));
+			peekaboo(false);
+        }
+        Log.i("ME", "...Edit Complete.");
+    }
+
+
+
+
+	public void clickSave(View view)
+	{
+		try
+		{
+			File file = new File(this.getExternalFilesDir(null), "fpasave.txt");
+			
+			FileOutputStream fileOutput = new FileOutputStream(file);
+			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutput);
+			outputStreamWriter.write("test");
+			outputStreamWriter.flush();
+			fileOutput.getFD().sync();
+			
+			outputStreamWriter.close();
+			Log.i("ME",file.getAbsolutePath());
+			Log.i("ME",String.valueOf(file.isFile()));
+			Log.i("ME",String.valueOf(file.exists()));
+			Log.i("ME",String.valueOf(file.isHidden()));
+			Log.i("ME",String.valueOf(file.lastModified()));
+			Log.i("ME",String.valueOf(file.canRead()));
+			Log.i("ME",String.valueOf(file.canWrite()));
+			Log.i("ME",String.valueOf(file.toString()));
+			MediaScannerConnection.scanFile(this, new String[]{file.getAbsolutePath()}, null, null);
+			
+		}
+		catch (Exception e)
+		{
+			Log.i("ME","Why? ", e);
+		}
+	}
 	public void peekaboo(Boolean collapse)
 	{	
 		ArrayList<View> views = new ArrayList<View>();
@@ -206,9 +199,8 @@ public class MainActivity extends Activity
 			{
 				views.get(i).setVisibility(View.VISIBLE);
 			}
-
 		}
-	}
+	};
 
     public void ClearEditText(View view) 
 	{  
@@ -219,43 +211,7 @@ public class MainActivity extends Activity
 			et.setBackgroundColor(Color.RED);
             et.requestFocus();
             et.selectAll();
-
         }
-    }
-
-    public void ClickEdit(View _v)
-	{
-        Log.i("ME", "Starting Edit...");
-        if (FormFilledRight(mandos))
-		{
-            FocusControl(false);
-            vs_save_edit.showNext();
-        }
-        if (!cr.Data.isEmpty())
-		{
-            cr.Data.clear();
-            lv_dataset.setAdapter(new DataSetViewAdapter(cr.Data));
-			peekaboo(false);
-
-        }
-        Log.i("ME", "...Edit Complete.");
-    }
-
-    public void ClickSave(View _v)
-	{
-        Log.i("ME", "Starting Save...");
-        if (FormFilledRight(mandos))
-		{
-            ArrayList al;
-            cr = CollectForm();
-            al = cr.Data;
-            lv_dataset.setAdapter(new DataSetViewAdapter(cr.Data));
-            FocusControl(true);
-            vs_save_edit.showNext();
-			peekaboo(true);
-
-        }
-        Log.i("ME", "... Save Complete.");
     }
 
     public void FocusControl(Boolean lock)
@@ -277,7 +233,6 @@ public class MainActivity extends Activity
             e.setFocusable(!lock);
             e.setFocusableInTouchMode(!lock);
         }
-
 		HashSet<View> views = new HashSet<View>();
 		views.add(rb_lin);
 		views.add(rb_squ);
@@ -292,8 +247,6 @@ public class MainActivity extends Activity
 			v.setFocusableInTouchMode(!lock);
 			v.setEnabled(!lock);
         }
-
-
         focusLocked = lock;
     }
 
@@ -316,7 +269,6 @@ public class MainActivity extends Activity
     public Boolean FormFilledRight(ArrayList<EditText> mfs)
 	{
         Log.i("ME", "Starting Form Validation...");
-
         Boolean gonogo = true;
         Iterator it = mfs.iterator();
         while (it.hasNext())
@@ -357,7 +309,7 @@ public class MainActivity extends Activity
         return cr.createTestData();
     }
 
-    // Got this procedure from
+// Got this procedure from
 // https://stackoverflow.com/questions/5740708/android-clearing-all-edittext-fields-with-clear-button
     public void ClearForm(ViewGroup group)
 	{
@@ -369,17 +321,54 @@ public class MainActivity extends Activity
                 if (view instanceof EditText)
 				{
                     ((EditText) view).setText("");
-//((EditText)view).setFocusable(false);
                     view.setBackgroundColor(Color.parseColor("#303030"));
                 }
                 if (view instanceof ViewGroup && (((ViewGroup) view).getChildCount() > 0))
+				{
                     ClearForm((ViewGroup) view);
+				}
             }
         }
     }
 
+	public void enterRead(View view, ArrayList<HashMap<String, String>> data, int position)
+	{
+		if (!(data.isEmpty()))
+		{
+			EditText et = (EditText) view;
+			String s = et.getText().toString();
+			HashMap hm = new HashMap();
+			hm = data.get(position);
+			if (!(s.isEmpty())) 
+			{														
+				Double readValue = Double.parseDouble(s);
+				String expStr = (String) hm.get("Expected");
+				Double expValue = Double.parseDouble(expStr);
+				Double devValue = (Math.abs(expValue - readValue) / cr.Device.CRange) * 100;
+				hm.put("Dev", String.format("%.3f", devValue));
+			}
+			hm.put("Read", s);
+			data.set(position, hm);
+			cr.Data = data;
+			pb_calibration.setProgress(cr.getProgress());
+			if ((cr.getProgress() == 100) && (!doneFlag))
+			{
+				ll_pb.setVisibility(View.GONE);
+				ll_sd.setVisibility(View.VISIBLE);
+				doneFlag = true;
+			}
+			if (cr.getProgress() < 100)
+			{
+				ll_pb.setVisibility(View.VISIBLE);
+				ll_sd.setVisibility(View.GONE);
+				doneFlag = false;
+			}
+
+		}
 
 
+		Log.i("ME", "Data Update: \n" + cr.toString(true));
+	}
 
     public class DataSetViewAdapter extends BaseAdapter
 	{
@@ -389,26 +378,12 @@ public class MainActivity extends Activity
 		{
             data = arr;
         }
-
-
-
-        @Override
-        public int getCount()
-		{
-            return data.size();
-        }
-
-        @Override
-        public HashMap<String, String> getItem(int _i)
-		{
-            return data.get(_i);
-        }
-
-        @Override
-        public long getItemId(int _i)
-		{
-            return _i;
-        }
+        @Override public int getCount()
+		{return data.size();}
+        @Override public HashMap<String, String> getItem(int _i)
+		{return data.get(_i);}
+        @Override public long getItemId(int _i)
+		{ return _i;}
 
         @Override
         public View getView(final int position, View convertView, ViewGroup container)
@@ -430,40 +405,29 @@ public class MainActivity extends Activity
             c3.setText(data.get(position).get("Read"));
             c4.setText(data.get(position).get("Dev"));
 
-			c3.setOnFocusChangeListener(new EditText.OnFocusChangeListener() {
-
+			c3.setOnFocusChangeListener(new EditText.OnFocusChangeListener() 
+				{
 					@Override
-					public void onFocusChange(View p1, boolean p2)
+					public void onFocusChange(View view, boolean hasFocus)
 					{
-						if ((p1 instanceof EditText) && (p2))
+						if ((view instanceof EditText) && (hasFocus))
 						{
-							EditText view = (EditText) p1;
-							view.setText("");
+							EditText et = (EditText) view;
+							data.get(position).put("Read", "");
+							cr.Data = data;
+							et.setText("");
+							et.requestFocus();
+						}
+						if ((view instanceof EditText) && (!hasFocus))
+						{
 
+							enterRead(view, data, position);
 						}
 					}
-
-
 				});
 
-            c3.addTextChangedListener(new TextWatcher() {
-					public void afterTextChanged(Editable s)
-					{
-
-
-					}
-					public void beforeTextChanged(CharSequence s, int start, int count, int after)
-					{
-						// Do something before Text Change
-					}
-					public void onTextChanged(CharSequence s, int start, int before, int count)
-					{
-						// Do something while Text Change
-					}
-				});
-
-            c3.setOnEditorActionListener(new EditText.OnEditorActionListener() {
-
+			c3.setOnEditorActionListener(new EditText.OnEditorActionListener() 
+				{
 					@Override
 					public boolean onEditorAction(TextView view, int actionID, KeyEvent event)
 					{
@@ -471,42 +435,14 @@ public class MainActivity extends Activity
 						{
 							if (view instanceof EditText)
 							{
-								EditText et = (EditText) view;
-								String s = et.getText().toString();
-								HashMap hm = new HashMap();
-								hm = data.get(position);
-								if (!(s.isEmpty())) 
-								{														
-									Double readValue = Double.parseDouble(s);
-									String expStr = (String) hm.get("Expected");
-									Double expValue = Double.parseDouble(expStr);
-									Double devValue = (Math.abs(expValue - readValue) / cr.Device.CRange) * 100;
-									//hm.put("Dev",devValue.toString() + "%");
-									hm.put("Dev", String.format("%.3f", devValue));
-								}
-								hm.put("Read", s);
-								data.set(position, hm);
-
+								enterRead(view, data, position);
 							}
-							cr.Data = data;
-							pb_calibration.setProgress(cr.getProgress());
-							Log.i("ME", "Data Update: \n" + cr.toString(true));
-
 						}
 						return false;
 					}
-
-
 				});
-
-
-
-            return convertView;
-        }
-    }
-
-
-
-
+			return convertView;
+		}
+	}
 }
 
