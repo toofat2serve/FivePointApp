@@ -14,7 +14,8 @@ import java.util.*;
 import android.content.*;
 import android.view.inputmethod.*;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity
+{
     public EditText e_id;
     public EditText e_serial;
     public EditText e_make;
@@ -37,19 +38,46 @@ public class MainActivity extends Activity {
     public EditText e_test;
     public Adapter lv_ds_adapter;
     public ListView lv_dataset;
+	public ArrayList<String> units_values;
+	public Spinner spin_dunit;
+	public Spinner spin_cunit;
+    public RadioButton rb_lin;
+	public RadioButton rb_squ;
+	public LinearLayout ll;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+	@Override
+    protected void onCreate(Bundle savedInstanceState)
+	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
         focusLocked = false;
         cr = new CalRecord();
         init();
 
     }
 
-    public void init() {
+	public void showSoftKeyboard(View view)
+	{
+		if (view.requestFocus())
+		{
+			InputMethodManager imm = (InputMethodManager)
+				getSystemService(Context.INPUT_METHOD_SERVICE);
+			imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+		}
+	}
+
+	public void hideSoftKeyboard(View view)
+	{
+
+		InputMethodManager imm = (InputMethodManager)
+			getSystemService(Context.INPUT_METHOD_SERVICE);
+		IBinder token = view.getWindowToken();
+		imm.hideSoftInputFromWindow(token, 0);
+
+	}
+
+    public void init()
+	{
         Log.i("ME", "Initializing...");
         e_id = (EditText) findViewById(R.id.e_id);
         e_serial = (EditText) findViewById(R.id.e_serial);
@@ -64,120 +92,174 @@ public class MainActivity extends Activity {
         btn_save = (Button) findViewById(R.id.btn_save);
         btn_reset = (Button) findViewById(R.id.btn_reset);
         btn_clr = (Button) findViewById(R.id.btn_clr);
-        vs_save_edit = (ViewSwitcher) findViewById(R.id.vs_save_edit);
-        mandos = new ArrayList<EditText>();
+        vs_save_edit = (ViewSwitcher) findViewById(R.id.vs_save_edit);  
         e_test = (EditText) findViewById(R.id.e_test);
         pb_calibration = (ProgressBar) findViewById(R.id.pb_calibration);
         lv_dataset = (ListView) findViewById(R.id.listview_dataset);
-        mandos.add(e_dlrv);
+	  	spin_dunit = (Spinner) findViewById(R.id.spin_dunit);
+	 	spin_cunit = (Spinner) findViewById(R.id.spin_cunit);
+		rb_lin = (RadioButton) findViewById(R.id.rb_lin);
+		rb_squ = (RadioButton) findViewById(R.id.rb_squ);
+		ll = (LinearLayout) findViewById(R.id.lh_row_1);
+
+		mandos = new ArrayList<EditText>();
+		mandos.add(e_dlrv);
         mandos.add(e_durv);
         mandos.add(e_clrv);
         mandos.add(e_curv);
         mandos.add(e_steps);
+		units_values = new ArrayList<String>();
+		units_values.add("PSI");
+		units_values.add("\"H2O");
+		units_values.add("°F");
+		units_values.add("mA");
+		units_values.add("RPM");
+		units_values.add("Volts");
+		units_values.add("Amps");
+		units_values.add("Ohms");
+		units_values.add("GPM");
+		spin_dunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
+		spin_cunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
+		spin_dunit.setSelection(0);
+		spin_cunit.setSelection(3);
+		spin_dunit.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
+
+				@Override
+				public void onItemSelected(AdapterView<?> p1, View p2, int p3, long p4)
+				{
+
+				}
+
+				@Override
+				public void onNothingSelected(AdapterView<?> p1)
+				{
+					// TODO: Implement this method
+
+				}
+			});
+
+
+
+		lv_dataset.setOnItemClickListener(new ListView.OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView<?> vs, View v, int pos, long id)
+				{
+					Log.i("ME", "LV : " + vs.toString());
+					Log.i("ME", "LV : " + v.toString());
+					Log.i("ME", "LV : " + String.valueOf(pos));
+					Log.i("ME", "LV : " + String.valueOf(id));
+				}
+			});
 
         e_test.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
-            @Override
-            public void onFocusChange(View p1, boolean p2) {
-                if (!p2) {
-                    pb_calibration.setProgress(Integer.parseInt(e_test.getText().toString()));
-                }
-            }
-        });
+				@Override
+				public void onFocusChange(View p1, boolean p2)
+				{
+					if (!p2)
+					{
+						pb_calibration.setProgress(Integer.parseInt(e_test.getText().toString()));
+					}
+				}
+			});
 
         btn_reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View _v) {
-                Log.i("ME", "Starting reset...");
-                ClearForm((ViewGroup) findViewById(R.id.lv_rows));
-                CalRecord cr = new CalRecord();
-                FillForm(cr.Device);
-                Log.i("ME", cr.Device.toString() + "\n...Reset Complete.");
-            }
-        });
+				@Override
+				public void onClick(View _v)
+				{
+					Log.i("ME", "Starting reset...");
+					ClearForm((ViewGroup) findViewById(R.id.lv_rows));
+					CalRecord cr = new CalRecord();
+					FillForm(cr.Device);
+					Log.i("ME", cr.Device.toString() + "\n...Reset Complete.");
+				}
+			});
 
         btn_clr.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View _v) {
-                Log.i("ME", "Clearing...");
-                ClearForm((ViewGroup) findViewById(R.id.lv_rows));
-                Log.i("ME", "...Cleared.");
-            }
-        });
+				@Override
+				public void onClick(View _v)
+				{
+					Log.i("ME", "Clearing...");
+					ClearForm((ViewGroup) findViewById(R.id.lv_rows));
+					Log.i("ME", "...Cleared.");
+				}
+			});
 
         Log.i("ME", "...Initialized.");
     }
 
-    public void ClearEditText(View view) {
-       // et.selectAll();
-        if (view instanceof EditText) {
+	public void peekaboo(Boolean collapse)
+	{	
+		ArrayList<View> views = new ArrayList<View>();
+		views.add((View) findViewById(R.id.lh_row_1));
+		views.add((View) findViewById(R.id.lh_row_2));
+		views.add((View) findViewById(R.id.lh_row_3));
+		views.add((View) findViewById(R.id.lh_row_4));
+		for (Integer i = 0; i < 4; i++)
+		{
+			if (collapse)
+			{		
+				views.get(i).setVisibility(View.GONE);
+			}
+			else
+			{
+				views.get(i).setVisibility(View.VISIBLE);
+			}
+
+		}
+	}
+
+    public void ClearEditText(View view) 
+	{  
+        if (view instanceof EditText)
+		{
             EditText et = (EditText) view;
+			et.setText("");
+			et.setBackgroundColor(Color.RED);
             et.requestFocus();
             et.selectAll();
-            if (!(et.getText().toString() == "")) {
-                et.selectAll();
-            }
+
         }
     }
 
-    public void ClickEdit(View _v) {
+    public void ClickEdit(View _v)
+	{
         Log.i("ME", "Starting Edit...");
-        if (FormFilledRight(mandos)) {
+        if (FormFilledRight(mandos))
+		{
             FocusControl(false);
             vs_save_edit.showNext();
         }
-        if (!cr.Data.isEmpty()) {
+        if (!cr.Data.isEmpty())
+		{
             cr.Data.clear();
             lv_dataset.setAdapter(new DataSetViewAdapter(cr.Data));
+			peekaboo(false);
 
         }
         Log.i("ME", "...Edit Complete.");
     }
 
-    public void ClickSave(View _v) {
+    public void ClickSave(View _v)
+	{
         Log.i("ME", "Starting Save...");
-        if (FormFilledRight(mandos)) {
+        if (FormFilledRight(mandos))
+		{
             ArrayList al;
             cr = CollectForm();
             al = cr.Data;
             lv_dataset.setAdapter(new DataSetViewAdapter(cr.Data));
             FocusControl(true);
             vs_save_edit.showNext();
+			peekaboo(true);
 
         }
         Log.i("ME", "... Save Complete.");
     }
 
-    public ArrayList<Double> calculateSteps(Double lrv, Double rng, Integer stps) {
-        Double increment = (rng / (stps - 1));
-        Double stepValue = lrv;
-        Integer count;
-        ArrayList<Double> al;
-
-        al = new ArrayList<Double>();
-        for (count = 0; (count < stps); count++) {
-            al.add(count, stepValue);
-            stepValue += increment;
-        }
-        return al;
-    }
-
-    public CalRecord createTestData(CalRecord cr) {
-        Log.i("ME", "Creating Test Data...");
-        Integer count;
-        Instrument i = cr.Device;
-        ArrayList<Double> inputs = calculateSteps(i.DLRV, i.DRange, i.Steps);
-        ArrayList<Double> expecteds = calculateSteps(i.CLRV, i.CRange, i.Steps);
-        for (count = 0; (count < i.Steps); count++) {
-            cr.storeData(count, inputs.get(count), expecteds.get(count), 0.0, 0.0);
-
-        }
-        Log.i("ME", "... Test Data Creation Complete.");
-        Log.i("ME", cr.toString());
-        return cr;
-    }
-
-    public void FocusControl(Boolean lock) {
+    public void FocusControl(Boolean lock)
+	{
         HashSet<EditText> formfields = new HashSet<EditText>();
         formfields.add(e_id);
         formfields.add(e_serial);
@@ -188,16 +270,35 @@ public class MainActivity extends Activity {
         formfields.add(e_clrv);
         formfields.add(e_curv);
         formfields.add(e_steps);
-        Iterator it = formfields.iterator();
-        while (it.hasNext()) {
-            EditText e = (EditText) it.next();
+        Iterator it1 = formfields.iterator();
+        while (it1.hasNext())
+		{
+            EditText e = (EditText) it1.next();
             e.setFocusable(!lock);
             e.setFocusableInTouchMode(!lock);
         }
+
+		HashSet<View> views = new HashSet<View>();
+		views.add(rb_lin);
+		views.add(rb_squ);
+		views.add(spin_dunit);
+		views.add(spin_cunit);
+		Iterator it2 = views.iterator();
+        while (it2.hasNext())
+		{
+            View v = (View) it2.next();
+            v.setClickable(!lock);
+			v.setFocusable(!lock);
+			v.setFocusableInTouchMode(!lock);
+			v.setEnabled(!lock);
+        }
+
+
         focusLocked = lock;
     }
 
-    public void FillForm(Instrument inst) {
+    public void FillForm(Instrument inst)
+	{
         e_id.setText(inst.ID);
         e_serial.setText(inst.Serial);
         e_make.setText(inst.Make);
@@ -207,18 +308,26 @@ public class MainActivity extends Activity {
         e_clrv.setText(inst.CLRV.toString());
         e_curv.setText(inst.CURV.toString());
         e_steps.setText(inst.Steps.toString());
+		rb_lin.setChecked(true);
+		spin_dunit.setSelection(0);
+		spin_cunit.setSelection(3);
     }
 
-    public Boolean FormFilledRight(ArrayList<EditText> mfs) {
+    public Boolean FormFilledRight(ArrayList<EditText> mfs)
+	{
         Log.i("ME", "Starting Form Validation...");
 
         Boolean gonogo = true;
         Iterator it = mfs.iterator();
-        while (it.hasNext()) {
+        while (it.hasNext())
+		{
             EditText e = (EditText) it.next();
-            if (e.getText().length() == 0) {
+            if (e.getText().length() == 0)
+			{
                 e.setBackgroundColor(Color.RED);
-            } else {
+            }
+			else
+			{
                 e.setBackgroundColor(Color.parseColor("#303030"));
             }
             gonogo = (e.getText().length() == 0) ? false : gonogo;
@@ -227,7 +336,8 @@ public class MainActivity extends Activity {
         return gonogo;
     }
 
-    public CalRecord CollectForm() {
+    public CalRecord CollectForm()
+	{
         Log.i("ME", "Starting Collection...");
         String id = e_id.getText().toString();
         String se = e_serial.getText().toString();
@@ -235,23 +345,29 @@ public class MainActivity extends Activity {
         String mo = e_model.getText().toString();
         Double dl = Double.parseDouble(e_dlrv.getText().toString());
         Double du = Double.parseDouble(e_durv.getText().toString());
+		String dun = spin_dunit.getSelectedItem().toString();
+		String cun = spin_cunit.getSelectedItem().toString();
         Double cl = Double.parseDouble(e_clrv.getText().toString());
         Double cu = Double.parseDouble(e_curv.getText().toString());
         Integer st = Integer.parseInt(e_steps.getText().toString());
-        Boolean il = rg_linsq.getCheckedRadioButtonId() == (Integer) 2131099684;
-        CalRecord cr = new CalRecord(new Instrument(id, se, ma, mo, dl, du, "", cl, cu, "", st, il));
+        Boolean il = rb_lin.isChecked();
+        CalRecord cr = new CalRecord(new Instrument(id, se, ma, mo, dl, du, dun, cl, cu, cun, st, il));
         Log.i("ME", cr.Device.toString());
         Log.i("ME", "... Collection Complete.");
-        return createTestData(cr);
+        return cr.createTestData();
     }
 
     // Got this procedure from
 // https://stackoverflow.com/questions/5740708/android-clearing-all-edittext-fields-with-clear-button
-    public void ClearForm(ViewGroup group) {
-        if (!focusLocked) {
-            for (int i = 0, count = group.getChildCount(); i < count; ++i) {
+    public void ClearForm(ViewGroup group)
+	{
+        if (!focusLocked)
+		{
+            for (int i = 0, count = group.getChildCount(); i < count; ++i)
+			{
                 View view = group.getChildAt(i);
-                if (view instanceof EditText) {
+                if (view instanceof EditText)
+				{
                     ((EditText) view).setText("");
 //((EditText)view).setFocusable(false);
                     view.setBackgroundColor(Color.parseColor("#303030"));
@@ -265,35 +381,42 @@ public class MainActivity extends Activity {
 
 
 
-    public class DataSetViewAdapter extends BaseAdapter {
+    public class DataSetViewAdapter extends BaseAdapter
+	{
         ArrayList<HashMap<String, String>> data;
 
-        public DataSetViewAdapter(ArrayList<HashMap<String, String>> arr) {
+        public DataSetViewAdapter(ArrayList<HashMap<String, String>> arr)
+		{
             data = arr;
         }
 
 
 
         @Override
-        public int getCount() {
+        public int getCount()
+		{
             return data.size();
         }
 
         @Override
-        public HashMap<String, String> getItem(int _i) {
+        public HashMap<String, String> getItem(int _i)
+		{
             return data.get(_i);
         }
 
         @Override
-        public long getItemId(int _i) {
+        public long getItemId(int _i)
+		{
             return _i;
         }
 
         @Override
-        public View getView(final int position, View convertView, ViewGroup container) {
+        public View getView(final int position, View convertView, ViewGroup container)
+		{
             LayoutInflater _inflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            if (convertView == null) {
+            if (convertView == null)
+			{
                 convertView = _inflater.inflate(R.layout.datalist, null);
             }
 
@@ -307,47 +430,74 @@ public class MainActivity extends Activity {
             c3.setText(data.get(position).get("Read"));
             c4.setText(data.get(position).get("Dev"));
 
+			c3.setOnFocusChangeListener(new EditText.OnFocusChangeListener() {
+
+					@Override
+					public void onFocusChange(View p1, boolean p2)
+					{
+						if ((p1 instanceof EditText) && (p2))
+						{
+							EditText view = (EditText) p1;
+							view.setText("");
+
+						}
+					}
 
 
+				});
 
             c3.addTextChangedListener(new TextWatcher() {
-                public void afterTextChanged(Editable s) {
+					public void afterTextChanged(Editable s)
+					{
 
 
-                }
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    // Do something before Text Change
-                }
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    // Do something while Text Change
-                }
-            });
+					}
+					public void beforeTextChanged(CharSequence s, int start, int count, int after)
+					{
+						// Do something before Text Change
+					}
+					public void onTextChanged(CharSequence s, int start, int before, int count)
+					{
+						// Do something while Text Change
+					}
+				});
 
             c3.setOnEditorActionListener(new EditText.OnEditorActionListener() {
 
-                @Override
-                public boolean onEditorAction(TextView view, int actionID, KeyEvent event) {
-                    if (actionID == EditorInfo.IME_ACTION_DONE) {
-                        if (view instanceof  EditText) {
-                            EditText et = (EditText) view;
-                            String s = et.getText().toString();
-                            HashMap hm = new HashMap();
-                            hm = data.get(position);
-                            Log.i("ME", "hm = data.get(position) : \n" + hm.entrySet());
-                            hm.put("Read",s);
+					@Override
+					public boolean onEditorAction(TextView view, int actionID, KeyEvent event)
+					{
+						if (actionID == EditorInfo.IME_ACTION_DONE)
+						{
+							if (view instanceof EditText)
+							{
+								EditText et = (EditText) view;
+								String s = et.getText().toString();
+								HashMap hm = new HashMap();
+								hm = data.get(position);
+								if (!(s.isEmpty())) 
+								{														
+									Double readValue = Double.parseDouble(s);
+									String expStr = (String) hm.get("Expected");
+									Double expValue = Double.parseDouble(expStr);
+									Double devValue = (Math.abs(expValue - readValue) / cr.Device.CRange) * 100;
+									//hm.put("Dev",devValue.toString() + "%");
+									hm.put("Dev", String.format("%.3f", devValue));
+								}
+								hm.put("Read", s);
+								data.set(position, hm);
+
+							}
+							cr.Data = data;
+							pb_calibration.setProgress(cr.getProgress());
+							Log.i("ME", "Data Update: \n" + cr.toString(true));
+
+						}
+						return false;
+					}
 
 
-                            data.set(position,hm);
-                        }
-                        cr.Data = data;
-                        Log.i("ME", "Data Update: \n" + cr.toString());
-                        view.clearFocus();
-                    }
-                    return false;
-                }
-
-
-            });
+				});
 
 
 

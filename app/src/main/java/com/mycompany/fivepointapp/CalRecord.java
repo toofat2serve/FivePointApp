@@ -1,5 +1,6 @@
 package com.mycompany.fivepointapp;
 import java.util.*;
+import android.util.*;
 
 public class CalRecord
 {
@@ -39,16 +40,45 @@ public class CalRecord
 		hm.put("Step",
 			   (position == null)? " ": String.valueOf(position + 1));
 		hm.put("Input",
-			   (position == null)? " ": String.valueOf(i));
+			   (position == null)? " ": String.format("%.3f",i));
 		hm.put("Expected",
-			   (position == null)? " ": String.valueOf(e));
-		hm.put("Read",
-			   (position == null)? " ": String.valueOf(r));
+			   (position == null)? " ": String.format("%.3f",e));
+		hm.put("Read", "");
 		hm.put("Dev",
-			   (position == null)? " ": String.valueOf(d));
+			   (position == null)? " ": String.format("%.3f",d));
 		Data.add(position, hm);
 	
 	}
+	
+	private ArrayList<Double> calculateSteps(Double lrv, Double rng, Integer stps, Boolean linear) {
+        Double increment = (rng / (stps - 1));
+        Double stepValue = lrv;
+        Integer count;
+        ArrayList<Double> al;
+
+        al = new ArrayList<Double>();
+        for (count = 0; (count < stps); count++) {
+            al.add(count, stepValue);
+            stepValue += increment;
+			stepValue = linear ? stepValue : Math.sqrt(stepValue);
+        }
+        return al;
+    }
+
+    public CalRecord createTestData() {
+        Log.i("ME", "Creating Test Data...");
+        Integer count;
+        Instrument i = this.Device;
+        ArrayList<Double> inputs = calculateSteps(i.DLRV, i.DRange, i.Steps, i.IsLinear);
+        ArrayList<Double> expecteds = calculateSteps(i.CLRV, i.CRange, i.Steps, i.IsLinear);
+        for (count = 0; (count < i.Steps); count++) {
+            this.storeData(count, inputs.get(count), expecteds.get(count), 0.0, 0.0);
+        }
+        Log.i("ME", "... Test Data Creation Complete.");
+        Log.i("ME", this.toString());
+        return this;
+    }
+	
 	
 	@Override
 	public String toString()
@@ -63,6 +93,41 @@ public class CalRecord
 		}
 		
 		
+		return str;
+	}
+	
+	public Integer getProgress() {
+		Integer intComplete = 0;
+		Iterator it = Data.iterator();
+		while (it.hasNext()) {
+			HashMap row = (HashMap) it.next();
+			String s = (String) row.get("Read");
+			if (!(s.isEmpty())) {
+				intComplete++;
+			}
+		}
+		Integer ds = Data.size();
+		Double dbl = (Double.parseDouble(intComplete.toString()) / (Double.parseDouble(ds.toString()))) * 100;
+		String str = String.valueOf((Math.round(dbl)));
+		return Integer.parseInt(str);
+	}
+	public String toString(Boolean dataOnly)
+	{
+		String str;
+		if (!dataOnly) {
+			str = this.toString();
+			str += Device.toString() + "\n";
+		}
+		else
+		{
+			str = "DATA RECORD\n";
+			Iterator it = this.Data.iterator();
+			while (it.hasNext()) 
+			{
+				HashMap m = (HashMap) it.next();
+				str += m.toString() + "\n";
+			}
+		}
 		return str;
 	}
 	
