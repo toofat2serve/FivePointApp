@@ -12,6 +12,9 @@ import java.util.*;
 import java.io.*;
 import android.media.*;
 
+import static android.os.Environment.DIRECTORY_DOCUMENTS;
+import static android.os.Environment.getExternalStoragePublicDirectory;
+
 public class MainActivity extends Activity
 {
     public EditText e_id;
@@ -150,32 +153,56 @@ public class MainActivity extends Activity
         Log.i("ME", "...Edit Complete.");
     }
 
-
+	/* Checks if external storage is available for read and write */
+	public boolean isExternalStorageWritable() {
+		String state = Environment.getExternalStorageState();
+		if (Environment.MEDIA_MOUNTED.equals(state)) {
+			return true;
+		}
+		return false;
+	}
 
 
 	public void clickSave(View view)
 	{
+
 		try
 		{
-			File file = new File(this.getExternalFilesDir(null), "fpasave.txt");
-			
-			FileOutputStream fileOutput = new FileOutputStream(file);
-			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutput);
-			outputStreamWriter.write("test");
-			outputStreamWriter.flush();
-			fileOutput.getFD().sync();
-			
-			outputStreamWriter.close();
-			Log.i("ME",file.getAbsolutePath());
-			Log.i("ME",String.valueOf(file.isFile()));
-			Log.i("ME",String.valueOf(file.exists()));
-			Log.i("ME",String.valueOf(file.isHidden()));
-			Log.i("ME",String.valueOf(file.lastModified()));
-			Log.i("ME",String.valueOf(file.canRead()));
-			Log.i("ME",String.valueOf(file.canWrite()));
-			Log.i("ME",String.valueOf(file.toString()));
-			MediaScannerConnection.scanFile(this, new String[]{file.getAbsolutePath()}, null, null);
-			
+			String state = Environment.getExternalStorageState();
+			if (Environment.MEDIA_MOUNTED.equals(state)) {
+				Context context = getApplicationContext();
+				File file = new File(context.getExternalFilesDir(null), "fpasave.txt");
+				Log.i("ME", file.getAbsolutePath());
+				File file2 = new File(context.getFilesDir(), "file2.txt");
+				Log.i("ME", file2.getAbsolutePath());
+				File file3 = new File(context.getExternalCacheDir(), "fpasave.txt");
+				Log.i("ME", file3.getAbsolutePath());
+				//File file4 = new File(context.getExternalFilesDir(null), "fpasave.txt");
+				//File file5 = new File(context.getExternalFilesDir(null), "fpasave.txt");
+
+				FileOutputStream fileOutput = new FileOutputStream(file);
+				OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutput);
+				outputStreamWriter.write(cr.toString());
+				outputStreamWriter.flush();
+				fileOutput.getFD().sync();
+
+				outputStreamWriter.close();
+
+
+
+				Log.i("ME", String.valueOf(file.isFile()));
+				Log.i("ME", String.valueOf(file.exists()));
+				Log.i("ME", String.valueOf(file.isHidden()));
+				Log.i("ME", String.valueOf(file.lastModified()));
+				Log.i("ME", String.valueOf(file.canRead()));
+				Log.i("ME", String.valueOf(file.canWrite()));
+				Log.i("ME", String.valueOf(file.toString()));
+				MediaScannerConnection.scanFile(this, new String[]{file.getAbsolutePath()}, null, null);
+			}
+			else
+			{
+				Log.i("ME", "Media Not Mounted");
+			}
 		}
 		catch (Exception e)
 		{
@@ -333,14 +360,12 @@ public class MainActivity extends Activity
 
 	public void enterRead(View view, ArrayList<HashMap<String, String>> data, int position)
 	{
-		if (!(data.isEmpty()))
-		{
+		if (!(data.isEmpty())) {
 			EditText et = (EditText) view;
 			String s = et.getText().toString();
 			HashMap hm = new HashMap();
 			hm = data.get(position);
-			if (!(s.isEmpty())) 
-			{														
+			if (!(s.isEmpty())) {
 				Double readValue = Double.parseDouble(s);
 				String expStr = (String) hm.get("Expected");
 				Double expValue = Double.parseDouble(expStr);
@@ -350,23 +375,19 @@ public class MainActivity extends Activity
 			hm.put("Read", s);
 			data.set(position, hm);
 			cr.Data = data;
+			lv_dataset.invalidate();
 			pb_calibration.setProgress(cr.getProgress());
-			if ((cr.getProgress() == 100) && (!doneFlag))
-			{
+			if ((cr.getProgress() == 100) && (!doneFlag)) {
 				ll_pb.setVisibility(View.GONE);
 				ll_sd.setVisibility(View.VISIBLE);
 				doneFlag = true;
 			}
-			if (cr.getProgress() < 100)
-			{
+			if (cr.getProgress() < 100) {
 				ll_pb.setVisibility(View.VISIBLE);
 				ll_sd.setVisibility(View.GONE);
 				doneFlag = false;
 			}
-
 		}
-
-
 		Log.i("ME", "Data Update: \n" + cr.toString(true));
 	}
 
@@ -410,19 +431,19 @@ public class MainActivity extends Activity
 					@Override
 					public void onFocusChange(View view, boolean hasFocus)
 					{
-						if ((view instanceof EditText) && (hasFocus))
+						/*if ((view instanceof EditText) && (hasFocus))
 						{
 							EditText et = (EditText) view;
 							data.get(position).put("Read", "");
 							cr.Data = data;
 							et.setText("");
 							et.requestFocus();
-						}
-						if ((view instanceof EditText) && (!hasFocus))
-						{
+						}*/
+						//if ((view instanceof EditText) && (!hasFocus))
+						//{
 
 							enterRead(view, data, position);
-						}
+						//}
 					}
 				});
 

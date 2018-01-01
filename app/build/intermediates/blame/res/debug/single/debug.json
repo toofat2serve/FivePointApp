@@ -20,7 +20,23 @@
         "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_blankbg.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-hdpi\\blankbg.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_blankbg.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-xxhdpi\\blankbg.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_blankbg.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-mdpi\\blankbg.9.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_datalist.xml.flat",
         "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\layout\\datalist.xml"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_blankbg.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-xhdpi\\blankbg.9.png"
     }
 ]
