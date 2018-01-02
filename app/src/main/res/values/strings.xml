@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="pref_email_title">Email</string>
+    <string name="pref_email_summary">Default email address to send calibration results to</string>
+
+    <string name="pref_preload_title">Pre-Load Device Info</string>
+    <string name="pref_preload_summary">Load your default device configuration on app startup.</string>
+
+    <string name="share_result">Share Result</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+
+    <string name="settings">Settings</string>
+
     <string name="equip_id">Equip ID</string>
     <string name="serial">Serial</string>
     <string name="make">Make</string>

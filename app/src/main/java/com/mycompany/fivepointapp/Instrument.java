@@ -66,9 +66,10 @@ public class Instrument
 		String str;
 		String div;
 		
-		str = "ID: " + ID + " / Serial: " + Serial + " / Make: " + Make + " / Model: " + Model;
+		str = "ID: " + ID + " / Serial: " + Serial;
+		str += "\nMake: " + Make + " / Model: " + Model;
 		div = "\n";
-		for (int i=0; i < str.length(); i++) {
+		for (int i=0; i < 50; i++) {
 			div +="-";
 		}
 		str += div + "\nDevice     : URV: " + DURV + " / LRV: " + DLRV + " / UNITS: " + DUnits; 

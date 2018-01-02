@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<CheckBoxPreference
+        android:key="pref_preload"
+        android:title="@string/pref_preload_title"
+        android:summary="@string/pref_preload_summary"
+        android:defaultValue="true" />
+	<EditTextPreference
+		android:key="pref_email"
+        android:title="@string/pref_email_title"
+        android:summary="@string/pref_email_summary"
+		android:defaultValue="george.romaka@gmail.com"/>
+</PreferenceScreen>
