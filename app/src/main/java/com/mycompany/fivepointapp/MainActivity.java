@@ -1,12 +1,12 @@
 package com.mycompany.fivepointapp;
-//TODO: ADD JSON string paste import
+//DONE: ADD share feature
+//DONE: IMPLEMENT default load setting
+//TODO: ADD JSON string paste import STARTED
 //TODO: ADD file browser / import
-//TODO: ADD share feature
 //TODO: Create HELP Activity
 //TODO: Create ABOUT Acvivity
 //TODO: ADD comment/notes feature
 //TODO: ADD other formats (CSV, HTML, PDF, ...)
-//TODO: IMPLEMENT default load setting
 
 import android.app.*;
 import android.content.*;
@@ -22,6 +22,8 @@ import android.media.*;
 import com.google.gson.*;
 import static android.os.Environment.DIRECTORY_DOCUMENTS;
 import static android.os.Environment.getExternalStoragePublicDirectory;
+import android.preference.*;
+import android.net.*;
 
 public class MainActivity extends Activity {
    public EditText e_id;
@@ -132,6 +134,12 @@ public class MainActivity extends Activity {
 
    public void checkSharedPreferences()
    {
+	  SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
+	  Map<String,?> dspMap = dsp.getAll();
+	  Boolean loadDefaultDevice = (Boolean) dspMap.get("pref_preload");
+	  if (loadDefaultDevice) {
+		 resetForm();
+	  }
 	  SharedPreferences sp = getPreferences(0);
 	  Map<String,?> spmap = sp.getAll();
 	  Log.i("ME", "Shared Preferences" + spmap.toString());
@@ -169,15 +177,34 @@ public class MainActivity extends Activity {
 
    public void clickSettings()
    {
-	  myToast("Clicked: Menu item : Settings");
 	  Intent intent = new Intent();
 	  intent.setClassName(this, "com.mycompany.fivepointapp.SettingsActivity");
 	  startActivity(intent);
    }
 
+   public void composeEmail() {
+	  SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
+	  Map<String,?> dspMap = dsp.getAll();
+	  String defaultEmail = (String) dspMap.get("pref_email");
+	  myToast(defaultEmail);
+	  String strSubject = "Calibration Results for " + cr.Device.ID + " on " + cr.date.toString();
+	  String strBody = cr.toString() + "\n";
+	  strBody += "JSON String\n";
+	  strBody += cr.makeJson(); 
+	  Intent intent = new Intent(Intent.ACTION_SENDTO);
+	  intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+	  intent.putExtra(Intent.EXTRA_EMAIL, new String[] {defaultEmail});
+	  intent.putExtra(Intent.EXTRA_SUBJECT, strSubject);
+	  intent.putExtra(Intent.EXTRA_TEXT, strBody);
+	  
+	  if (intent.resolveActivity(getPackageManager()) != null) {
+		 startActivity(intent);
+	  }
+   }
+   
    public void clickShare()
    {
-	  myToast("Clicked: Menu item : Share");
+	  composeEmail();
    }
 
    public void clickHelp()
@@ -195,18 +222,15 @@ public class MainActivity extends Activity {
 	  Context context = getApplicationContext();
 	  CharSequence text = str;
 	  int duration = Toast.LENGTH_LONG;
-
 	  Toast toast = Toast.makeText(context, text, duration);
 	  toast.show();
    }
 
-   public void clickReset(View view)
+   public void resetForm()
    {
 	  Log.i("ME", "Starting reset...");
-	  checkSharedPreferences();
 	  ClearForm((ViewGroup) findViewById(R.id.lv_rows));
 	  CalRecord backupDevice = new CalRecord();
-
 	  SharedPreferences sp = getPreferences(0);
 	  String strJSON = sp.getString(DFLT_DEVICE, backupDevice.makeJson());
 	  Log.i("ME", strJSON);
@@ -214,6 +238,12 @@ public class MainActivity extends Activity {
 	  CalRecord cr = gson.fromJson(strJSON, CalRecord.class);
 	  FillForm(cr.Device);
 	  Log.i("ME", cr.Device.toString() + "\n...Reset Complete.");
+
+   }
+
+   public void clickReset(View view)
+   {
+	  resetForm();
    }
 
    public void clickClear(View view)

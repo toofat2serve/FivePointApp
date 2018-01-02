@@ -10,4 +10,9 @@
         android:title="@string/pref_email_title"
         android:summary="@string/pref_email_summary"
 		android:defaultValue="george.romaka@gmail.com"/>
+	<EditTextPreference
+		android:key="pref_paste"
+        android:title="@string/pref_paste_title"
+        android:summary="@string/pref_paste_summary"/>
+	
 </PreferenceScreen>

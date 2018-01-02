@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="pref_paste_title">Paste Device JSON String</string>
+
+    <string name="pref_paste_summary">Paste device configuration as a JSON string. \nOnly use JSON produced by this app.</string>
+
     <string name="pref_email_title">Email</string>
     <string name="pref_email_summary">Default email address to send calibration results to</string>
 
