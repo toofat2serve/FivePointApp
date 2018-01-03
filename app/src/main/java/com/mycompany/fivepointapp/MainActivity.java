@@ -1,12 +1,14 @@
 package com.mycompany.fivepointapp;
-//DONE: ADD share feature
-//DONE: IMPLEMENT default load setting
 //TODO: ADD JSON string paste import STARTED
 //TODO: ADD file browser / import
-//TODO: Create HELP Activity
-//TODO: Create ABOUT Acvivity
+//TODO: ADD HELP Activity
+//TODO: ADD ABOUT Acvivity
 //TODO: ADD comment/notes feature
 //TODO: ADD other formats (CSV, HTML, PDF, ...)
+//TODO: FIX changing resolution should take immediate effect
+//TODO: ADD changing resolution changes summary to include new value
+
+
 
 import android.app.*;
 import android.content.*;
@@ -35,6 +37,7 @@ public class MainActivity extends Activity {
    public EditText e_clrv;
    public EditText e_curv;
    public EditText e_steps;
+   public EditText e_notes;
    public RadioGroup rg_linsq;
    public RadioButton rb_lin;
    public RadioButton rb_squ;
@@ -59,7 +62,8 @@ public class MainActivity extends Activity {
    public CalRecord cr;
 
    public static final String DFLT_DEVICE = "dd";
-
+   public Boolean CLEAR_TEXT_ON_TOUCH;
+   public Integer DATA_RESOLUTION;
    @Override
    protected void onCreate(Bundle savedInstanceState)
    {
@@ -75,6 +79,7 @@ public class MainActivity extends Activity {
 	  e_clrv = (EditText) findViewById(R.id.e_clrv);
 	  e_curv = (EditText) findViewById(R.id.e_curv);
 	  e_steps = (EditText) findViewById(R.id.e_steps);
+	  //e_notes = (EditText) findViewById(R.id.e_notes);
 	  rg_linsq = (RadioGroup) findViewById(R.id.rg_linsq);
 	  btn_save = (Button) findViewById(R.id.btn_save);
 	  btn_reset = (Button) findViewById(R.id.btn_reset);
@@ -113,7 +118,8 @@ public class MainActivity extends Activity {
 	  spin_dunit.setSelection(0);
 	  spin_cunit.setSelection(3);
 	  Log.i("ME", "...Initialized.");
-	  checkSharedPreferences();
+	  checkSharedPreferences();     
+	  
 	  btn_reset.setOnLongClickListener(new View.OnLongClickListener() {
 
 			@Override
@@ -132,13 +138,28 @@ public class MainActivity extends Activity {
 		 });
    }
 
+   @Override
+   protected void onStart()
+   {
+	  checkSharedPreferences();
+	  super.onStart();
+   }
+
+   
+   
    public void checkSharedPreferences()
    {
 	  SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
 	  Map<String,?> dspMap = dsp.getAll();
-	  Boolean loadDefaultDevice = (Boolean) dspMap.get("pref_preload");
-	  if (loadDefaultDevice) {
-		 resetForm();
+	  if (dspMap.containsKey("pref_preload")){
+		 Boolean loadDefaultDevice = (Boolean) dspMap.get("pref_preload");
+		 if (loadDefaultDevice) {
+			resetForm();
+		 }
+		 CLEAR_TEXT_ON_TOUCH = (Boolean) dspMap.get("pref_clear_read");
+		 DATA_RESOLUTION = (String) dspMap.get("pref_resolution") == null ? 3 : Integer.parseInt((String) dspMap.get("pref_resolution"));
+		 myToast(String.valueOf(CLEAR_TEXT_ON_TOUCH));
+		 
 	  }
 	  SharedPreferences sp = getPreferences(0);
 	  Map<String,?> spmap = sp.getAll();
@@ -180,9 +201,11 @@ public class MainActivity extends Activity {
 	  Intent intent = new Intent();
 	  intent.setClassName(this, "com.mycompany.fivepointapp.SettingsActivity");
 	  startActivity(intent);
+	  checkSharedPreferences();
    }
 
-   public void composeEmail() {
+   public void composeEmail()
+   {
 	  SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
 	  Map<String,?> dspMap = dsp.getAll();
 	  String defaultEmail = (String) dspMap.get("pref_email");
@@ -196,12 +219,12 @@ public class MainActivity extends Activity {
 	  intent.putExtra(Intent.EXTRA_EMAIL, new String[] {defaultEmail});
 	  intent.putExtra(Intent.EXTRA_SUBJECT, strSubject);
 	  intent.putExtra(Intent.EXTRA_TEXT, strBody);
-	  
+
 	  if (intent.resolveActivity(getPackageManager()) != null) {
 		 startActivity(intent);
 	  }
    }
-   
+
    public void clickShare()
    {
 	  composeEmail();
@@ -285,7 +308,8 @@ public class MainActivity extends Activity {
 
    public void clickSave(View view)
    {
-	  try {	
+	  try {
+		 cr.Notes = e_notes.getText().toString();
 		 String state = Environment.getExternalStorageState();
 		 if (Environment.MEDIA_MOUNTED.equals(state)) {
 			Context context = getApplicationContext();
@@ -316,9 +340,11 @@ public class MainActivity extends Activity {
 	  for (Integer i = 0; i < 4; i++) {
 		 if (collapse) {		
 			views.get(i).setVisibility(View.GONE);
+			//findViewById(R.id.e_notes).setVisibility(View.VISIBLE);
 		 }
 		 else {
 			views.get(i).setVisibility(View.VISIBLE);
+			//findViewById(R.id.e_notes).setVisibility(View.GONE);
 		 }
 	  }
    };
@@ -418,10 +444,12 @@ public class MainActivity extends Activity {
 	  Double cu = Double.parseDouble(e_curv.getText().toString());
 	  Integer st = Integer.parseInt(e_steps.getText().toString());
 	  Boolean il = rb_lin.isChecked();
+	  //String no = e_notes.getText().toString();
 	  CalRecord cr = new CalRecord(new Instrument(id, se, ma, mo, dl, du, dun, cl, cu, cun, st, il));
+	 // cr.Notes = no;
 	  Log.i("ME", cr.Device.toString());
 	  Log.i("ME", "... Collection Complete.");
-	  return cr.createTestData();
+	  return cr.createTestData(DATA_RESOLUTION);
    }
 
 // Got this procedure from
@@ -454,12 +482,12 @@ public class MainActivity extends Activity {
 			String expStr = (String) hm.get("Expected");
 			Double expValue = Double.parseDouble(expStr);
 			Double devValue = (Math.abs(expValue - readValue) / cr.Device.CRange) * 100;
-			hm.put("Dev", String.format("%.3f", devValue));
+			hm.put("Dev", String.format("%."    + DATA_RESOLUTION.toString() +  "f", devValue));
 		 }
 		 hm.put("Read", s);
 		 data.set(position, hm);
 		 cr.CalData = data;
-		 lv_dataset.invalidate();
+		// lv_dataset.invalidate();
 		 pb_calibration.setProgress(cr.getProgress());
 		 if ((cr.getProgress() == 100) && (!doneFlag) && (ime)) {
 			ll_pb.setVisibility(View.GONE);
@@ -472,10 +500,11 @@ public class MainActivity extends Activity {
 			ll_sd.setVisibility(View.GONE);
 			doneFlag = false;
 		 }
+		 
 	  }
 	  Log.i("ME", "Data Update: \n" + cr.toString(true));
    }
-
+//Adapter
    public class DataSetViewAdapter extends BaseAdapter {
 	  ArrayList<HashMap<String, String>> data;
 	  public DataSetViewAdapter(ArrayList<HashMap<String, String>> arr)
@@ -505,6 +534,19 @@ public class MainActivity extends Activity {
 		 c2.setText(data.get(position).get("Expected"));
 		 c3.setText(data.get(position).get("Read"));
 		 c4.setText(data.get(position).get("Dev"));
+		 
+		 c3.setOnClickListener(new View.OnClickListener() {
+			   @Override
+			   public void onClick(View view)
+			   {
+				  EditText et = (EditText) view;
+//				  myToast((et.getText().toString()));
+//				  et.setText("");			  
+//				  notifyDataSetChanged();
+				  et.requestFocus();
+				  et.selectAll();
+			   }			
+		 });
 
 		 c3.setOnFocusChangeListener(new EditText.OnFocusChangeListener() 
 			{
@@ -512,11 +554,18 @@ public class MainActivity extends Activity {
 			   public void onFocusChange(View view, boolean hasFocus)
 			   {
 				  if ((view instanceof EditText) && (hasFocus)) {
-
+					 EditText et = (EditText) view;
+					 if (CLEAR_TEXT_ON_TOUCH) {
+					    data.get(position).put("Read","");
+						notifyDataSetChanged();
+					}
+					 
+					 notifyDataSetChanged();
 				  }
 				  if ((view instanceof EditText) && (!hasFocus)) {
 
 					 enterRead(view, data, position, false);
+					 notifyDataSetChanged();
 				  }
 			   }
 			});
@@ -531,6 +580,7 @@ public class MainActivity extends Activity {
 						enterRead(view, data, position, true);
 					 }
 				  }
+				  
 				  return false;
 			   }
 			});

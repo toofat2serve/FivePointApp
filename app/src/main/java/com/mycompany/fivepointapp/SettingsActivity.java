@@ -1,6 +1,7 @@
 package com.mycompany.fivepointapp;
 import android.app.*;
 import android.os.*;
+import android.content.*;
 
 public class SettingsActivity extends Activity {
 	@Override
@@ -11,6 +12,26 @@ public class SettingsActivity extends Activity {
 		getFragmentManager().beginTransaction()
 			.replace(android.R.id.content, new SettingsFragment())
 			.commit();
+			
+	   SharedPreferences.OnSharedPreferenceChangeListener spChanged = new
+		  SharedPreferences.OnSharedPreferenceChangeListener() {
+		  @Override
+		  public void onSharedPreferenceChanged(SharedPreferences sp,
+												String key) {
+			 
+												   
+												   // your stuff here
+			 if (key == "pref_paste") {
+				String strJson = sp.getString("pref_paste","");
+				SharedPreferences.Editor spe = sp.edit();
+				spe.putString("dd",strJson);
+				spe.commit();
+				spe.remove("pref_paste");
+				spe.commit();
+			 }
+			 
+		  }
+	   };
 	}
 	
 

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="pref_cat_interface_title">Interface</string>
+
+    <string name="calibrate">Calibrate</string>
+    <string name="save_data_set">Save Data Set</string>
+    <string name="notes">Notes:</string>
+
     <string name="pref_paste_title">Paste Device JSON String</string>
 
     <string name="pref_paste_summary">Paste device configuration as a JSON string. \nOnly use JSON produced by this app.</string>

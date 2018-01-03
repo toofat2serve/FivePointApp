@@ -1,18 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-	<CheckBoxPreference
-        android:key="pref_preload"
-        android:title="@string/pref_preload_title"
-        android:summary="@string/pref_preload_summary"
-        android:defaultValue="true" />
-	<EditTextPreference
-		android:key="pref_email"
-        android:title="@string/pref_email_title"
-        android:summary="@string/pref_email_summary"
-		android:defaultValue="george.romaka@gmail.com"/>
-	<EditTextPreference
-		android:key="pref_paste"
-        android:title="@string/pref_paste_title"
-        android:summary="@string/pref_paste_summary"/>
-	
+	<PreferenceCategory
+		android:title="Sharing"
+        android:key="pref_cat_sharing">
+
+		<EditTextPreference
+			android:key="pref_email"
+			android:title="@string/pref_email_title"
+			android:summary="@string/pref_email_summary"
+			android:defaultValue="george.romaka@gmail.com"/>
+		
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:title="@string/pref_cat_interface_title"
+        android:key="pref_cat_interface">
+
+		<CheckBoxPreference
+			android:key="pref_preload"
+			android:title="@string/pref_preload_title"
+			android:summary="@string/pref_preload_summary"
+			android:defaultValue="true" />
+		
+		<CheckBoxPreference
+			android:key="pref_clear_read"
+			android:title="Clear Text On Touch"
+			android:summary="If set, touching a text field will empty the field.\nIf not set, text will remain for editing."
+			android:defaultValue="true"/>
+		
+		<ListPreference
+			android:key="pref_resolution"
+			android:title="Data Resolution"
+			android:summary="Number of significant digits for data fields. Max:5"
+			android:dialogTitle="Choose"
+			android:entries="@array/string_array_resolution"
+			android:entryValues="@array/string_array_resolution"
+			android:defaultValue="3"/>
+		
+		
+	</PreferenceCategory>
+
+	<PreferenceCategory
+		android:title="Data Tools"
+        android:key="pref_cat_sharing">
+		
+		<EditTextPreference
+			android:key="pref_paste"
+			android:title="@string/pref_paste_title"
+			android:summary="@string/pref_paste_summary"/>
+		
+	</PreferenceCategory>
+
+
 </PreferenceScreen>
