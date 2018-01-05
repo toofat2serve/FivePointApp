@@ -9,5 +9,29 @@
 		<item>4</item>
 		<item>5</item>
     </string-array>
+	<string-array
+        name="string_array_help_titles">
+        <item>Device Information</item>
+		<item>Required Fields</item>
+		<item>Linearity</item>
+		<item>Calculations</item>
+		<item>Setting Defaults</item>
+    </string-array>
+	<string-array
+        name="string_array_help_text">
+        <item>Placeholder 1</item>
+		<item>Placeholder 2</item>
+		<item>Placeholder 3</item>
+		<item>Placeholder 4</item>
+		<item>Placeholder 5</item>
+    </string-array>
+	<integer-array
+		name="integer_array_help_image">
+		<item>@drawable/help_0</item>
+		<item>@drawable/help_1</item>
+		<item>@drawable/help_2</item>
+		<item>@drawable/help_3</item>
+		<item>@drawable/help_4</item>
+	</integer-array>
 	
 </resources>

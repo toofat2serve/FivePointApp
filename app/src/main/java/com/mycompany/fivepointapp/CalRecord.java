@@ -11,6 +11,22 @@ public class CalRecord
    Date date;
    String Notes;
 
+   public CalRecord(String json) {
+      CalRecord cr;
+	  try {
+		 Gson gson = new Gson();
+		 cr = gson.fromJson(json, CalRecord.class); 
+	  }
+	  catch (Exception e) {
+		 cr = new CalRecord();
+		 Log.i("ME","Error in JSON CalRecord", e);
+    }
+		 Device = cr.Device;
+		 CalData = cr.CalData;
+		 date = cr.date;
+		 Notes = cr.Notes;
+   }
+   
    public CalRecord()
    {
 	  Device = new Instrument();

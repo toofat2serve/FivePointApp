@@ -1,31 +1,37 @@
 package com.mycompany.fivepointapp;
-//TODO: ADD JSON string paste import STARTED
+//DONE: ADD HELP Activity
+
+//TODO: ADD changing resolution changes summary to include new value STARTED
+
+//TODO: ADD JSON string paste import SCRAP
+
 //TODO: ADD file browser / import
-//TODO: ADD HELP Activity
 //TODO: ADD ABOUT Acvivity
 //TODO: ADD comment/notes feature
 //TODO: ADD other formats (CSV, HTML, PDF, ...)
+//TODO: ADD content to help avtivity
+
 //TODO: FIX changing resolution should take immediate effect
-//TODO: ADD changing resolution changes summary to include new value
+//TODO: FIX read field to focus on next one down with IME action
 
 
 
 import android.app.*;
 import android.content.*;
 import android.graphics.*;
+import android.media.*;
+import android.net.*;
 import android.os.*;
+import android.preference.*;
 import android.util.*;
 import android.view.*;
 import android.view.inputmethod.*;
 import android.widget.*;
-import java.util.*;
 import java.io.*;
-import android.media.*;
-import com.google.gson.*;
+import java.util.*;
+
 import static android.os.Environment.DIRECTORY_DOCUMENTS;
 import static android.os.Environment.getExternalStoragePublicDirectory;
-import android.preference.*;
-import android.net.*;
 
 public class MainActivity extends Activity {
    public EditText e_id;
@@ -119,20 +125,14 @@ public class MainActivity extends Activity {
 	  spin_cunit.setSelection(3);
 	  Log.i("ME", "...Initialized.");
 	  checkSharedPreferences();     
-	  
+
 	  btn_reset.setOnLongClickListener(new View.OnLongClickListener() {
 
 			@Override
 			public boolean onLongClick(View view)
 			{
 			   cr = CollectForm();
-			   SharedPreferences sp = getPreferences(0);
-			   SharedPreferences.Editor spe = sp.edit();
-			   spe.putString(DFLT_DEVICE, cr.makeJson());
-			   spe.commit();
-			   myToast("New Default Device Saved");
-			   myToast(cr.Device.toString());
-			   checkSharedPreferences();
+			   updateDefaultDevice(cr);
 			   return true;
 			}
 		 });
@@ -145,22 +145,31 @@ public class MainActivity extends Activity {
 	  super.onStart();
    }
 
-   
-   
+   public void updateDefaultDevice(CalRecord cr)
+   {
+	  SharedPreferences sp = getPreferences(0);
+	  SharedPreferences.Editor spe = sp.edit();
+	  spe.putString(DFLT_DEVICE, cr.makeJson());
+	  spe.commit();
+	  MyUtilities.myToast("New Default Device Saved" + cr.toString(), this);
+
+   }
+
    public void checkSharedPreferences()
    {
 	  SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
 	  Map<String,?> dspMap = dsp.getAll();
-	  if (dspMap.containsKey("pref_preload")){
+	  SharedPreferences.Editor dspe = dsp.edit();
+	  if (dspMap.containsKey("pref_preload")) {
 		 Boolean loadDefaultDevice = (Boolean) dspMap.get("pref_preload");
 		 if (loadDefaultDevice) {
 			resetForm();
 		 }
-		 CLEAR_TEXT_ON_TOUCH = (Boolean) dspMap.get("pref_clear_read");
-		 DATA_RESOLUTION = (String) dspMap.get("pref_resolution") == null ? 3 : Integer.parseInt((String) dspMap.get("pref_resolution"));
-		 myToast(String.valueOf(CLEAR_TEXT_ON_TOUCH));
-		 
 	  }
+	  CLEAR_TEXT_ON_TOUCH = (Boolean) dspMap.get("pref_clear_read");
+	  DATA_RESOLUTION = (String) dspMap.get("pref_resolution") == null ? 3 : Integer.parseInt((String) dspMap.get("pref_resolution"));
+
+
 	  SharedPreferences sp = getPreferences(0);
 	  Map<String,?> spmap = sp.getAll();
 	  Log.i("ME", "Shared Preferences" + spmap.toString());
@@ -209,7 +218,6 @@ public class MainActivity extends Activity {
 	  SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
 	  Map<String,?> dspMap = dsp.getAll();
 	  String defaultEmail = (String) dspMap.get("pref_email");
-	  myToast(defaultEmail);
 	  String strSubject = "Calibration Results for " + cr.Device.ID + " on " + cr.date.toString();
 	  String strBody = cr.toString() + "\n";
 	  strBody += "JSON String\n";
@@ -232,22 +240,17 @@ public class MainActivity extends Activity {
 
    public void clickHelp()
    {
-	  myToast("Clicked: Menu item : Help");
+      Intent intent = new Intent();
+      intent.setClassName(this, "com.mycompany.fivepointapp.HelpActivity");
+      startActivity(intent);
    }
 
    public void clickAbout()
    {
-	  myToast("Clicked: Menu item : About");
+
    }
 
-   public void myToast(String str)
-   {
-	  Context context = getApplicationContext();
-	  CharSequence text = str;
-	  int duration = Toast.LENGTH_LONG;
-	  Toast toast = Toast.makeText(context, text, duration);
-	  toast.show();
-   }
+
 
    public void resetForm()
    {
@@ -257,8 +260,7 @@ public class MainActivity extends Activity {
 	  SharedPreferences sp = getPreferences(0);
 	  String strJSON = sp.getString(DFLT_DEVICE, backupDevice.makeJson());
 	  Log.i("ME", strJSON);
-	  Gson gson = new Gson();
-	  CalRecord cr = gson.fromJson(strJSON, CalRecord.class);
+	  CalRecord cr =new CalRecord(strJSON);
 	  FillForm(cr.Device);
 	  Log.i("ME", cr.Device.toString() + "\n...Reset Complete.");
 
@@ -446,7 +448,7 @@ public class MainActivity extends Activity {
 	  Boolean il = rb_lin.isChecked();
 	  //String no = e_notes.getText().toString();
 	  CalRecord cr = new CalRecord(new Instrument(id, se, ma, mo, dl, du, dun, cl, cu, cun, st, il));
-	 // cr.Notes = no;
+	  // cr.Notes = no;
 	  Log.i("ME", cr.Device.toString());
 	  Log.i("ME", "... Collection Complete.");
 	  return cr.createTestData(DATA_RESOLUTION);
@@ -487,7 +489,7 @@ public class MainActivity extends Activity {
 		 hm.put("Read", s);
 		 data.set(position, hm);
 		 cr.CalData = data;
-		// lv_dataset.invalidate();
+		 // lv_dataset.invalidate();
 		 pb_calibration.setProgress(cr.getProgress());
 		 if ((cr.getProgress() == 100) && (!doneFlag) && (ime)) {
 			ll_pb.setVisibility(View.GONE);
@@ -500,9 +502,9 @@ public class MainActivity extends Activity {
 			ll_sd.setVisibility(View.GONE);
 			doneFlag = false;
 		 }
-		 
+
 	  }
-	  Log.i("ME", "Data Update: \n" + cr.toString(true));
+	 // Log.i("ME", "Data Update: \n" + cr.toString(true));
    }
 //Adapter
    public class DataSetViewAdapter extends BaseAdapter {
@@ -534,7 +536,7 @@ public class MainActivity extends Activity {
 		 c2.setText(data.get(position).get("Expected"));
 		 c3.setText(data.get(position).get("Read"));
 		 c4.setText(data.get(position).get("Dev"));
-		 
+
 		 c3.setOnClickListener(new View.OnClickListener() {
 			   @Override
 			   public void onClick(View view)
@@ -546,7 +548,7 @@ public class MainActivity extends Activity {
 				  et.requestFocus();
 				  et.selectAll();
 			   }			
-		 });
+			});
 
 		 c3.setOnFocusChangeListener(new EditText.OnFocusChangeListener() 
 			{
@@ -556,10 +558,10 @@ public class MainActivity extends Activity {
 				  if ((view instanceof EditText) && (hasFocus)) {
 					 EditText et = (EditText) view;
 					 if (CLEAR_TEXT_ON_TOUCH) {
-					    data.get(position).put("Read","");
+					    data.get(position).put("Read", "");
 						notifyDataSetChanged();
-					}
-					 
+					 }
+
 					 notifyDataSetChanged();
 				  }
 				  if ((view instanceof EditText) && (!hasFocus)) {
@@ -578,9 +580,29 @@ public class MainActivity extends Activity {
 				  if (actionID == EditorInfo.IME_ACTION_DONE) {
 					 if (view instanceof EditText) {
 						enterRead(view, data, position, true);
+						view.clearFocus();
+						/*Integer nextPosition =  position < data.size() - 1 ? position + 1 : 0;
+						Log.i("ME","This position: " + position + "  Next Position: " + nextPosition + "Size: " + data.size());
+						View rws = lv_dataset.getAdapter().getView(nextPosition, lv_dataset.getChildAt(nextPosition), lv_dataset);
+						ViewGroup rows = (ViewGroup) rws;
+						Log.i("ME", "nextRow " + rows.toString());
+						ViewGroup nextRow = (ViewGroup) rows.getChildAt(nextPosition);
+						Integer viewsInRow = nextRow.getChildCount();
+						Log.i("ME","viewsInRow = " + viewsInRow);
+						for (Integer i = 0; i < viewsInRow; i++) {
+						   View child = nextRow.getChildAt(i);
+						   Log.i("ME", "child " + child.toString());
+						   if (child instanceof EditText) {
+							  EditText et = (EditText) child;
+						      if (et.getText().length() == 0) {
+							     child.requestFocus();
+							  }
+						   }
+						}*/
+						//Log.i("ME", lv_dataset.getFocusables(View.FOCUS_DOWN).toString());
 					 }
 				  }
-				  
+
 				  return false;
 			   }
 			});

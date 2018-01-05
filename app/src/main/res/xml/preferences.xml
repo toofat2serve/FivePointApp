@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<PreferenceCategory
-		android:title="Sharing"
+		android:title="@string/pref_cat_sharing_title"
         android:key="pref_cat_sharing">
 
 		<EditTextPreference
@@ -24,15 +24,15 @@
 		
 		<CheckBoxPreference
 			android:key="pref_clear_read"
-			android:title="Clear Text On Touch"
-			android:summary="If set, touching a text field will empty the field.\nIf not set, text will remain for editing."
+			android:title="@string/pref_clear_read_title"
+			android:summary="@string/pref_clear_read_summary"
 			android:defaultValue="true"/>
 		
 		<ListPreference
 			android:key="pref_resolution"
-			android:title="Data Resolution"
-			android:summary="Number of significant digits for data fields. Max:5"
-			android:dialogTitle="Choose"
+			android:title="@string/pref_resolution_title"
+			android:summary="@string/pref_resolution_summary"
+			android:dialogTitle="@string/pref_resolution_dialogTitle"
 			android:entries="@array/string_array_resolution"
 			android:entryValues="@array/string_array_resolution"
 			android:defaultValue="3"/>
@@ -40,16 +40,7 @@
 		
 	</PreferenceCategory>
 
-	<PreferenceCategory
-		android:title="Data Tools"
-        android:key="pref_cat_sharing">
-		
-		<EditTextPreference
-			android:key="pref_paste"
-			android:title="@string/pref_paste_title"
-			android:summary="@string/pref_paste_summary"/>
-		
-	</PreferenceCategory>
+	
 
 
 </PreferenceScreen>

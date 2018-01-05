@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="medium_text">Medium Text</string>
+    <string name="text">Text</string>
+
+    <string name="help">Help</string>
+
+    <string name="pref_cat_sharing_title">Sharing</string>
+    <string name="pref_clear_read_title">Clear Text On Touch</string>
+    <string name="pref_clear_read_summary">If set, touching a text field will empty the field.\nIf not set, text will remain for editing.</string>
+    <string name="pref_resolution_title">Data Resolution</string>
+    <string name="pref_resolution_summary">Number of significant digits for data fields.\nMax:5\nCurrently set to</string>
+    <string name="pref_resolution_dialogTitle">Choose</string>
+
     <string name="pref_cat_interface_title">Interface</string>
 
     <string name="calibrate">Calibrate</string>
@@ -8,8 +20,6 @@
 
     <string name="pref_paste_title">Paste Device JSON String</string>
 
-    <string name="pref_paste_summary">Paste device configuration as a JSON string. \nOnly use JSON produced by this app.</string>
-
     <string name="pref_email_title">Email</string>
     <string name="pref_email_summary">Default email address to send calibration results to</string>
 
@@ -17,7 +27,7 @@
     <string name="pref_preload_summary">Load your default device configuration on app startup.</string>
 
     <string name="share_result">Share Result</string>
-    <string name="help">Help</string>
+
     <string name="about">About</string>
 
     <string name="settings">Settings</string>

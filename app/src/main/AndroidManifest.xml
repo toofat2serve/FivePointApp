@@ -23,6 +23,10 @@
 			android:name="com.mycompany.fivepointapp.SettingsActivity"
 			android:label="Settings">
 		</activity>
+		<activity
+			android:name="com.mycompany.fivepointapp.HelpActivity"
+			android:label="Help">
+		</activity>
     </application>
 
 </manifest>
