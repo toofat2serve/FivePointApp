@@ -1,9 +1,8 @@
 package com.mycompany.fivepointapp;
-//DONE: ADD HELP Activity
-
-//TODO: ADD changing resolution changes summary to include new value STARTED
-
-//TODO: ADD JSON string paste import SCRAP
+//DONE: FIX simplify datalist item layout
+//DONE: FIX read field to focus on next one down with IME action
+//DONE: FIX data list cursor movement is now perfect
+//DONE: ADD changing resolution changes summary to include new value 
 
 //TODO: ADD file browser / import
 //TODO: ADD ABOUT Acvivity
@@ -12,9 +11,6 @@ package com.mycompany.fivepointapp;
 //TODO: ADD content to help avtivity
 
 //TODO: FIX changing resolution should take immediate effect
-//TODO: FIX read field to focus on next one down with IME action
-
-
 
 import android.app.*;
 import android.content.*;
@@ -64,16 +60,16 @@ public class MainActivity extends Activity {
    public ArrayList<String> units_values;
    public ArrayList<EditText> mandos;
    public Boolean focusLocked;
-   public Boolean doneFlag;
    public CalRecord cr;
-
    public static final String DFLT_DEVICE = "dd";
    public Boolean CLEAR_TEXT_ON_TOUCH;
    public Integer DATA_RESOLUTION;
+   public Boolean DONE_FLAG;
+   public Boolean RETURN_FROM_SETTINGS;
    @Override
    protected void onCreate(Bundle savedInstanceState)
    {
-	  Log.i("ME", "Initializing...");
+	  //Log.i("ME", "Initializing...");
 	  super.onCreate(savedInstanceState);
 	  setContentView(R.layout.main);        
 	  e_id = (EditText) findViewById(R.id.e_id);
@@ -117,17 +113,15 @@ public class MainActivity extends Activity {
 	  units_values.add("Ohms");
 	  units_values.add("GPM");
 	  focusLocked = false;
-	  doneFlag = false;
+	  DONE_FLAG = false;
 	  cr = new CalRecord();
 	  spin_dunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
 	  spin_cunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
 	  spin_dunit.setSelection(0);
 	  spin_cunit.setSelection(3);
-	  Log.i("ME", "...Initialized.");
+	  //Log.i("ME", "...Initialized.");
 	  checkSharedPreferences();     
-
 	  btn_reset.setOnLongClickListener(new View.OnLongClickListener() {
-
 			@Override
 			public boolean onLongClick(View view)
 			{
@@ -145,6 +139,13 @@ public class MainActivity extends Activity {
 	  super.onStart();
    }
 
+   @Override
+   protected void onResume()
+   {
+	  checkSharedPreferences();
+	  super.onResume();
+   }
+
    public void updateDefaultDevice(CalRecord cr)
    {
 	  SharedPreferences sp = getPreferences(0);
@@ -152,7 +153,12 @@ public class MainActivity extends Activity {
 	  spe.putString(DFLT_DEVICE, cr.makeJson());
 	  spe.commit();
 	  MyUtilities.myToast("New Default Device Saved" + cr.toString(), this);
+   }
 
+   private String[] KEYS()
+   {
+	  String[] keys = getResources().getStringArray(R.array.string_array_cal_keys);
+	  return keys;
    }
 
    public void checkSharedPreferences()
@@ -165,15 +171,24 @@ public class MainActivity extends Activity {
 		 if (loadDefaultDevice) {
 			resetForm();
 		 }
+		 
+		
 	  }
 	  CLEAR_TEXT_ON_TOUCH = (Boolean) dspMap.get("pref_clear_read");
 	  DATA_RESOLUTION = (String) dspMap.get("pref_resolution") == null ? 3 : Integer.parseInt((String) dspMap.get("pref_resolution"));
-
-
 	  SharedPreferences sp = getPreferences(0);
 	  Map<String,?> spmap = sp.getAll();
-	  Log.i("ME", "Shared Preferences" + spmap.toString());
+	  //Log.i("ME", "Shared Preferences" + spmap.toString());
+   }
 
+   public String str(Double d)
+   {
+	  return String.format("%." + DATA_RESOLUTION.toString() + "f", d);
+   }
+
+   public String str(int i)
+   {
+	  return String.valueOf(i);
    }
 
    @Override
@@ -227,7 +242,6 @@ public class MainActivity extends Activity {
 	  intent.putExtra(Intent.EXTRA_EMAIL, new String[] {defaultEmail});
 	  intent.putExtra(Intent.EXTRA_SUBJECT, strSubject);
 	  intent.putExtra(Intent.EXTRA_TEXT, strBody);
-
 	  if (intent.resolveActivity(getPackageManager()) != null) {
 		 startActivity(intent);
 	  }
@@ -250,20 +264,17 @@ public class MainActivity extends Activity {
 
    }
 
-
-
    public void resetForm()
    {
-	  Log.i("ME", "Starting reset...");
+	  //Log.i("ME", "Starting reset...");
 	  ClearForm((ViewGroup) findViewById(R.id.lv_rows));
 	  CalRecord backupDevice = new CalRecord();
 	  SharedPreferences sp = getPreferences(0);
 	  String strJSON = sp.getString(DFLT_DEVICE, backupDevice.makeJson());
-	  Log.i("ME", strJSON);
+	  //Log.i("ME", strJSON);
 	  CalRecord cr =new CalRecord(strJSON);
 	  FillForm(cr.Device);
-	  Log.i("ME", cr.Device.toString() + "\n...Reset Complete.");
-
+	  //Log.i("ME", cr.Device.toString() + "\n...Reset Complete.");
    }
 
    public void clickReset(View view)
@@ -273,14 +284,14 @@ public class MainActivity extends Activity {
 
    public void clickClear(View view)
    {
-	  Log.i("ME", "Clearing...");
+	  //Log.i("ME", "Clearing...");
 	  ClearForm((ViewGroup) findViewById(R.id.lv_rows));
-	  Log.i("ME", "...Cleared.");
+	  //Log.i("ME", "...Cleared.");
    }
 
    public void clickCal(View view)
    {
-	  Log.i("ME", "Starting Save...");
+	  //Log.i("ME", "Starting Save...");
 	  if (FormFilledRight(mandos)) {
 		 ArrayList al;
 		 cr = CollectForm();
@@ -290,12 +301,12 @@ public class MainActivity extends Activity {
 		 vs_save_edit.showNext();
 		 peekaboo(true);
 	  }
-	  Log.i("ME", "... Save Complete.");
+	  //Log.i("ME", "... Save Complete.");
    }
 
    public void clickEdit(View view)
    {
-	  Log.i("ME", "Starting Edit...");
+	  //Log.i("ME", "Starting Edit...");
 	  if (FormFilledRight(mandos)) {
 		 FocusControl(false);
 		 vs_save_edit.showNext();
@@ -305,7 +316,7 @@ public class MainActivity extends Activity {
 		 lv_dataset.setAdapter(new DataSetViewAdapter(cr.CalData));
 		 peekaboo(false);
 	  }
-	  Log.i("ME", "...Edit Complete.");
+	  //Log.i("ME", "...Edit Complete.");
    }
 
    public void clickSave(View view)
@@ -325,11 +336,11 @@ public class MainActivity extends Activity {
 			MediaScannerConnection.scanFile(this, new String[]{file.getAbsolutePath()}, null, null);		
 		 }
 		 else {
-			Log.i("ME", "Media Not Mounted");
+			//Log.i("ME", "Media Not Mounted");
 		 }
 	  }
 	  catch (Exception e) {
-		 Log.i("ME", "Why? ", e);
+		 //Log.i("ME", "Why? ", e);
 	  }
    }
    public void peekaboo(Boolean collapse)
@@ -414,7 +425,7 @@ public class MainActivity extends Activity {
 
    public Boolean FormFilledRight(ArrayList<EditText> mfs)
    {
-	  Log.i("ME", "Starting Form Validation...");
+	  //Log.i("ME", "Starting Form Validation...");
 	  Boolean gonogo = true;
 	  Iterator it = mfs.iterator();
 	  while (it.hasNext()) {
@@ -427,13 +438,13 @@ public class MainActivity extends Activity {
 		 }
 		 gonogo = (e.getText().length() == 0) ? false : gonogo;
 	  }
-	  Log.i("ME", "...Form Validation Complete.");
+	  //Log.i("ME", "...Form Validation Complete.");
 	  return gonogo;
    }
 
    public CalRecord CollectForm()
    {
-	  Log.i("ME", "Starting Collection...");
+	  //Log.i("ME", "Starting Collection...");
 	  String id = e_id.getText().toString();
 	  String se = e_serial.getText().toString();
 	  String ma = e_make.getText().toString();
@@ -449,9 +460,9 @@ public class MainActivity extends Activity {
 	  //String no = e_notes.getText().toString();
 	  CalRecord cr = new CalRecord(new Instrument(id, se, ma, mo, dl, du, dun, cl, cu, cun, st, il));
 	  // cr.Notes = no;
-	  Log.i("ME", cr.Device.toString());
-	  Log.i("ME", "... Collection Complete.");
-	  return cr.createTestData(DATA_RESOLUTION);
+	  //Log.i("ME", cr.Device.toString());
+	  //Log.i("ME", "... Collection Complete.");
+	  return cr.createTestData();
    }
 
 // Got this procedure from
@@ -472,56 +483,22 @@ public class MainActivity extends Activity {
 	  }
    }
 
-   public void enterRead(View view, ArrayList<HashMap<String, String>> data, int position, Boolean ime)
-   {
-	  if (!(data.isEmpty())) {
-		 EditText et = (EditText) view;
-		 String s = et.getText().toString();
-		 HashMap hm = new HashMap();
-		 hm = data.get(position);
-		 if (!(s.isEmpty())) {
-			Double readValue = Double.parseDouble(s);
-			String expStr = (String) hm.get("Expected");
-			Double expValue = Double.parseDouble(expStr);
-			Double devValue = (Math.abs(expValue - readValue) / cr.Device.CRange) * 100;
-			hm.put("Dev", String.format("%."    + DATA_RESOLUTION.toString() +  "f", devValue));
-		 }
-		 hm.put("Read", s);
-		 data.set(position, hm);
-		 cr.CalData = data;
-		 // lv_dataset.invalidate();
-		 pb_calibration.setProgress(cr.getProgress());
-		 if ((cr.getProgress() == 100) && (!doneFlag) && (ime)) {
-			ll_pb.setVisibility(View.GONE);
-			ll_sd.setVisibility(View.VISIBLE);
-			view.clearFocus();
-			doneFlag = true;
-		 }
-		 if (cr.getProgress() < 100) {
-			ll_pb.setVisibility(View.VISIBLE);
-			ll_sd.setVisibility(View.GONE);
-			doneFlag = false;
-		 }
-
-	  }
-	 // Log.i("ME", "Data Update: \n" + cr.toString(true));
-   }
 //Adapter
    public class DataSetViewAdapter extends BaseAdapter {
-	  ArrayList<HashMap<String, String>> data;
-	  public DataSetViewAdapter(ArrayList<HashMap<String, String>> arr)
+	  ArrayList<CalRecord.DataRow> data;
+	  public DataSetViewAdapter(ArrayList<CalRecord.DataRow> arr)
 	  {
 		 data = arr;
 	  }
 	  @Override public int getCount()
 	  {return data.size();}
-	  @Override public HashMap<String, String> getItem(int _i)
+	  @Override public CalRecord.DataRow getItem(int _i)
 	  {return data.get(_i);}
 	  @Override public long getItemId(int _i)
 	  { return _i;}
 
 	  @Override
-	  public View getView(final int position, View convertView, ViewGroup container)
+	  public View getView(final int position, View convertView, final ViewGroup container)
 	  {
 		 LayoutInflater _inflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -532,22 +509,26 @@ public class MainActivity extends Activity {
 		 TextView c2 = (TextView) convertView.findViewById(R.id.t_c2_exp);
 		 EditText c3 = (EditText) convertView.findViewById(R.id.e_c3_read);
 		 TextView c4 = (TextView) convertView.findViewById(R.id.t_c4_dev);
-		 c1.setText(data.get(position).get("Input"));
-		 c2.setText(data.get(position).get("Expected"));
-		 c3.setText(data.get(position).get("Read"));
-		 c4.setText(data.get(position).get("Dev"));
-
+		 CalRecord.DataRow dr = data.get(position);
+		 c1.setText(str(dr.Input));
+		 c2.setText(str(dr.Expected));
+		 c3.setText(dr.isNull(dr.Read) ? "" : str(dr.Read));
+		 int nextPosition = position == data.size() - 1 ? 0 : position + 1;
+		 if (data.get(nextPosition).Read != null) {
+			c3.setImeOptions(EditorInfo.IME_ACTION_DONE);
+		 }
+		 else {
+			c3.setImeOptions(EditorInfo.IME_ACTION_NEXT);
+	     }
+		 c4.setText(str(dr.Dev));
+		 c3.setTag(position);
 		 c3.setOnClickListener(new View.OnClickListener() {
+
 			   @Override
 			   public void onClick(View view)
 			   {
-				  EditText et = (EditText) view;
-//				  myToast((et.getText().toString()));
-//				  et.setText("");			  
-//				  notifyDataSetChanged();
-				  et.requestFocus();
-				  et.selectAll();
-			   }			
+				  data_event(view, container, position, false, false, false, false, false);
+			   }
 			});
 
 		 c3.setOnFocusChangeListener(new EditText.OnFocusChangeListener() 
@@ -555,20 +536,7 @@ public class MainActivity extends Activity {
 			   @Override
 			   public void onFocusChange(View view, boolean hasFocus)
 			   {
-				  if ((view instanceof EditText) && (hasFocus)) {
-					 EditText et = (EditText) view;
-					 if (CLEAR_TEXT_ON_TOUCH) {
-					    data.get(position).put("Read", "");
-						notifyDataSetChanged();
-					 }
-
-					 notifyDataSetChanged();
-				  }
-				  if ((view instanceof EditText) && (!hasFocus)) {
-
-					 enterRead(view, data, position, false);
-					 notifyDataSetChanged();
-				  }
+				  data_event(view, container, position, true, hasFocus, false, false, false);
 			   }
 			});
 
@@ -577,36 +545,66 @@ public class MainActivity extends Activity {
 			   @Override
 			   public boolean onEditorAction(TextView view, int actionID, KeyEvent event)
 			   {
+				  Boolean stopProp = false;
+				  if (actionID == EditorInfo.IME_ACTION_NEXT) {
+					 data_event(view, container, position, false, false, true, true, false);
+				  }
 				  if (actionID == EditorInfo.IME_ACTION_DONE) {
 					 if (view instanceof EditText) {
-						enterRead(view, data, position, true);
-						view.clearFocus();
-						/*Integer nextPosition =  position < data.size() - 1 ? position + 1 : 0;
-						Log.i("ME","This position: " + position + "  Next Position: " + nextPosition + "Size: " + data.size());
-						View rws = lv_dataset.getAdapter().getView(nextPosition, lv_dataset.getChildAt(nextPosition), lv_dataset);
-						ViewGroup rows = (ViewGroup) rws;
-						Log.i("ME", "nextRow " + rows.toString());
-						ViewGroup nextRow = (ViewGroup) rows.getChildAt(nextPosition);
-						Integer viewsInRow = nextRow.getChildCount();
-						Log.i("ME","viewsInRow = " + viewsInRow);
-						for (Integer i = 0; i < viewsInRow; i++) {
-						   View child = nextRow.getChildAt(i);
-						   Log.i("ME", "child " + child.toString());
-						   if (child instanceof EditText) {
-							  EditText et = (EditText) child;
-						      if (et.getText().length() == 0) {
-							     child.requestFocus();
-							  }
-						   }
-						}*/
-						//Log.i("ME", lv_dataset.getFocusables(View.FOCUS_DOWN).toString());
+						data_event(view, container, position, false, false, true, false, true);
+						stopProp = true;
 					 }
 				  }
-
-				  return false;
+				  return stopProp;
 			   }
 			});
 		 return convertView;
+	  }
+
+	  private void data_event(View view, ViewGroup vg, int position, Boolean focusChange, Boolean hasFocus, Boolean imeEvent, Boolean imeNext, Boolean imeDone)
+	  {
+		 //Log.i("ME", "position: " + position + 
+		    //   "\nfocusChange/hasFocus: " + focusChange + "/" + hasFocus + 
+			 //  "\nimeEvent/imeNext/imeDone: " + imeEvent + "/" + imeNext + "/" + imeDone);
+		 if (!(data.isEmpty())) {	
+			int nullCount = 1;
+			if (view instanceof EditText) {
+			   EditText et = (EditText) view;
+			   if ((!imeEvent) && (focusChange) && (hasFocus)) { // on click
+			      if (CLEAR_TEXT_ON_TOUCH) {
+					 data.get(position).Read = null;
+				  }
+			   }
+			   else if ((imeEvent) || ((focusChange) && (!hasFocus))) {
+				  String s = et.getText().toString();
+				  CalRecord.DataRow dr = data.get(position);
+				  if (!(s.isEmpty())) {
+					 Double readValue = Double.parseDouble(s);
+					 data.get(position).Read = readValue;
+					 String expStr = (String) str(dr.Expected);
+					 Double expValue = Double.parseDouble(expStr);
+					 Double devValue = (Math.abs(expValue - readValue) / cr.Device.CRange) * 100;
+					 data.get(position).Dev = devValue;
+				  }
+				  if ((cr.countReadNulls() == 0) || (imeDone)) {
+					 btn_save.requestFocus();
+				  }
+				  cr.CalData = data;
+			   }
+			}
+		 }
+		 notifyDataSetChanged();
+		 pb_calibration.setProgress(cr.getProgress());
+		 if ((cr.getProgress() == 100) && (!DONE_FLAG) && (imeEvent)) {
+			ll_pb.setVisibility(View.GONE);
+			ll_sd.setVisibility(View.VISIBLE);
+			DONE_FLAG = true;
+		 }
+		 if (cr.getProgress() < 100) {
+			ll_pb.setVisibility(View.VISIBLE);
+			ll_sd.setVisibility(View.GONE);
+			DONE_FLAG = false;
+		 }
 	  }
    }
 }

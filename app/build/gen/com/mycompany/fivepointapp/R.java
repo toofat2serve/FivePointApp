@@ -10,6 +10,7 @@ package com.mycompany.fivepointapp;
 public final class R {
     public static final class array {
         public static final int integer_array_help_image=0x7f050003;
+        public static final int string_array_cal_keys=0x7f050004;
         public static final int string_array_help_text=0x7f050002;
         public static final int string_array_help_titles=0x7f050001;
         public static final int string_array_resolution=0x7f050000;

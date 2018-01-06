@@ -3,34 +3,38 @@ import java.util.*;
 import android.util.*;
 import java.io.*;
 import com.google.gson.*;
+import android.content.*;
+import android.preference.*;
+import android.view.*;
 
-public class CalRecord 
-{
+public class CalRecord {
    Instrument Device;
-   ArrayList CalData;
+   ArrayList<DataRow> CalData;
    Date date;
    String Notes;
 
-   public CalRecord(String json) {
-      CalRecord cr;
+
+   public CalRecord(String json)
+   {
+      CalRecord cr = new CalRecord();
 	  try {
 		 Gson gson = new Gson();
-		 cr = gson.fromJson(json, CalRecord.class); 
+		 cr.Device = gson.fromJson(json, Instrument.class); 
 	  }
 	  catch (Exception e) {
 		 cr = new CalRecord();
-		 Log.i("ME","Error in JSON CalRecord", e);
-    }
-		 Device = cr.Device;
-		 CalData = cr.CalData;
-		 date = cr.date;
-		 Notes = cr.Notes;
+		 //Log.i("ME", "Error in JSON CalRecord", e);
+	  }
+	  Device = cr.Device;
+	  CalData = cr.CalData;
+	  date = cr.date;
+	  Notes = cr.Notes;
    }
-   
+
    public CalRecord()
    {
 	  Device = new Instrument();
-	  CalData = new ArrayList(Device.Steps);
+	  CalData = new ArrayList<DataRow>(Device.Steps);
 	  date = new Date();
 	  Notes = "";
    }
@@ -38,12 +42,12 @@ public class CalRecord
    public CalRecord(Instrument device)
    {
 	  Device = device;
-	  CalData = new ArrayList(Device.Steps);
+	  CalData = new ArrayList<DataRow>(Device.Steps);
 	  date = new Date();
 	  Notes = "";
    }
 
-   public CalRecord(Instrument device, ArrayList data)
+   public CalRecord(Instrument device, ArrayList<DataRow> data)
    {
 	  Device = device;
 	  CalData = data;
@@ -66,24 +70,22 @@ public class CalRecord
 	  String str = "%." + sd.toString() + "f";  
 	  return str;
    }
-   
-   
-   public void storeData(Integer position, Double i, Double e, Double r, Double d, Integer sd)
-   {
-	  HashMap<String,String> hm = new HashMap<String,String>();
-	  hm.put("Step",
-			 (position == null) ? " ": String.valueOf(position + 1));
-	  hm.put("Input",
-			 (position == null) ? " ": String.format(sdFormat(sd), i));
-	  hm.put("Expected",
-			 (position == null) ? " ": String.format(sdFormat(sd), e));
-	  hm.put("Read", "");
-	  hm.put("Dev",
-			 (position == null) ? " ": String.format(sdFormat(sd), d));
-	  CalData.add(position, hm);
 
+   public int countReadNulls() {
+	  int nullCount = 0;
+	  Iterator it = CalData.iterator();
+	  while (it.hasNext()) {
+		 DataRow itdr = (DataRow) it.next();
+		 if (itdr.isNull(itdr.Read)) {
+			nullCount ++;
+		 }
+	  }
+	  return nullCount;
    }
-   
+
+
+
+
    private ArrayList<Double> calculateSteps(Double lrv, Double rng, Integer stps, Boolean linear)
    {
 	  ArrayList<Double> al = new ArrayList<Double>(stps);
@@ -99,29 +101,49 @@ public class CalRecord
 	  return al;
    }
 
-   public CalRecord createTestData(Integer sd)
+   public CalRecord createTestData()
    {
-	  Log.i("ME", "Creating Test Data...");
-	  Integer count;
-	  Instrument i = this.Device;
-	  ArrayList<Double> inputs = calculateSteps(i.DLRV, i.DRange, i.Steps, i.IsLinear);
-	  ArrayList<Double> expecteds = calculateSteps(i.CLRV, i.CRange, i.Steps, true);
-	  for (count = 0; (count < i.Steps); count++) {
-		 this.storeData(count, inputs.get(count), expecteds.get(count), 0.0, 0.0, sd);
+      Log.i("ME", "Creating Test Data...");
+	  Instrument inst = this.Device;
+	  Log.i("ME", this.CalData.toString());
+	  ArrayList<Double> inputs = calculateSteps(inst.DLRV, 
+												inst.DRange, 
+												inst.Steps, 
+												inst.IsLinear);
+	  ArrayList<Double> expecteds = calculateSteps(inst.CLRV, 
+	                                               inst.CRange, 
+												   inst.Steps, 
+												   true);
+	  for (int i = 0; i < inputs.size(); i++) {
+		 DataRow dr = new DataRow();
+		 
+		 dr.Step = i;
+		 dr.Input = inputs.get(i);
+		 dr.Expected = expecteds.get(i);
+		 
+		 //dr.Read = this.CalData.get(i).Read.SIZE > 0 ? this.CalData.get(i).Read : 0.0;
+		 
+		// dr.Dev	= this.CalData.get(i).Dev;
+		 
+			this.CalData.add(i, dr);
+		 
+		 // this.CalData.set(i,dr);
 	  }
 	  Log.i("ME", "... Test Data Creation Complete.");
 	  Log.i("ME", this.toString());
 	  return this;
    }
 
+
+
    public Integer getProgress()
    {
 	  Integer intComplete = 0;
 	  Iterator it = CalData.iterator();
 	  while (it.hasNext()) {
-		 HashMap row = (HashMap) it.next();
-		 String s = (String) row.get("Read");
-		 if (!(s.isEmpty())) {
+		 DataRow row = (DataRow) it.next();
+		 Double dbl = row.Read;
+		 if (dbl != null) {
 			intComplete++;
 		 }
 	  }
@@ -147,7 +169,7 @@ public class CalRecord
    public String makeJson()
    {
 	  Gson gson = new Gson();
-	  return gson.toJson(this);
+	  return gson.toJson(this.Device);
    }
 
 
@@ -159,30 +181,59 @@ public class CalRecord
 	  str += Device.toString() + "\n";
 	  Iterator it = this.CalData.iterator();
 	  while (it.hasNext()) {
-		 HashMap m = (HashMap) it.next();
-		 str += m.toString() + "\n";
+		 DataRow n = (DataRow) it.next();
+		 str += n.toString() + "\n";
 	  }
 	  return str;
    }
 
-   public String toString(Boolean dataOnly)
-   {
-	  String str;
-	  if (!dataOnly) {
-		 str = this.toString();
-		 str += Device.toString() + "\n";
+
+   public class DataRow {
+	  int Step;
+	  Double Input;
+	  Double Expected;
+	  Double Read;
+	  Double Dev;
+	  
+
+	  public DataRow(int step, Double input, Double expected, Double read, Double dev)
+	  {
+		 Step = step;
+		 Input = input;
+		 Expected = expected;
+		 Read = read;
+		 Dev = dev;
 	  }
-	  else {
-		 str = "DATA RECORD\n";
-		 Iterator it = this.CalData.iterator();
-		 while (it.hasNext()) {
-			HashMap m = (HashMap) it.next();
-			str += m.toString() + "\n";
-		 }
-		 str += "------------------------------------\n";
-		 str += Notes;
+
+	  public DataRow()
+	  {
+		 Step = 0;
+		 Input = 0.0;
+		 Expected = 0.0;
+		 Read = null;
+		 Dev = 0.0;
 	  }
-	  return str;
+
+	  public Boolean isNull(Double d) {
+		 return d == null;
+	  }
+	  
+	  public Boolean isNull(Integer i) {
+		 return i == null;
+	  }
+	  
+	  @Override
+	  public String toString()
+	  {
+		 String str = "DataRow:\tStep:" + String.valueOf(Step)
+			+ "\tInput:" + String.valueOf(Input)
+			+ "\tExpect:" + String.valueOf(Expected)
+			+ "\tRead:" + String.valueOf(Read)
+			+ "\tDev:" + String.valueOf(Dev) + "\n";
+		 return str;
+	  }
+
+
    }
 
 }
