@@ -3,141 +3,138 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	android:gravity="center">
+	android:gravity="center"
+	android:background="#FFFFFF">
 
 	<LinearLayout
-		android:id="@+id/lv_rows"
-		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:background="#FFFFFF"
-		android:orientation="vertical">
+		android:layout_width="match_parent"
+		android:orientation="vertical"
+		android:id="@+id/lv_rows"
+		android:background="#FFFFFF">
 
 		<LinearLayout
-			android:id="@+id/lh_row_1"
-			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:background="#FFFFFF"
-			android:baselineAligned="false"
-			android:orientation="horizontal">
+			android:layout_width="match_parent"
+			android:orientation="horizontal"
+			android:id="@+id/lh_row_1"
+			android:background="#FFFFFF">
 
 			<LinearLayout
-				android:id="@+id/lv_id"
-				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_margin="1dp"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/lv_id"
 				android:layout_weight="19"
 				android:background="#303030"
-				android:orientation="vertical">
+				android:layout_margin="1dp">
 
 				<TextView
-					android:id="@+id/t_id"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_gravity="center_horizontal"
+					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:text="@string/equip_id"
-					android:textAppearance="?android:attr/textAppearanceMedium"/>
+					android:layout_gravity="center_horizontal"
+					android:id="@+id/t_id"/>
 
 				<EditText
-					android:id="@+id/e_id"
-					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
 					android:ems="6"
+					android:singleLine="true"
+					android:id="@+id/e_id"
 					android:gravity="center_horizontal"
 					android:inputType="textCapCharacters|textNoSuggestions"
-					android:singleLine="true"
 					android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/lv_serial"
-				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_margin="1dp"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/lv_serial"
 				android:layout_weight="21"
 				android:background="#303030"
-				android:orientation="vertical">
+				android:layout_margin="1dp">
 
 				<TextView
-					android:id="@+id/t_serial"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_gravity="center_horizontal"
+					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:text="@string/serial"
-					android:textAppearance="?android:attr/textAppearanceMedium"/>
+					android:layout_gravity="center_horizontal"
+					android:id="@+id/t_serial"/>
 
 				<EditText
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:ems="6"
+					android:singleLine="true"
 					android:id="@+id/e_serial"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:ems="6"
 					android:gravity="center_horizontal"
-					android:inputType="text"
-					android:singleLine="true"
 					android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 			</LinearLayout>
 
 			<LinearLayout
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
 				android:id="@+id/lv_make"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="1dp"
 				android:layout_weight="20"
 				android:background="#303030"
-				android:orientation="vertical">
+				android:layout_margin="1dp">
 
 				<TextView
-					android:id="@+id/t_make"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_gravity="center_horizontal"
+					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:text="@string/make"
-					android:textAppearance="?android:attr/textAppearanceMedium"/>
+					android:layout_gravity="center_horizontal"
+					android:id="@+id/t_make"/>
 
 				<EditText
-					android:id="@+id/e_make"
-					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
 					android:ems="6"
-					android:gravity="center_horizontal"
-					android:inputType="text"
 					android:singleLine="true"
+					android:id="@+id/e_make"
+					android:gravity="center_horizontal"
 					android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 			</LinearLayout>
 
 			<LinearLayout
-				android:id="@+id/lv_model"
-				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_margin="1dp"
+				android:layout_width="match_parent"
+				android:orientation="vertical"
+				android:id="@+id/lv_model"
 				android:layout_weight="20"
 				android:background="#303030"
-				android:orientation="vertical">
+				android:layout_margin="1dp">
 
 				<TextView
-					android:id="@+id/t_model"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_gravity="center_horizontal"
+					android:textAppearance="?android:attr/textAppearanceMedium"
 					android:text="@string/model"
-					android:textAppearance="?android:attr/textAppearanceMedium"/>
+					android:layout_gravity="center_horizontal"
+					android:id="@+id/t_model"/>
 
 				<EditText
-					android:id="@+id/e_model"
-					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
 					android:ems="6"
-					android:gravity="center_horizontal"
-					android:inputType="text"
 					android:singleLine="true"
+					android:id="@+id/e_model"
+					android:gravity="center_horizontal"
 					android:textAppearance="?android:attr/textAppearanceSmall"/>
 
 			</LinearLayout>
 
 		</LinearLayout>
-
+		
 		<LinearLayout
 			android:id="@+id/lh_row_2"
 			android:layout_width="match_parent"
@@ -453,7 +450,7 @@
 
 		</LinearLayout>
 
-		<ViewSwitcher
+		<LinearLayout
 			android:id="@+id/vs_save_edit"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -522,144 +519,8 @@
 
 			</LinearLayout>
 
-			<LinearLayout
-				android:id="@+id/vs_save_edit_2"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:baselineAligned="false"
-				android:orientation="horizontal">
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_margin="1dp"
-					android:layout_weight="2"
-					android:background="#303030"
-					android:orientation="horizontal">
-
-					<Button
-						android:id="@+id/btn_edit"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:onClick="clickEdit"
-						android:text="@string/edit"/>
-
-				</LinearLayout>
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					android:layout_gravity="center_vertical"
-					android:background="#303030"
-					android:orientation="vertical"
-					android:id="@+id/lv_progress"
-					android:layout_margin="1dp"
-					android:layout_weight="1">
-
-					<TextView
-						android:id="@+id/t_pb_cal"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_gravity="center_horizontal"
-						android:text="@string/calibration_progress"
-						android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-					<ProgressBar
-						android:id="@+id/pb_calibration"
-						style="?android:attr/progressBarStyleHorizontal"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:layout_gravity="bottom"
-						android:paddingLeft="10dp"
-						android:paddingRight="10dp"/>
-
-				</LinearLayout>
-
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_gravity="center_vertical"
-					android:background="#303030"
-					android:orientation="horizontal"
-					android:id="@+id/lh_save_data"
-					android:visibility="gone"
-					android:layout_weight="1">
-
-					<Button
-						android:id="@+id/btn_save"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:onClick="clickSave"
-						android:text="@string/save_data_set"
-						android:focusableInTouchMode="true"/>
-
-				</LinearLayout>
-
-			</LinearLayout>
-
-		</ViewSwitcher>
-
-		<LinearLayout
-			android:id="@+id/lh_row_6"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:background="#FFFFFF"
-			android:orientation="horizontal">
-
-			<TextView
-				android:id="@+id/t_tbl_c1_head_input"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="1dp"
-				android:layout_weight="1.0"
-				android:background="#212121"
-				android:gravity="center_horizontal"
-				android:text="@string/input"
-				android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-			<TextView
-				android:id="@+id/t_tbl_c2_head_expect"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="1dp"
-				android:layout_weight="1.0"
-				android:background="#212121"
-				android:gravity="center_horizontal"
-				android:text="@string/expected"
-				android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-			<TextView
-				android:id="@+id/t_tbl_c3_head_read"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="1dp"
-				android:layout_weight="1.0"
-				android:background="#212121"
-				android:gravity="center_horizontal"
-				android:text="@string/actual"
-				android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-			<TextView
-				android:id="@+id/t_tbl_c4_head_dev"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="1dp"
-				android:layout_weight="1.0"
-				android:background="#212121"
-				android:gravity="center_horizontal"
-				android:text="@string/dev_"
-				android:textAppearance="?android:attr/textAppearanceMedium"/>
-
 		</LinearLayout>
 
-		<ListView
-			android:id="@+id/listview_dataset"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:layout_weight="1"
-			android:descendantFocusability="afterDescendants"
-			setItemsCanFocus="true"/>
-		
 	</LinearLayout>
 
 </LinearLayout>

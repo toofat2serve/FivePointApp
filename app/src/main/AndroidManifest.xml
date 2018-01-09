@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mycompany.fivepointapp" >
+    package="com.romaka.fivepointapp" >
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	
     <application
@@ -20,11 +20,15 @@
             </intent-filter>
         </activity>
 		<activity
-			android:name="com.mycompany.fivepointapp.SettingsActivity"
+			android:name="com.romaka.fivepointapp.CalActivity"
+			android:label="Calibration">
+		</activity>
+		<activity
+			android:name="com.romaka.fivepointapp.SettingsActivity"
 			android:label="Settings">
 		</activity>
 		<activity
-			android:name="com.mycompany.fivepointapp.HelpActivity"
+			android:name="com.romaka.fivepointapp.HelpActivity"
 			android:label="Help">
 		</activity>
     </application>

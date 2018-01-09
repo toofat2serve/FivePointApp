@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.mycompany.fivepointapp"
+	package="com.romaka.fivepointapp"
 	android:versionCode="1"
 	android:versionName="1.0">
 
@@ -36,13 +36,19 @@
 		</activity>
 
 		<activity
-			android:name="com.mycompany.fivepointapp.SettingsActivity"
+			android:name="com.romaka.fivepointapp.CalActivity"
+			android:label="Calibration">
+
+		</activity>
+
+		<activity
+			android:name="com.romaka.fivepointapp.SettingsActivity"
 			android:label="Settings">
 
 		</activity>
 
 		<activity
-			android:name="com.mycompany.fivepointapp.HelpActivity"
+			android:name="com.romaka.fivepointapp.HelpActivity"
 			android:label="Help">
 
 		</activity>
