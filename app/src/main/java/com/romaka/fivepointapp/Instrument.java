@@ -1,10 +1,9 @@
 package com.romaka.fivepointapp;
-import android.arch.persistence.room.*;
+import com.google.gson.*;
 
-@Entity
 public class Instrument {
 
-   @PrimaryKey
+  
    String EquipID;
    String Serial;
    String Make;
@@ -61,7 +60,7 @@ public class Instrument {
 	  DRange = calculateRange(DLRV, DURV);
 	  CRange = calculateRange(CLRV, CURV);
    }
-
+   
    @Override
    public String toString()
    {

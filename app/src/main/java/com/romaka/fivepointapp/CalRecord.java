@@ -7,13 +7,10 @@ import android.preference.*;
 import android.view.*;
 import android.os.*;
 import com.google.gson.stream.*;
-import android.arch.persistence.room.*;
 
-@Entity
+
 public class CalRecord {
-   @PrimaryKey(autoGenerate = true)
-   int crID;
-   @ForeignKey
+   
    String EquipID;
    ArrayList<CalDataSet> CalData;
    Date date;

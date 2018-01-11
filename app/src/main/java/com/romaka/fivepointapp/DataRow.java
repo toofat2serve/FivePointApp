@@ -1,13 +1,8 @@
 package com.romaka.fivepointapp;
 
-import android.arch.persistence.room.*;
 
-@Entity
+
 public class DataRow {
-   @PrimaryKey(autoGenerate = true)
-   int drID;
-   @ForeignKey
-   int cdsID;
    int Step;
    Double Input;
    Double Expected;

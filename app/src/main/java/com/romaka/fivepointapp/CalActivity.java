@@ -49,7 +49,7 @@ public class CalActivity extends Activity {
 	  DATA_RESOLUTION = intentExtras.getIntExtra("resolution", 3);
 	  CLEAR_TEXT_ON_TOUCH = intentExtras.getBooleanExtra("CLEAR", true);
 	  DONE_FLAG = false;
-	  Instrument device = extractCalData(jsonString);
+	  device = extractCalData(jsonString);
 	  
 	  cr = new CalRecord(device.EquipID);
 	  cr.createTestData(0, device);

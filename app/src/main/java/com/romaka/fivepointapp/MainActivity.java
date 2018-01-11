@@ -53,7 +53,6 @@ import static android.os.Environment.DIRECTORY_DOCUMENTS;
 import static android.os.Environment.getExternalStoragePublicDirectory;
 import com.google.gson.*;
 import com.google.gson.stream.*;
-import android.arch.persistence.room.*;
 
 public class MainActivity extends Activity {
    public EditText e_id;
@@ -83,7 +82,7 @@ public class MainActivity extends Activity {
    public Integer DATA_RESOLUTION;
    public Boolean DONE_FLAG;
    public Boolean RETURN_FROM_SETTINGS;
-   public AppDatabase db;
+   
    @Override
    protected void onCreate(Bundle savedInstanceState)
    {
@@ -174,10 +173,7 @@ public class MainActivity extends Activity {
 	  super.onResume();
    }
 
-   public void startRoomDB() {
-	  db = Room.databaseBuilder(getApplicationContext(),
-											AppDatabase.class, "fivepoint").build();
-   }
+   
    
    public void updateDefaultDevice(Instrument inst)
    {

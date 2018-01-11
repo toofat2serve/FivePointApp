@@ -1,12 +1,9 @@
 package com.romaka.fivepointapp;
 
-import android.arch.persistence.room.*;
 import java.util.*;
 
-@Entity
+
 public class CalDataSet {
-   @PrimaryKey(autoGenerate = true)
-   int cdsID;
    String Name;
    ArrayList<DataRow> Data;
 
