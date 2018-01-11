@@ -1,33 +1,37 @@
 package com.romaka.fivepointapp;
 import java.util.*;
-import android.util.*;
 import java.io.*;
 import com.google.gson.*;
-import android.content.*;
+
 import android.preference.*;
 import android.view.*;
 import android.os.*;
+import com.google.gson.stream.*;
+import android.arch.persistence.room.*;
 
+@Entity
 public class CalRecord {
-
-   Instrument Device;
+   @PrimaryKey(autoGenerate = true)
+   int crID;
+   @ForeignKey
+   String EquipID;
    ArrayList<CalDataSet> CalData;
    Date date;
    String Notes;
- 
-   public CalRecord(Instrument device, 
+   
+   public CalRecord(String equipid, 
                     ArrayList<CalDataSet> calData, 
 					String notes)
    {
-	  Device = device;
+	  EquipID = equipid;
 	  CalData = calData;
 	  date = new Date();
 	  Notes = notes;
    }
 
-   public CalRecord(Instrument instrument)
+   public CalRecord(String equipid)
    {
-	  Device = instrument;
+	  EquipID = equipid;
 	  CalData = new ArrayList<CalDataSet>();
 	  CalData.add(0, new CalDataSet());
 	  date = new Date();
@@ -36,13 +40,13 @@ public class CalRecord {
    
    public CalRecord()
    {
-	  Device = new Instrument();
+	  EquipID = "DEFAULT_ID";
 	  CalData = new ArrayList<CalDataSet>();
 	  date = new Date();
 	  Notes = "";
    }
 
-   public CalRecord(String json)
+  /* public CalRecord(String json)
    {
       CalRecord cr = new CalRecord();
 	  try {
@@ -56,7 +60,7 @@ public class CalRecord {
 	  CalData = cr.CalData;
 	  date = cr.date;
 	  Notes = cr.Notes;
-   }
+   } */
    
    public void newDataSet(String name, int index) {
 	  CalData.add(index, new CalDataSet(name));
@@ -66,19 +70,9 @@ public class CalRecord {
 	  return CalData.get(index).Data;
    }
 
-   public void setDevice(Instrument device)
-   {
-	  Device = device;
-   }
+   
 
-   public Instrument getDevice()
-   {
-	  return Device;
-   }
-
-   public void myLog(String str) {
-	  Log.i("CalRecord", str);
-   }
+   
    public int countReadNulls(int index)
    {
 	  int nullCount = 0;
@@ -93,6 +87,45 @@ public class CalRecord {
 	  return nullCount;
    }
 
+   public String crToJson() {
+	  
+	  
+	  return "";
+   }
+   
+ /*  public String cdsToJson(){
+	  Gson g = new Gson();
+	  String json = g.toJson(this.CalData);
+	  return json;
+   }
+   
+   public String cdsdataToJson() {
+	  Gson g = new Gson();
+	  String json = "";
+	  for (int i = 0; i < CalData.size(); i++) {
+		 json += g.toJson(CalData.get(i).Data);
+	  }
+	  return json;
+	  
+   }*/
+   
+   public String dataRowsToJson()
+   {
+	  Gson g = new Gson();
+	  String json = "";
+	  CalDataSet cds;
+	  for (int i = 0; i < CalData.size(); i++) {
+		 cds = CalData.get(i);
+		 ArrayList<DataRow> dr = cds.Data;
+		 Iterator it = dr.iterator();
+		 while (it.hasNext()) {
+			json += g.toJson(it.next()) + "\n";
+		 }
+	  }
+	  
+	  return json;
+   }
+   
    private ArrayList<Double> calculateSteps(Double lrv, 
                                             Double rng, 
 											Integer stps, 
@@ -111,13 +144,13 @@ public class CalRecord {
 	  return al;
    }
 
-   public void createTestData(int index)
+   public void createTestData(int index, Instrument inst)
    {
      // Log.i("ME", "Creating Test Data...");
+	  
 	  if (CalData.isEmpty()) {
 		 CalData.add(new CalDataSet());
 	  }
-	  Instrument inst = this.Device;
 	  ArrayList<Double> inputs = calculateSteps(inst.DLRV, 
 												inst.DRange, 
 												inst.Steps, 
@@ -163,7 +196,7 @@ public class CalRecord {
 
    public String makeFileName()
    {
-	  String str = this.Device.ID + "-";
+	  String str = EquipID + "-";
 	  str += String.valueOf(date.getYear());
 	  str += String.valueOf(date.getMonth());
 	  str += String.valueOf(date.getDate());
@@ -174,13 +207,9 @@ public class CalRecord {
 	  return str;
    }
 
-   public String makeJson()
-   {
-	  Gson gson = new Gson();
-	  return gson.toJson(this.Device);
-   }
+   
 
-   @Override
+  /* @Override
    public String toString()
    {
 	  String str;
@@ -195,97 +224,8 @@ public class CalRecord {
 		 }
 	  }
 	  return str;
-   }
+   }*/
 
-   public class CalDataSet {
-	  String Name;
-	  ArrayList<DataRow> Data;
-
-	  public CalDataSet(String name, ArrayList<DataRow> data)
-	  {
-		 Name = name;
-		 Data = data;
-	  }
-
-	  public CalDataSet(String name)
-	  {
-		 Name = name;
-		 Data = new ArrayList<DataRow>();
-	  } 
-	  
-	  public CalDataSet()
-	  {
-		 Name = "As Found";
-		 //DataRow dr = new DataRow();
-		 Data = new ArrayList<DataRow>(Device.Steps);
-		// Data.add(dr);
-	  }
-
-	  @Override
-	  public String toString()
-	  {
-		 String str = "CalDataSet\nName: " + Name + "\n";
-		 Iterator it = Data.iterator();
-		 while (it.hasNext()) {
-			str += it.next().toString();
-		 }
-		 return str;
-	  } 
-	  
-   }
-
-   public class DataRow {
-	  int Step;
-	  Double Input;
-	  Double Expected;
-	  Double Read;
-	  Double Dev;
-
-	  public DataRow(int step, 
-	                 Double input, 
-					 Double expected, 
-					 Double read, 
-					 Double dev)
-	  {
-		 Step = step;
-		 Input = input;
-		 Expected = expected;
-		 Read = read;
-		 Dev = dev;
-		 
-	  }
-
-	  public DataRow()
-	  {
-		 Step = 0;
-		 Input = 0.0;
-		 Expected = 0.0;
-		 Read = 0.0;
-		 Dev = 0.0; 
-	  }
-
-	  public Boolean isNull(Double d)
-	  {
-		 return d == null;
-	  }
-
-	  public Boolean isNull(Integer i)
-	  {
-		 return i == null;
-	  }
-
-	 @Override
-	  public String toString()
-	  {
-		 String str = "Step:" + String.valueOf(Step)
-			+ "\tInput:" + String.valueOf(Input)
-			+ "\tExpect:" + String.valueOf(Expected)
-			+ "\tRead:" + String.valueOf(Read)
-			+ "\tDev:" + String.valueOf(Dev) + "\n";
-		 return str;
-	  }
-
-
-   }
-
+   
+   
 }

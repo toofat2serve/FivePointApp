@@ -31,6 +31,12 @@
 			android:name="com.romaka.fivepointapp.HelpActivity"
 			android:label="Help">
 		</activity>
+		<activity
+			android:name="com.romaka.fivepointapp.UnitEditActivity"
+			android:label="Unit Editor"
+			android:theme="@android:style/Theme.Holo.Dialog">
+			
+		</activity>
     </application>
 
 </manifest>

@@ -5,11 +5,17 @@ package com.romaka.fivepointapp;
 //      L__ morphed to make multiple sets with custom titles
 //DONE: CNG move calibration to new activity, rather than peekaboo
 //DONE: FIX save default
+//DONE: ADD units to table header
 
 //TODO: ADD file browser / import
 //TODO: ADD other formats (CSV, HTML, PDF, ...)
 
 //TODO: ADD database storage
+//      L✓_ fix code to separate device from cal record
+//      L__ chug away at integrating this
+
+//TODO: ADD popup warning for efit button
+
 //TODO: ADD db retrieval
 //TODO: ADD text field auto-complete from db history
 
@@ -19,7 +25,10 @@ package com.romaka.fivepointapp;
 
 //TODO: ADD content to help avtivity
 
-//TODO: ADD units to table header
+//TODO: CHG units array to resource xml
+//TOFO: ADD unit list editing for user
+
+//TODO: FIX save data function. work on at home.
 
 //TODO: FIX main layout: reduce reliance on layered layouts
 //TODO: FIX changing resolution should take immediate effect
@@ -39,10 +48,12 @@ import android.view.inputmethod.*;
 import android.widget.*;
 import java.io.*;
 import java.util.*;
-
+import android.arch.*;
 import static android.os.Environment.DIRECTORY_DOCUMENTS;
 import static android.os.Environment.getExternalStoragePublicDirectory;
 import com.google.gson.*;
+import com.google.gson.stream.*;
+import android.arch.persistence.room.*;
 
 public class MainActivity extends Activity {
    public EditText e_id;
@@ -64,14 +75,15 @@ public class MainActivity extends Activity {
    public Spinner spin_dunit;
    public Spinner spin_cunit;
    public LinearLayout ll;
-   public ArrayList<String> units_values;
+   public String[] units_values;
    public ArrayList<EditText> mandos;
-   public CalRecord cr;
+   public Instrument device;
    public static final String DFLT_DEVICE = "dd";
    public Boolean CLEAR_TEXT_ON_TOUCH;
    public Integer DATA_RESOLUTION;
    public Boolean DONE_FLAG;
    public Boolean RETURN_FROM_SETTINGS;
+   public AppDatabase db;
    @Override
    protected void onCreate(Bundle savedInstanceState)
    {
@@ -92,7 +104,6 @@ public class MainActivity extends Activity {
 	  btn_save = (Button) findViewById(R.id.btn_save);
 	  btn_reset = (Button) findViewById(R.id.btn_reset);
 	  btn_clr = (Button) findViewById(R.id.btn_clr);
-
 	  spin_dunit = (Spinner) findViewById(R.id.spin_dunit);
 	  spin_cunit = (Spinner) findViewById(R.id.spin_cunit);
 	  rb_lin = (RadioButton) findViewById(R.id.rb_lin);
@@ -104,35 +115,51 @@ public class MainActivity extends Activity {
 	  mandos.add(e_clrv);
 	  mandos.add(e_curv);
 	  mandos.add(e_steps);
-	  units_values = new ArrayList<String>();
-	  units_values.add("PSI");
-	  units_values.add("\"H2O");
-	  units_values.add("°F");
-	  units_values.add("mA");
-	  units_values.add("RPM");
-	  units_values.add("Volts");
-	  units_values.add("Amps");
-	  units_values.add("Ohms");
-	  units_values.add("GPM");
 	  DONE_FLAG = false;
-	  cr = new CalRecord();
+	  //startRoomDB();
+	  device  = new Instrument();
+	  checkSharedPreferences(); 
 	  spin_dunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
 	  spin_cunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
 	  spin_dunit.setSelection(0);
 	  spin_cunit.setSelection(3);
 	  ////Log.i("ME", "...Initialized.");
-	  checkSharedPreferences();     
+	      
+	  
+	  GsonBuilder builder = new GsonBuilder();
+	  builder.registerTypeAdapter(CalRecord.class, new CalRecordAdapter().nullSafe());
+	  // if PointAdapter didn't check for nulls in its read/write methods, you should instead use
+	  // builder.registerTypeAdapter(Point.class, new PointAdapter().nullSafe());
+	 
+	  Gson gson = builder.create();
+	  
+	  spin_dunit.setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View view)
+			{
+			  spinLongClick(view);
+			   return true;
+			} 
+	  });
+	  
 	  btn_reset.setOnLongClickListener(new View.OnLongClickListener() {
 			@Override
 			public boolean onLongClick(View view)
 			{
 			   CollectForm();
-			   updateDefaultDevice(cr);
+			   updateDefaultDevice(device);
 			   return true;
 			}
 		 });
    }
-
+   
+   public void spinLongClick(View view) {
+	  Intent intent = new Intent();
+	  intent.setClassName(this, "com.romaka.fivepointapp.UnitEditActivity");
+	  startActivity(intent);
+   }
+   
+   
    @Override
    protected void onStart()
    {
@@ -147,20 +174,38 @@ public class MainActivity extends Activity {
 	  super.onResume();
    }
 
-   public void updateDefaultDevice(CalRecord cr)
+   public void startRoomDB() {
+	  db = Room.databaseBuilder(getApplicationContext(),
+											AppDatabase.class, "fivepoint").build();
+   }
+   
+   public void updateDefaultDevice(Instrument inst)
    {
 	  SharedPreferences sp = getPreferences(0);
 	  SharedPreferences.Editor spe = sp.edit();
-	  spe.putString(DFLT_DEVICE, toGson(cr.Device));
+	  spe.putString(DFLT_DEVICE, toGson(device));
 	  spe.commit();
-	  MyUtilities.myToast("New Default Device Saved" + cr.toString(), this);
+	  MyUtilities.myToast("New Default Device Saved" + inst.toString(), this);
    }
 
-
+   public void firstTimeOnly(SharedPreferences sp) {
+	  units_values = getResources().getStringArray(R.array.unit_values);
+      SharedPreferences.Editor spe = sp.edit();
+	  Set<String> uvset = new HashSet<String>(Arrays.asList(units_values));
+	  spe.putStringSet("unit_values", uvset);
+   }
+   
    public void checkSharedPreferences()
    {
 	  SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
 	  Map<String,?> dspMap = dsp.getAll();
+	  if (!((Boolean) dspMap.containsKey("first_time"))) {
+		 firstTimeOnly(dsp);
+	  }
+	  else {
+		 Set<String> uvset = (Set<String>) dspMap.get("unit_values");
+		 units_values = uvset.toArray(new String[uvset.size()]);
+	  }
 	  if (dspMap.containsKey("pref_preload")) {
 		 Boolean loadDefaultDevice = (Boolean) dspMap.get("pref_preload");
 		 if (loadDefaultDevice) {
@@ -168,7 +213,7 @@ public class MainActivity extends Activity {
 		 }
 	  }
 	  CLEAR_TEXT_ON_TOUCH = (Boolean) dspMap.get("pref_clear_read");
-	  DATA_RESOLUTION = (String) dspMap.get("pref_resolution") == null ? 3 : Integer.parseInt((String) dspMap.get("pref_resolution"));  
+	  DATA_RESOLUTION = (String) dspMap.get("pref_resolution") == null ? 3 : Integer.parseInt((String) dspMap.get("pref_resolution"));
    }
 
    public String str(Double d)
@@ -223,10 +268,10 @@ public class MainActivity extends Activity {
 	  SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
 	  Map<String,?> dspMap = dsp.getAll();
 	  String defaultEmail = (String) dspMap.get("pref_email");
-	  String strSubject = "Calibration Results for " + cr.Device.ID + " on " + cr.date.toString();
-	  String strBody = cr.toString() + "\n";
+	  String strSubject = "Calibration Results for " + device.EquipID; //+ " on " + cr.date.toString();
+	  String strBody = device.toString() + "\n";
 	  strBody += "JSON String\n";
-	  strBody += cr.makeJson(); 
+	  
 	  Intent intent = new Intent(Intent.ACTION_SENDTO);
 	  intent.setData(Uri.parse("mailto:")); // only email apps should handle this
 	  intent.putExtra(Intent.EXTRA_EMAIL, new String[] {defaultEmail});
@@ -258,12 +303,13 @@ public class MainActivity extends Activity {
    {
 	  ////Log.i("ME", "Starting reset...");
 	  ClearForm((ViewGroup) findViewById(R.id.lv_rows));
-	  CalRecord backupDevice = new CalRecord();
+	  Instrument backupDevice = new Instrument();
+	  Gson gson = new Gson();
 	  SharedPreferences sp = getPreferences(0);
-	  String strJSON = sp.getString(DFLT_DEVICE, backupDevice.makeJson());
+	  String strJSON = sp.getString(DFLT_DEVICE, gson.toJson(backupDevice));
 	  ////Log.i("ME", strJSON);
-	  CalRecord cr =new CalRecord(strJSON);
-	  FillForm(cr.Device);
+	  Instrument inst = gson.fromJson(strJSON, Instrument.class);
+	  FillForm(inst);
 	  ////Log.i("ME", cr.Device.toString() + "\n...Reset Complete.");
    }
 
@@ -286,7 +332,7 @@ public class MainActivity extends Activity {
 		 CollectForm();
 		 Intent intent = new Intent();
 		 intent.setClassName(this, "com.romaka.fivepointapp.CalActivity");
-		 intent.putExtra("device", toGson(cr.Device));
+		 intent.putExtra("device", toGson(device));
 		 intent.putExtra("resolution", DATA_RESOLUTION);
 		 intent.putExtra("clear", CLEAR_TEXT_ON_TOUCH);
 		 startActivity(intent);
@@ -313,7 +359,7 @@ public class MainActivity extends Activity {
 
    public void FillForm(Instrument inst)
    {
-	  e_id.setText(inst.ID);
+	  e_id.setText(inst.EquipID);
 	  e_serial.setText(inst.Serial);
 	  e_make.setText(inst.Make);
 	  e_model.setText(inst.Model);
@@ -362,7 +408,7 @@ public class MainActivity extends Activity {
 	  Integer st = Integer.parseInt(e_steps.getText().toString());
 	  Boolean il = rb_lin.isChecked();
 	  //String no = e_notes.getText().toString();
-	  cr = new CalRecord(new Instrument(id, se, ma, mo, dl, du, dun, cl, cu, cun, st, il));
+	  device = new Instrument(id, se, ma, mo, dl, du, dun, cl, cu, cun, st, il);
 	  // cr.Notes = no;
    }
 

@@ -41,5 +41,16 @@
 		<item>Read</item>
 		<item>Dev</item>
     </string-array>
-	
+	<string-array
+		name="unit_values">
+		<item>PSI</item>
+		<item>\"H2O</item>
+		<item>°F</item>
+		<item>mA</item>
+		<item>RPM</item>
+		<item>Volts</item>
+		<item>Amps</item>
+		<item>Ohms</item>
+		<item>GPM</item>
+	</string-array>
 </resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+	android:background="#FFFFFF">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:text="Medium Text"
+		android:gravity="center"
+		android:padding="5dp"
+		android:layout_margin="1dp"
+		android:background="#212121"
+		android:id="@+id/unit_label"/>
+
+	<ImageButton
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:src="@android:drawable/ic_menu_close_clear_cancel"
+		android:layout_margin="1dp"
+		android:background="#5C0500"
+		android:id="@+id/btn_delete"/>
+
+</LinearLayout>
+

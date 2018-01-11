@@ -19,12 +19,13 @@ public class CalActivity extends Activity {
    public int SIZ = 1;
    public int DATA_RESOLUTION;
    public Boolean CLEAR_TEXT_ON_TOUCH, DONE_FLAG;
-   public TextView t_pb_cal;
+   public TextView t_pb_cal, t_inpt, t_expt, t_read, t_devn;
    public ListAdapter adapter;
    public ListView lv_dataset;
-   public ArrayList<CalRecord.DataRow> AL;
+   public ArrayList<DataRow> AL;
    public String LABEL;
    public Boolean PAGED;
+   public Instrument device;
    CalRecord cr;
    @Override
    protected void onCreate(Bundle savedInstanceState)
@@ -36,6 +37,10 @@ public class CalActivity extends Activity {
 	  btn_prev = (Button) findViewById(R.id.btn_prev);
 	  btn_next = (Button) findViewById(R.id.btn_next);
 	  btn_save = (Button) findViewById(R.id.btn_save);
+	  t_inpt = (TextView) findViewById(R.id.t_tbl_c1_head_inpt);
+	  t_expt = (TextView) findViewById(R.id.t_tbl_c2_head_expt);
+	  t_read = (TextView) findViewById(R.id.t_tbl_c3_head_read);
+	  t_devn = (TextView) findViewById(R.id.t_tbl_c4_head_devn);
 	  pb_calibration = (ProgressBar) findViewById(R.id.pb_calibration);
 	  lv_dataset = (ListView) findViewById(R.id.lv_dataset);
 	  t_pb_cal = (TextView) findViewById(R.id.t_pb_cal);
@@ -45,17 +50,23 @@ public class CalActivity extends Activity {
 	  CLEAR_TEXT_ON_TOUCH = intentExtras.getBooleanExtra("CLEAR", true);
 	  DONE_FLAG = false;
 	  Instrument device = extractCalData(jsonString);
-	  cr = new CalRecord(device);
-	  cr.createTestData(0);
+	  
+	  cr = new CalRecord(device.EquipID);
+	  cr.createTestData(0, device);
 	  LABEL = cr.CalData.get(0).Name;
 	  e_label.setText(LABEL);
 	  p_n_btns(null);
 	  PAGED = false;
+	  
+	  t_inpt.append("(" + device.DUnits + ")");
+	  t_expt.append("(" + device.CUnits + ")");
+	  t_read.append("(" + device.CUnits + ")");
+	  
 	  }
 	  
    public class CalDataSetViewAdapter extends BaseAdapter {
-      ArrayList<CalRecord.DataRow> data;  
-	  CalDataSetViewAdapter(ArrayList<CalRecord.DataRow> al) {data = al;} 
+      ArrayList<DataRow> data;  
+	  CalDataSetViewAdapter(ArrayList<DataRow> al) {data = al;} 
 	  @Override public int getCount(){return data.size();}
 	  @Override public Object getItem(int position){return data.get(position);}
       @Override public long getItemId(int position){return position;}
@@ -69,7 +80,7 @@ public class CalActivity extends Activity {
 		 TextView c2 = (TextView) convertView.findViewById(R.id.t_c2_exp);
 		 EditText c3 = (EditText) convertView.findViewById(R.id.e_c3_read);
 		 TextView c4 = (TextView) convertView.findViewById(R.id.t_c4_dev);
-		 CalRecord.DataRow dr = cr.CalData.get(IDX).Data.get(position);
+		 DataRow dr = cr.CalData.get(IDX).Data.get(position);
 		 c1.setText(str(dr.Input));
 		 c2.setText(str(dr.Expected));
 		 c3.setText(dr.isNull(dr.Read) ? "" : str(dr.Read));
@@ -132,13 +143,13 @@ public class CalActivity extends Activity {
 			   }
 			   else if ((imeEvent) || ((focusChange) && (!hasFocus))) {
 				  String s = et.getText().toString();
-				  CalRecord.DataRow dr = cr.CalData.get(IDX).Data.get(position);
+				  DataRow dr = cr.CalData.get(IDX).Data.get(position);
 				  if (!(s.isEmpty())) {
 					 Double readValue = Double.parseDouble(s);
 					 cr.CalData.get(IDX).Data.get(position).Read = readValue;
 					 String expStr = str(dr.Expected);
 					 Double expValue = Double.parseDouble(expStr);
-					 Double devValue = (Math.abs(expValue - readValue) / cr.Device.CRange) * 100;
+					 Double devValue = (Math.abs(expValue - readValue) / device.CRange) * 100;
 					 cr.CalData.get(IDX).Data.get(position).Dev = devValue;
 				  }
 				  if ((cr.countReadNulls(IDX) == 0) || (imeDone)) {
@@ -166,7 +177,7 @@ public class CalActivity extends Activity {
 	  
    public void clickSave(View view)
    {
-	  try {
+	/*  try {
 		 //cr.Notes = e_notes.getText().toString();
 		 String state = Environment.getExternalStorageState();
 		 if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -186,10 +197,12 @@ public class CalActivity extends Activity {
 	  }
 	  catch (Exception e) {
 		 ////Log.i("ME", "Why? ", e);
-	  }
-   }
+	  } */
+	//  Gson gson = new Gson();
+	//  String json = gson.toJson(cr, CalRecord.class);
+	//  Log.i("ME",json);
 	  
-   
+   }
 	  
    public String str(Double d)
    {
@@ -234,7 +247,7 @@ public class CalActivity extends Activity {
             if (IDX == SIZ - 1) {
 			   IDX ++;	   
 			   cr.newDataSet("NAME" + String.valueOf(IDX), IDX);
-			   cr.createTestData(IDX);
+			   cr.createTestData(IDX, device);
 			   
 			}
 			else {

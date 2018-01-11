@@ -12,7 +12,6 @@
 		android:orientation="horizontal">
 
 		<LinearLayout
-			android:id="@+id/vs_save_edit_2"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:baselineAligned="false"
@@ -47,7 +46,7 @@
 				android:layout_margin="1dp"
 				android:layout_weight="1"
 				android:gravity="center">
-				
+
 				<Button
 					android:id="@+id/btn_save"
 					android:layout_width="match_parent"
@@ -134,7 +133,7 @@
 				android:layout_margin="1dp"/>
 
 		</LinearLayout>
-		
+
 	</LinearLayout>
 
 	<LinearLayout
@@ -145,7 +144,7 @@
 		android:orientation="horizontal">
 
 		<TextView
-			android:id="@+id/t_tbl_c1_head_input"
+			android:id="@+id/t_tbl_c1_head_inpt"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="1dp"
@@ -153,10 +152,11 @@
 			android:background="#212121"
 			android:gravity="center_horizontal"
 			android:text="@string/input"
-			android:textAppearance="?android:attr/textAppearanceMedium"/>
+			android:paddingTop="5dp"
+			android:paddingBottom="5dp"/>
 
 		<TextView
-			android:id="@+id/t_tbl_c2_head_expect"
+			android:id="@+id/t_tbl_c2_head_expt"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="1dp"
@@ -164,7 +164,8 @@
 			android:background="#212121"
 			android:gravity="center_horizontal"
 			android:text="@string/expected"
-			android:textAppearance="?android:attr/textAppearanceMedium"/>
+			android:paddingTop="5dp"
+			android:paddingBottom="5dp"/>
 
 		<TextView
 			android:id="@+id/t_tbl_c3_head_read"
@@ -175,10 +176,11 @@
 			android:background="#212121"
 			android:gravity="center_horizontal"
 			android:text="@string/actual"
-			android:textAppearance="?android:attr/textAppearanceMedium"/>
+			android:paddingTop="5dp"
+			android:paddingBottom="5dp"/>
 
 		<TextView
-			android:id="@+id/t_tbl_c4_head_dev"
+			android:id="@+id/t_tbl_c4_head_devn"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="1dp"
@@ -186,7 +188,8 @@
 			android:background="#212121"
 			android:gravity="center_horizontal"
 			android:text="@string/dev_"
-			android:textAppearance="?android:attr/textAppearanceMedium"/>
+			android:paddingTop="5dp"
+			android:paddingBottom="5dp"/>
 
 	</LinearLayout>
 
