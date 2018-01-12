@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="wrap_content"
+	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:orientation="horizontal"
-	android:background="#FFFFFF">
+	android:background="#303030">
 
 	<TextView
-		android:layout_width="wrap_content"
+		android:layout_width="match_parent"
 		android:layout_height="fill_parent"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:text="Medium Text"
@@ -15,15 +15,17 @@
 		android:padding="5dp"
 		android:layout_margin="1dp"
 		android:background="#212121"
-		android:id="@+id/unit_label"/>
+		android:id="@+id/unit_label"
+		android:layout_weight="1"/>
 
 	<ImageButton
 		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
+		android:layout_width="match_parent"
 		android:src="@android:drawable/ic_menu_close_clear_cancel"
 		android:layout_margin="1dp"
 		android:background="#5C0500"
-		android:id="@+id/btn_delete"/>
+		android:id="@+id/btn_delete"
+		android:layout_weight="5"/>
 
 </LinearLayout>
 

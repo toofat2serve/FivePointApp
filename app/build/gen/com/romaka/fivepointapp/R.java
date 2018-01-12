@@ -137,17 +137,18 @@ public final class R {
     public static final class string {
         public static final int about=0x7f060013;
         public static final int actual=0x7f060028;
-        public static final int app_name=0x7f06002a;
+        public static final int app_name=0x7f06002b;
         public static final int calibrate=0x7f06000a;
-        public static final int calibration_progress=0x7f06002c;
+        public static final int calibration_progress=0x7f06002d;
         public static final int calibrator=0x7f06001a;
         public static final int clear=0x7f060025;
+        public static final int datalosswarning=0x7f06002a;
         public static final int dev_=0x7f060029;
         public static final int device=0x7f060019;
         public static final int edit=0x7f060023;
         public static final int equip_id=0x7f060015;
         public static final int expected=0x7f060027;
-        public static final int hello_world=0x7f06002b;
+        public static final int hello_world=0x7f06002c;
         public static final int help=0x7f060002;
         public static final int input=0x7f060026;
         public static final int linear_=0x7f060020;

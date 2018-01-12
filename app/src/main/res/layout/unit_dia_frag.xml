@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="wrap_content"
+	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:orientation="vertical"
-	android:background="#FFFFFF">
+	android:background="#303030"
+	android:gravity="center">
 
 	<Button
 		android:layout_height="40dp"
@@ -14,22 +15,30 @@
 		android:layout_alignParentTop="true"
 		android:layout_alignParentLeft="true"
 		android:layout_margin="1dp"
-		android:background="#004A12"/>
+		android:background="#004A12"
+		android:onClick="addUnit"/>
 
 	<EditText
 		android:layout_height="wrap_content"
-		android:layout_width="100dp"
+		android:layout_width="match_parent"
 		android:ems="10"
 		android:layout_toRightOf="@id/btn_add_unit"
 		android:layout_alignParentTop="true"
 		android:layout_alignBottom="@id/btn_add_unit"
 		android:id="@+id/e_add_unit"
 		android:layout_margin="1dp"
-		android:background="#303030"/>
+		android:background="#FFFFFF"
+		android:lines="1"
+		android:maxLines="1"
+		android:textColor="#000000"
+		android:textStyle="bold"
+		android:gravity="center"
+		android:inputType="text"
+		android:imeOptions="actionDone"/>
 
 	<ListView
 		android:layout_height="wrap_content"
-		android:layout_width="fill_parent"
+		android:layout_width="match_parent"
 		android:layout_below="@+id/btn_add_unit"
 		android:layout_alignRight="@+id/e_add_unit"
 		android:id="@+id/lv_unit_edit"

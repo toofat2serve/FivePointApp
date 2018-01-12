@@ -10,8 +10,12 @@ import android.widget.*;
 import android.view.inputmethod.*;
 import java.io.*;
 import android.media.*;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.*;
 
-public class CalActivity extends Activity {
+public class CalActivity extends FragmentActivity 
+implements DataLossDialogFragment.DataLossDialogListener
+{
    public EditText e_label;
    public Button btn_prev, btn_next, btn_edit, btn_save;
    public ProgressBar pb_calibration;
@@ -50,26 +54,40 @@ public class CalActivity extends Activity {
 	  CLEAR_TEXT_ON_TOUCH = intentExtras.getBooleanExtra("CLEAR", true);
 	  DONE_FLAG = false;
 	  device = extractCalData(jsonString);
-	  
+
 	  cr = new CalRecord(device.EquipID);
 	  cr.createTestData(0, device);
 	  LABEL = cr.CalData.get(0).Name;
 	  e_label.setText(LABEL);
 	  p_n_btns(null);
 	  PAGED = false;
-	  
+
 	  t_inpt.append("(" + device.DUnits + ")");
 	  t_expt.append("(" + device.CUnits + ")");
-	  t_read.append("(" + device.CUnits + ")");
-	  
-	  }
-	  
+	  t_read.append("(" + device.CUnits + ")");  
+   }
+  
+   @Override
+   public void onBackPressed()
+   { 
+	  showDataLossDialog();
+   }
+   
+   public void clickEdit(View view)
+   {
+	  showDataLossDialog();
+   } 
+   
    public class CalDataSetViewAdapter extends BaseAdapter {
       ArrayList<DataRow> data;  
-	  CalDataSetViewAdapter(ArrayList<DataRow> al) {data = al;} 
-	  @Override public int getCount(){return data.size();}
-	  @Override public Object getItem(int position){return data.get(position);}
-      @Override public long getItemId(int position){return position;}
+	  CalDataSetViewAdapter(ArrayList<DataRow> al)
+	  {data = al;} 
+	  @Override public int getCount()
+	  {return data.size();}
+	  @Override public Object getItem(int position)
+	  {return data.get(position);}
+      @Override public long getItemId(int position)
+	  {return position;}
       @Override public View getView(final int position, View convertView, final ViewGroup container)
 	  {
 		 LayoutInflater _inflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -130,7 +148,7 @@ public class CalActivity extends Activity {
 			});
 		 return convertView;
 	  }
-	  
+
 	  private void data_event(View view, ViewGroup vg, int position, Boolean focusChange, Boolean hasFocus, Boolean imeEvent, Boolean imeNext, Boolean imeDone)
 	  {
 		 if (!(data.isEmpty()) && !(PAGED)) {	
@@ -174,36 +192,36 @@ public class CalActivity extends Activity {
 		 }
 	  }
    }
-	  
+
    public void clickSave(View view)
    {
-	/*  try {
-		 //cr.Notes = e_notes.getText().toString();
-		 String state = Environment.getExternalStorageState();
-		 if (Environment.MEDIA_MOUNTED.equals(state)) {
-			Context context = getApplicationContext();
-			File file = new File(context.getExternalFilesDir(null), cr.makeFileName());
-			FileOutputStream fileOutput = new FileOutputStream(file);
-			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutput);
-			outputStreamWriter.write(cr.makeJson());
-			outputStreamWriter.flush();
-			fileOutput.getFD().sync();
-			outputStreamWriter.close();			
-			MediaScannerConnection.scanFile(this, new String[]{file.getAbsolutePath()}, null, null);		
-		 }
-		 else {
-			////Log.i("ME", "Media Not Mounted");
-		 }
-	  }
-	  catch (Exception e) {
-		 ////Log.i("ME", "Why? ", e);
-	  } */
-	//  Gson gson = new Gson();
-	//  String json = gson.toJson(cr, CalRecord.class);
-	//  Log.i("ME",json);
-	  
+	  /*  try {
+	   //cr.Notes = e_notes.getText().toString();
+	   String state = Environment.getExternalStorageState();
+	   if (Environment.MEDIA_MOUNTED.equals(state)) {
+	   Context context = getApplicationContext();
+	   File file = new File(context.getExternalFilesDir(null), cr.makeFileName());
+	   FileOutputStream fileOutput = new FileOutputStream(file);
+	   OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutput);
+	   outputStreamWriter.write(cr.makeJson());
+	   outputStreamWriter.flush();
+	   fileOutput.getFD().sync();
+	   outputStreamWriter.close();			
+	   MediaScannerConnection.scanFile(this, new String[]{file.getAbsolutePath()}, null, null);		
+	   }
+	   else {
+	   ////Log.i("ME", "Media Not Mounted");
+	   }
+	   }
+	   catch (Exception e) {
+	   ////Log.i("ME", "Why? ", e);
+	   } */
+	  //  Gson gson = new Gson();
+	  //  String json = gson.toJson(cr, CalRecord.class);
+	  //  Log.i("ME",json);
+
    }
-	  
+
    public String str(Double d)
    {
 	  return String.format("%." +  String.valueOf(DATA_RESOLUTION) + "f", d);
@@ -213,32 +231,28 @@ public class CalActivity extends Activity {
    {
 	  return String.valueOf(i);
    }
-	  
-	  private Instrument extractCalData(String json)
+
+   private Instrument extractCalData(String json)
    {
 	  Gson gson = new Gson();
 	  return gson.fromJson(json, Instrument.class);
    }
 
-   public void clickEdit(View view)
-   {
-	  //TODO: popup warning that cal daya will be cleared ok/cancel
-	  cr.CalData.clear();
-	  finish();
-   }
+   
 
-   private void refreshAdapter() {
-	  
-	  
+   private void refreshAdapter()
+   {
+
+
 	  AL = cr.CalData.get(IDX).Data;
 	  LABEL = cr.CalData.get(IDX).Name;
 	  e_label.setText(LABEL);
       adapter = new CalDataSetViewAdapter(AL);
-	 
+
 	  lv_dataset.setAdapter(adapter);
 	  PAGED = false;
-	  }
-   
+   }
+
    public void p_n_btns(View view)
    {
 	  cr.CalData.get(IDX).Name = e_label.getText().toString();
@@ -248,7 +262,7 @@ public class CalActivity extends Activity {
 			   IDX ++;	   
 			   cr.newDataSet("NAME" + String.valueOf(IDX), IDX);
 			   cr.createTestData(IDX, device);
-			   
+
 			}
 			else {
 			   IDX ++;
@@ -275,4 +289,22 @@ public class CalActivity extends Activity {
 	  }
 	  refreshAdapter();
    }
+   
+   public void showDataLossDialog() {
+	  // Create an instance of the dialog fragment and show it
+	  DialogFragment dialog = new DataLossDialogFragment();
+	  dialog.show(getSupportFragmentManager(), "DataLossDialogFragment");
+   }
+
+   @Override
+   public void onDialogPositiveClick(DialogFragment dialog) {
+	  cr.CalData.clear();
+	  finish();
+   }
+   @Override
+   public void onDialogNegativeClick(DialogFragment dialog) {
+	  
+	 
+   }
+   
 }

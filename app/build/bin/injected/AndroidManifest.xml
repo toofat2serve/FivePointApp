@@ -48,15 +48,15 @@
 		</activity>
 
 		<activity
-			android:name="com.romaka.fivepointapp.HelpActivity"
-			android:label="Help">
+			android:name="com.romaka.fivepointapp.UnitEditActivity"
+			android:label="Unit Editor"
+			android:theme="@android:style/Theme.Holo.Dialog">
 
 		</activity>
 
 		<activity
-			android:name="com.romaka.fivepointapp.UnitEditActivity"
-			android:label="Unit Editor"
-			android:theme="@android:style/Theme.Holo.Dialog">
+			android:name="com.romaka.fivepointapp.HelpActivity"
+			android:label="Help">
 
 		</activity>
 

@@ -1,39 +1,27 @@
 package com.romaka.fivepointapp;
-//DONE: FIX progressbar/save behavior (cause: changing to multi sets)
-//DONE: CNG CalRecord CalData to ArrayList
-//DONE: ADD as found/as left functionality
-//      L__ morphed to make multiple sets with custom titles
-//DONE: CNG move calibration to new activity, rather than peekaboo
-//DONE: FIX save default
-//DONE: ADD units to table header
+//SCRP: CHG units array to resource xml
+//DONE: ADD popup warning for edit button
+//UNDO: RMV Room stuff
 
-//TODO: ADD file browser / import
-//TODO: ADD other formats (CSV, HTML, PDF, ...)
+//AIDE: =================================
+//TODO: ADD ABOUT Acvivity
+//TODO: ADD comment/notes feature
+//TODO: ADD content to help activity
+//TODO: ADD unit list editing for user
+//TODO: ADD dev column flip to absolute dev (abs(read/expected*100))
 
+//ANST:=================================
 //TODO: ADD database storage
 //      L✓_ fix code to separate device from cal record
 //      L__ chug away at integrating this
-
-//TODO: ADD popup warning for efit button
-
-//TODO: ADD db retrieval
 //TODO: ADD text field auto-complete from db history
-
-//TODO: ADD ABOUT Acvivity
-
-//TODO: ADD comment/notes feature
-
-//TODO: ADD content to help avtivity
-
-//TODO: CHG units array to resource xml
-//TOFO: ADD unit list editing for user
-
 //TODO: FIX save data function. work on at home.
-
 //TODO: FIX main layout: reduce reliance on layered layouts
-//TODO: FIX changing resolution should take immediate effect
 //TODO: FIX assess public objects for privitization
 
+//UNKN: =================================
+//TODO: ADD file browser / import
+//TODO: ADD other formats (CSV, HTML, PDF, ...)
 
 import android.app.*;
 import android.content.*;
@@ -48,7 +36,7 @@ import android.view.inputmethod.*;
 import android.widget.*;
 import java.io.*;
 import java.util.*;
-import android.arch.*;
+
 import static android.os.Environment.DIRECTORY_DOCUMENTS;
 import static android.os.Environment.getExternalStoragePublicDirectory;
 import com.google.gson.*;
@@ -74,15 +62,17 @@ public class MainActivity extends Activity {
    public Spinner spin_dunit;
    public Spinner spin_cunit;
    public LinearLayout ll;
-   public String[] units_values;
+   public ArrayList<String> units_values;
    public ArrayList<EditText> mandos;
    public Instrument device;
+   public SharedPreferences dsp;
+   public Map<String,?> dspMap;
    public static final String DFLT_DEVICE = "dd";
    public Boolean CLEAR_TEXT_ON_TOUCH;
    public Integer DATA_RESOLUTION;
    public Boolean DONE_FLAG;
    public Boolean RETURN_FROM_SETTINGS;
-   
+   public Boolean FIRST_RUN;
    @Override
    protected void onCreate(Bundle savedInstanceState)
    {
@@ -115,21 +105,16 @@ public class MainActivity extends Activity {
 	  mandos.add(e_curv);
 	  mandos.add(e_steps);
 	  DONE_FLAG = false;
+	  
 	  //startRoomDB();
 	  device  = new Instrument();
+	  refreshSP();
+	  loadDefaultDevice();
 	  checkSharedPreferences(); 
-	  spin_dunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
-	  spin_cunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
-	  spin_dunit.setSelection(0);
-	  spin_cunit.setSelection(3);
-	  ////Log.i("ME", "...Initialized.");
-	      
 	  
+	  ////Log.i("ME", "...Initialized.");
 	  GsonBuilder builder = new GsonBuilder();
 	  builder.registerTypeAdapter(CalRecord.class, new CalRecordAdapter().nullSafe());
-	  // if PointAdapter didn't check for nulls in its read/write methods, you should instead use
-	  // builder.registerTypeAdapter(Point.class, new PointAdapter().nullSafe());
-	 
 	  Gson gson = builder.create();
 	  
 	  spin_dunit.setOnLongClickListener(new View.OnLongClickListener() {
@@ -154,9 +139,19 @@ public class MainActivity extends Activity {
    
    public void spinLongClick(View view) {
 	  Intent intent = new Intent();
-	  intent.setClassName(this, "com.romaka.fivepointapp.UnitEditActivity");
+	  intent.setClassName(getApplicationContext(), "com.romaka.fivepointapp.UnitEditActivity");
+	  intent.putExtra("units", units_values.toArray(new String[units_values.size()]));
+	 // Log.i("ME",units_values.toString());
 	  startActivity(intent);
    }
+
+   @Override
+   protected void onPause()
+   {
+	  checkSharedPreferences();
+	  super.onPause();
+   }
+   
    
    
    @Override
@@ -172,6 +167,11 @@ public class MainActivity extends Activity {
 	  checkSharedPreferences();
 	  super.onResume();
    }
+   
+   public void refreshSP() {
+	  dsp = PreferenceManager.getDefaultSharedPreferences(this);
+	  dspMap = dsp.getAll();
+   }
 
    
    
@@ -185,31 +185,45 @@ public class MainActivity extends Activity {
    }
 
    public void firstTimeOnly(SharedPreferences sp) {
-	  units_values = getResources().getStringArray(R.array.unit_values);
+	  String[] strArr = getResources().getStringArray(R.array.unit_values);
+	  units_values = new ArrayList<String>(strArr.length);
+	  Collections.addAll(units_values, strArr);
       SharedPreferences.Editor spe = sp.edit();
-	  Set<String> uvset = new HashSet<String>(Arrays.asList(units_values));
-	  spe.putStringSet("unit_values", uvset);
+	  Set<String> uvset = new HashSet<String>(units_values);
+	  spe.putStringSet("units", uvset);
+	  spe.putBoolean("first_time",false);
+	  spe.commit();
    }
    
-   public void checkSharedPreferences()
-   {
-	  SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
-	  Map<String,?> dspMap = dsp.getAll();
-	  if (!((Boolean) dspMap.containsKey("first_time"))) {
-		 firstTimeOnly(dsp);
-	  }
-	  else {
-		 Set<String> uvset = (Set<String>) dspMap.get("unit_values");
-		 units_values = uvset.toArray(new String[uvset.size()]);
-	  }
+   public void loadDefaultDevice() {
 	  if (dspMap.containsKey("pref_preload")) {
 		 Boolean loadDefaultDevice = (Boolean) dspMap.get("pref_preload");
 		 if (loadDefaultDevice) {
 			resetForm();
 		 }
 	  }
+   }
+   
+   public void checkSharedPreferences()
+   {
+	  refreshSP();
+	 if (((Boolean) dspMap.get("first_time"))) {
+		//Log.i("Me", "First time...");
+		 firstTimeOnly(dsp); 
+	 }
+	 else {
+		
+		 //Log.i("ME","Not first time...");
+		 Set<String> uvset = (Set<String>) dspMap.get("unit_values");
+	     units_values = new ArrayList<String>(uvset.size());
+		 Collections.addAll(units_values, uvset.toArray(new String[uvset.size()]));
+		 //Log.i("ME","units_values " + units_values.toString());
+		}
 	  CLEAR_TEXT_ON_TOUCH = (Boolean) dspMap.get("pref_clear_read");
 	  DATA_RESOLUTION = (String) dspMap.get("pref_resolution") == null ? 3 : Integer.parseInt((String) dspMap.get("pref_resolution"));
+	  spin_dunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
+	  spin_cunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
+	  
    }
 
    public String str(Double d)
