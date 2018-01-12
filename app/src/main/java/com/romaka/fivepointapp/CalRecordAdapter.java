@@ -10,18 +10,18 @@ public class CalRecordAdapter extends TypeAdapter<CalRecord> {
    @Override
    public CalRecord read(JsonReader p1) throws IOException
    {
-	  // TODO: Implement this method
-	  return null;
+
+	   return null;
    }
 
 
    @Override
    public void write(JsonWriter jw, CalRecord cr) throws IOException
    {
-	  // TODO: Break CalRecord into smaller pieces
-	  jw.beginObject();
-	     jw.name("date").value(cr.date.toString());
-	    /* Instrument dvc = cr.Device;
+
+	   jw.beginObject();
+	   jw.name("date").value(cr.date.toString());
+		/* Instrument dvc = cr.Device;
 	     jw.beginObject();
 	        jw.name("ID").value(dvc.ID);
 	        jw.name("Serial").value(dvc.Serial);

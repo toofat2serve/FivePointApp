@@ -1,14 +1,12 @@
 package com.romaka.fivepointapp;
-//SCRP: CHG units array to resource xml
-//DONE: ADD popup warning for edit button
-//UNDO: RMV Room stuff
+//DONE: ADD unit list editing for user
+//DONE: ADD ABOUT Activity
 
 //AIDE: =================================
-//TODO: ADD ABOUT Acvivity
 //TODO: ADD comment/notes feature
 //TODO: ADD content to help activity
-//TODO: ADD unit list editing for user
 //TODO: ADD dev column flip to absolute dev (abs(read/expected*100))
+//TODO: FIX contact email should have an auto filled subject line
 
 //ANST:=================================
 //TODO: ADD database storage
@@ -78,26 +76,26 @@ public class MainActivity extends Activity {
    {
 	  //Log.i("ME", "Initializing...");
 	  super.onCreate(savedInstanceState);
-	  setContentView(R.layout.main);        
-	  e_id = (EditText) findViewById(R.id.e_id);
-	  e_serial = (EditText) findViewById(R.id.e_serial);
-	  e_make = (EditText) findViewById(R.id.e_make);
-	  e_model = (EditText) findViewById(R.id.e_model);
-	  e_dlrv = (EditText) findViewById(R.id.e_dlrv);
-	  e_durv = (EditText) findViewById(R.id.e_durv);
-	  e_clrv = (EditText) findViewById(R.id.e_clrv);
-	  e_curv = (EditText) findViewById(R.id.e_curv);
-	  e_steps = (EditText) findViewById(R.id.e_steps);
+	   setContentView(R.layout.main);
+	   e_id = findViewById(R.id.e_id);
+	   e_serial = findViewById(R.id.e_serial);
+	   e_make = findViewById(R.id.e_make);
+	   e_model = findViewById(R.id.e_model);
+	   e_dlrv = findViewById(R.id.e_dlrv);
+	   e_durv = findViewById(R.id.e_durv);
+	   e_clrv = findViewById(R.id.e_clrv);
+	   e_curv = findViewById(R.id.e_curv);
+	   e_steps = findViewById(R.id.e_steps);
 	  //e_notes = (EditText) findViewById(R.id.e_notes);
-	  rg_linsq = (RadioGroup) findViewById(R.id.rg_linsq);
-	  btn_save = (Button) findViewById(R.id.btn_save);
-	  btn_reset = (Button) findViewById(R.id.btn_reset);
-	  btn_clr = (Button) findViewById(R.id.btn_clr);
-	  spin_dunit = (Spinner) findViewById(R.id.spin_dunit);
-	  spin_cunit = (Spinner) findViewById(R.id.spin_cunit);
-	  rb_lin = (RadioButton) findViewById(R.id.rb_lin);
-	  rb_squ = (RadioButton) findViewById(R.id.rb_squ);
-	  ll = (LinearLayout) findViewById(R.id.lh_row_1);
+	   rg_linsq = findViewById(R.id.rg_linsq);
+	   btn_save = findViewById(R.id.btn_save);
+	   btn_reset = findViewById(R.id.btn_reset);
+	   btn_clr = findViewById(R.id.btn_clr);
+	   spin_dunit = findViewById(R.id.spin_dunit);
+	   spin_cunit = findViewById(R.id.spin_cunit);
+	   rb_lin = findViewById(R.id.rb_lin);
+	   rb_squ = findViewById(R.id.rb_squ);
+	   ll = findViewById(R.id.lh_row_1);
 	  mandos = new ArrayList<EditText>();
 	  mandos.add(e_dlrv);
 	  mandos.add(e_durv);
@@ -105,6 +103,7 @@ public class MainActivity extends Activity {
 	  mandos.add(e_curv);
 	  mandos.add(e_steps);
 	  DONE_FLAG = false;
+	   FIRST_RUN = true;
 	  
 	  //startRoomDB();
 	  device  = new Instrument();
@@ -193,6 +192,7 @@ public class MainActivity extends Activity {
 	  spe.putStringSet("units", uvset);
 	  spe.putBoolean("first_time",false);
 	  spe.commit();
+	   FIRST_RUN = false;
    }
    
    public void loadDefaultDevice() {
@@ -207,20 +207,17 @@ public class MainActivity extends Activity {
    public void checkSharedPreferences()
    {
 	  refreshSP();
-	 if (((Boolean) dspMap.get("first_time"))) {
-		//Log.i("Me", "First time...");
+	   if (!dspMap.containsKey("first_time")) {
 		 firstTimeOnly(dsp); 
 	 }
 	 else {
-		
-		 //Log.i("ME","Not first time...");
-		 Set<String> uvset = (Set<String>) dspMap.get("unit_values");
-	     units_values = new ArrayList<String>(uvset.size());
+		   Set<String> uvset = (Set<String>) dspMap.get("units");
+		   units_values = new ArrayList<String>(uvset.size());
 		 Collections.addAll(units_values, uvset.toArray(new String[uvset.size()]));
-		 //Log.i("ME","units_values " + units_values.toString());
 		}
+	   refreshSP();
 	  CLEAR_TEXT_ON_TOUCH = (Boolean) dspMap.get("pref_clear_read");
-	  DATA_RESOLUTION = (String) dspMap.get("pref_resolution") == null ? 3 : Integer.parseInt((String) dspMap.get("pref_resolution"));
+	   DATA_RESOLUTION = dspMap.get("pref_resolution") == null ? 3 : Integer.parseInt((String) dspMap.get("pref_resolution"));
 	  spin_dunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
 	  spin_cunit.setAdapter(new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_dropdown_item, units_values));
 	  
@@ -257,8 +254,8 @@ public class MainActivity extends Activity {
 		 case R.id.help:
 			clickHelp();
 			return true;
-		 case R.id.about:
-			clickAbout();
+		  case R.id.contact:
+			  clickContact();
 			return true;
 		 default:
 			return super.onOptionsItemSelected(item);
@@ -304,9 +301,12 @@ public class MainActivity extends Activity {
       startActivity(intent);
    }
 
-   public void clickAbout()
+	public void clickContact()
    {
-
+	   Intent intent = new Intent();
+	   intent.setClassName(this, "com.romaka.fivepointapp.Contact" +
+			   "");
+	   startActivity(intent);
    }
 
    public void resetForm()
@@ -394,7 +394,7 @@ public class MainActivity extends Activity {
 			e.setBackgroundColor(Color.RED);
 		 }
 		 else {
-			e.setBackgroundColor(android.R.color.transparent);
+			 e.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 		 }
 		 gonogo = (e.getText().length() == 0) ? false : gonogo;
 	  }
@@ -431,7 +431,7 @@ public class MainActivity extends Activity {
 		 View view = group.getChildAt(i);
 		 if (view instanceof EditText) {
 			((EditText) view).setText("");
-			view.setBackgroundColor(android.R.color.transparent);
+			 view.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 		 }
 		 if (view instanceof ViewGroup && (((ViewGroup) view).getChildCount() > 0)) {
 			ClearForm((ViewGroup) view);

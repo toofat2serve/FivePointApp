@@ -1,9 +1,13 @@
 package com.romaka.fivepointapp;
-import android.preference.*;
-import android.os.*;
-import android.content.*;
-import android.util.*;
-import java.util.*;
+
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+
+import java.util.Map;
+
 
 public class SettingsFragment extends PreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener
 {
@@ -12,8 +16,8 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-	   SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
-	   Map<String,?> spMap =  sp.getAll();
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
+		Map<String, ?> spMap = sp.getAll();
 	   
 
         // Load the preferences from an XML resource

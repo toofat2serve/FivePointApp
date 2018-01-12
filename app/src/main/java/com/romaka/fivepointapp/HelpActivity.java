@@ -29,8 +29,8 @@ public class HelpActivity extends Activity {
 		 al.add(ial);	 
 	  }
 	  //Log.i("ME", "al: " + al.toString());
-	  lv_help = (ListView) findViewById(R.id.help_lv);
-      lv_help.setAdapter(new HelpViewAdapter(al));
+	   lv_help = findViewById(R.id.help_lv);
+	   lv_help.setAdapter(new HelpViewAdapter(al));
    }
    
    public class HelpViewAdapter extends BaseAdapter {
@@ -61,9 +61,9 @@ public class HelpActivity extends Activity {
 			cV = _inflater.inflate(R.layout.helpitem, null);
 		 }
 		 ArrayList pal = (ArrayList) data.get(position);
-		 TextView title = (TextView) cV.findViewById(R.id.help_item_title);
-		 TextView text = (TextView) cV.findViewById(R.id.help_item_text);
-		 ImageView img = (ImageView) cV.findViewById(R.id.help_item_image);
+		  TextView title = cV.findViewById(R.id.help_item_title);
+		  TextView text = cV.findViewById(R.id.help_item_text);
+		  ImageView img = cV.findViewById(R.id.help_item_image);
 
 		 title.setTag(title.getTag().toString() + String.valueOf(position));
 		 title.setText((String) pal.get(0));
@@ -71,7 +71,7 @@ public class HelpActivity extends Activity {
 		 text.setTag(text.getTag().toString() + String.valueOf(position));
 		 text.setText((String) pal.get(1));
 
-		 Drawable image = getDrawable(pal.get(2));
+		  Drawable image = getDrawable((Integer) pal.get(2));
 		 img.setTag(img.getTag().toString() + String.valueOf(position));
 		 img.setImageDrawable(image);
 

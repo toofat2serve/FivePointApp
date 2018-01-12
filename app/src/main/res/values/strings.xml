@@ -53,10 +53,11 @@
     <string name="expected">Expected</string>
     <string name="actual">Actual</string>
     <string name="dev_">Dev %</string>
-	<string name="datalosswarning">If you leave thus page, you will lose all calibration data.\nDo you want to leave?</string>
+    <string name="datalosswarning">If you leave thus page, you will lose all calibration data.\nDo you want to leave?</string>
 
     <string name="app_name">FivePointApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="calibration_progress">Calibration Progress</string>
+    <string name="title_activity_about">About</string>
 
 </resources>

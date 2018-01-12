@@ -64,7 +64,6 @@ public class Instrument {
    @Override
    public String toString()
    {
-	  // TODO: Implement this method
 	  String str;
 	  String div;
 
