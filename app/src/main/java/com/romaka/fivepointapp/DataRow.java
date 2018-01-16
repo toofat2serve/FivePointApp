@@ -1,8 +1,7 @@
 package com.romaka.fivepointapp;
 
 
-
-public class DataRow {
+class DataRow {
    int Step;
    Double Input;
    Double Expected;

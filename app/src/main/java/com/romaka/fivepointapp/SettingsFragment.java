@@ -25,9 +25,9 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
 	   updateResSummary(sp, spMap);
 		
       }
-	 
-	  public void updateResSummary(SharedPreferences sp, Map<String,?> spMap) {
-		 Preference pref = findPreference("pref_resolution");
+
+    private void updateResSummary(SharedPreferences sp, Map<String, ?> spMap) {
+        Preference pref = findPreference("pref_resolution");
 		 String str = "Number of significant digits for data fields.\nMax:5\tCurrently: ";
 		 String strRes = (String) spMap.get("pref_resolution");
 		 str += strRes;

@@ -1,71 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
-	android:orientation="horizontal"
 	android:layout_gravity="top"
-	android:background="#FFFFFF">
+    tools:layout_editor_absoluteY="81dp">
 
-		<TextView
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:text="Input"
-			android:id="@+id/t_c1_input"
-			android:gravity="center_horizontal|center_vertical"
-			android:singleLine="true"
-			android:layout_weight="1"
-			android:background="#303030"
-			android:layout_margin="1dp"
-			android:padding="5dp"/>
+    <TextView
+        android:id="@+id/t_c1_input"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:background="@android:drawable/editbox_dropdown_dark_frame"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:text="@string/input"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/t_c2_exp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-		<TextView
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:text="Expected"
-			android:id="@+id/t_c2_exp"
-			android:gravity="center_horizontal|center_vertical"
-			android:singleLine="true"
-			android:layout_weight="1"
-			android:background="#303030"
-			android:layout_margin="1dp"
-			android:padding="5dp"/>
+    <TextView
+        android:id="@+id/t_c2_exp"
+        android:layout_width="101dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:background="@android:drawable/editbox_dropdown_dark_frame"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:text="@string/expected"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/e_c3_read"
+        app:layout_constraintStart_toEndOf="@+id/t_c1_input"
+        app:layout_constraintTop_toTopOf="parent" />
 
-	
-		<EditText
-			android:id="@+id/e_c3_read"
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:imeOptions="actionNext"
-			android:inputType="numberDecimal|numberSigned"
-			android:maxLines="1"
-			android:textAlignment="center"
-			android:gravity="center_horizontal"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:textColor="#FFFFFF"
-			android:textColorHint="#9EE3FF"
-			android:layout_weight="1"
-			android:background="#303030"
-			android:layout_margin="1dp"
-			android:padding="5dp"/>
 
-	
-		<TextView
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:textAppearance="?android:attr/textAppearanceMedium"
-			android:text="Dev"
-			android:id="@+id/t_c4_dev"
-			android:gravity="center_horizontal|center_vertical"
-			android:singleLine="true"
-			android:layout_weight="1"
-			android:background="#303030"
-			android:layout_margin="1dp"
-			android:padding="5dp"/>
+    <EditText
+        android:id="@+id/e_c3_read"
+        android:layout_width="102dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/bg"
+        android:gravity="center_horizontal"
+        android:imeOptions="actionNext"
+        android:inputType="numberDecimal|numberSigned"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#9EE3FF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/t_c4_dev"
+        app:layout_constraintStart_toEndOf="@+id/t_c2_exp"
+        app:layout_constraintTop_toTopOf="parent" />
 
-	
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/t_c4_dev"
+        android:layout_width="103dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:background="@android:drawable/editbox_dropdown_dark_frame"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:text="@string/dev"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/e_c3_read"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
 

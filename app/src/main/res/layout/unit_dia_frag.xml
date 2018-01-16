@@ -10,7 +10,7 @@
 	<Button
 		android:layout_height="40dp"
 		android:layout_width="40dp"
-		android:text="+"
+        android:text="@string/plus"
 		android:id="@+id/btn_add_unit"
 		android:layout_alignParentTop="true"
 		android:layout_alignParentLeft="true"

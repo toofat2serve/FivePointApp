@@ -15,10 +15,6 @@
     <string name="pref_cat_interface_title">Interface</string>
 
     <string name="calibrate">Calibrate</string>
-    <string name="save_data_set">Save Data Set</string>
-    <string name="notes">Notes:</string>
-
-    <string name="pref_paste_title">Paste Device JSON String</string>
 
     <string name="pref_email_title">Email</string>
     <string name="pref_email_summary">Default email address to send calibration results to</string>
@@ -27,8 +23,6 @@
     <string name="pref_preload_summary">Load your default device configuration on app startup.</string>
 
     <string name="share_result">Share Result</string>
-
-    <string name="about">About</string>
 
     <string name="settings">Settings</string>
 
@@ -45,19 +39,34 @@
     <string name="linearity">Linearity</string>
     <string name="linear_">Linear (/)</string>
     <string name="square_">Square (√)</string>
-    <string name="save">Save</string>
     <string name="edit">Edit</string>
     <string name="reset">Reset</string>
     <string name="clear">Clear</string>
-    <string name="input">Input</string>
-    <string name="expected">Expected</string>
     <string name="actual">Actual</string>
     <string name="dev_">Dev %</string>
-    <string name="datalosswarning">If you leave thus page, you will lose all calibration data.\nDo you want to leave?</string>
+    <string name="datalosswarning">If you leave this page, you will lose all calibration data.\nDo you want to leave?</string>
 
     <string name="app_name">FivePointApp</string>
-    <string name="hello_world">Hello world!</string>
     <string name="calibration_progress">Calibration Progress</string>
-    <string name="title_activity_about">About</string>
+    <string name="contact">Contact</string>
+
+    <string name="no_devices">No devices saved in the database.</string>
+    <string name="saved_pt1">Saved device\u0020</string>
+    <string name="saved_pt2">\u0020to the database.</string>
+    <string name="new_default">New Default Device Saved:\n</string>
+
+    <string name="george_romaka_gmail_com">george.romaka@gmail.com</string>
+    <string name="facebook">FaceBook</string>
+    <string name="https_www_facebook_com_george_romaka">https://www.facebook.com/george.romaka</string>
+    <string name="e_mail">E-mail</string>
+    <string name="https_twitter_com_toofat2serve">https://twitter.com/toofat2serve</string>
+    <string name="twitter">Twitter</string>
+    <string name="save_data">Save Data</string>
+    <string name="larrow">←</string>
+    <string name="rarrow">→</string>
+    <string name="input">Input</string>
+    <string name="expected">Expected</string>
+    <string name="dev">Dev</string>
+    <string name="plus">+</string>
 
 </resources>

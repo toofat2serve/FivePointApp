@@ -16,39 +16,39 @@ import android.support.v4.app.*;
 public class CalActivity extends FragmentActivity 
 implements DataLossDialogFragment.DataLossDialogListener
 {
-   public EditText e_label;
-   public Button btn_prev, btn_next, btn_edit, btn_save;
-   public ProgressBar pb_calibration;
-   public int IDX = 0;
-   public int SIZ = 1;
-   public int DATA_RESOLUTION;
-   public Boolean CLEAR_TEXT_ON_TOUCH, DONE_FLAG;
-   public TextView t_pb_cal, t_inpt, t_expt, t_read, t_devn;
-   public ListAdapter adapter;
-   public ListView lv_dataset;
-   public ArrayList<DataRow> AL;
-   public String LABEL;
-   public Boolean PAGED;
-   public Instrument device;
-   CalRecord cr;
+    private EditText e_label;
+    private Button btn_prev;
+    private Button btn_next;
+    private Button btn_save;
+    private ProgressBar pb_calibration;
+    private int IDX = 0;
+    private int SIZ = 1;
+    private int DATA_RESOLUTION;
+    private Boolean CLEAR_TEXT_ON_TOUCH, DONE_FLAG;
+    private TextView t_pb_cal;
+    private ListView lv_dataset;
+    private String LABEL;
+    private Boolean PAGED;
+    private Instrument device;
+    private CalRecord cr;
    @Override
    protected void onCreate(Bundle savedInstanceState)
    {
 	  super.onCreate(savedInstanceState);
 	  setContentView(R.layout.cal);
-	  e_label = (EditText) findViewById(R.id.e_label);
-	  btn_edit = (Button) findViewById(R.id.btn_edit);
-	  btn_prev = (Button) findViewById(R.id.btn_prev);
-	  btn_next = (Button) findViewById(R.id.btn_next);
-	  btn_save = (Button) findViewById(R.id.btn_save);
-	  t_inpt = (TextView) findViewById(R.id.t_tbl_c1_head_inpt);
-	  t_expt = (TextView) findViewById(R.id.t_tbl_c2_head_expt);
-	  t_read = (TextView) findViewById(R.id.t_tbl_c3_head_read);
-	  t_devn = (TextView) findViewById(R.id.t_tbl_c4_head_devn);
-	  pb_calibration = (ProgressBar) findViewById(R.id.pb_calibration);
-	  lv_dataset = (ListView) findViewById(R.id.lv_dataset);
-	  t_pb_cal = (TextView) findViewById(R.id.t_pb_cal);
-	  Intent intentExtras = getIntent();
+       e_label = findViewById(R.id.e_label);
+       Button btn_edit = findViewById(R.id.btn_edit);
+       btn_prev = findViewById(R.id.btn_prev);
+       btn_next = findViewById(R.id.btn_next);
+       btn_save = findViewById(R.id.btn_save);
+       TextView t_inpt = findViewById(R.id.t_tbl_c1_head_inpt);
+       TextView t_expt = findViewById(R.id.t_tbl_c2_head_expt);
+       TextView t_read = findViewById(R.id.t_tbl_c3_head_read);
+       TextView t_devn = findViewById(R.id.t_tbl_c4_head_devn);
+       pb_calibration = findViewById(R.id.pb_calibration);
+       lv_dataset = findViewById(R.id.lv_dataset);
+       t_pb_cal = findViewById(R.id.t_pb_cal);
+       Intent intentExtras = getIntent();
 	  String jsonString = intentExtras.getStringExtra("device");
 	  DATA_RESOLUTION = intentExtras.getIntExtra("resolution", 3);
 	  CLEAR_TEXT_ON_TOUCH = intentExtras.getBooleanExtra("CLEAR", true);
@@ -79,8 +79,9 @@ implements DataLossDialogFragment.DataLossDialogListener
    } 
    
    public class CalDataSetViewAdapter extends BaseAdapter {
-      ArrayList<DataRow> data;  
-	  CalDataSetViewAdapter(ArrayList<DataRow> al)
+       final ArrayList<DataRow> data;
+
+       CalDataSetViewAdapter(ArrayList<DataRow> al)
 	  {data = al;} 
 	  @Override public int getCount()
 	  {return data.size();}
@@ -94,11 +95,11 @@ implements DataLossDialogFragment.DataLossDialogListener
 		 if (convertView == null) {
 			convertView = _inflater.inflate(R.layout.datalist, null);
 		 }
-		 TextView c1 = (TextView) convertView.findViewById(R.id.t_c1_input);
-		 TextView c2 = (TextView) convertView.findViewById(R.id.t_c2_exp);
-		 EditText c3 = (EditText) convertView.findViewById(R.id.e_c3_read);
-		 TextView c4 = (TextView) convertView.findViewById(R.id.t_c4_dev);
-		 DataRow dr = cr.CalData.get(IDX).Data.get(position);
+          TextView c1 = convertView.findViewById(R.id.t_c1_input);
+          TextView c2 = convertView.findViewById(R.id.t_c2_exp);
+          EditText c3 = convertView.findViewById(R.id.e_c3_read);
+          TextView c4 = convertView.findViewById(R.id.t_c4_dev);
+          DataRow dr = cr.CalData.get(IDX).Data.get(position);
 		 c1.setText(str(dr.Input));
 		 c2.setText(str(dr.Expected));
 		 c3.setText(dr.isNull(dr.Read) ? "" : str(dr.Read));
@@ -222,7 +223,7 @@ implements DataLossDialogFragment.DataLossDialogListener
 
    }
 
-   public String str(Double d)
+    private String str(Double d)
    {
 	  return String.format("%." +  String.valueOf(DATA_RESOLUTION) + "f", d);
    }
@@ -244,16 +245,16 @@ implements DataLossDialogFragment.DataLossDialogListener
    {
 
 
-	  AL = cr.CalData.get(IDX).Data;
-	  LABEL = cr.CalData.get(IDX).Name;
+       ArrayList<DataRow> AL = cr.CalData.get(IDX).Data;
+       LABEL = cr.CalData.get(IDX).Name;
 	  e_label.setText(LABEL);
-      adapter = new CalDataSetViewAdapter(AL);
+       ListAdapter adapter = new CalDataSetViewAdapter(AL);
 
 	  lv_dataset.setAdapter(adapter);
 	  PAGED = false;
    }
 
-   public void p_n_btns(View view)
+    private void p_n_btns(View view)
    {
 	  cr.CalData.get(IDX).Name = e_label.getText().toString();
 	  if (!(view == null)) {
@@ -289,9 +290,9 @@ implements DataLossDialogFragment.DataLossDialogListener
 	  }
 	  refreshAdapter();
    }
-   
-   public void showDataLossDialog() {
-	  // Create an instance of the dialog fragment and show it
+
+    private void showDataLossDialog() {
+        // Create an instance of the dialog fragment and show it
 	  DialogFragment dialog = new DataLossDialogFragment();
 	  dialog.show(getSupportFragmentManager(), "DataLossDialogFragment");
    }

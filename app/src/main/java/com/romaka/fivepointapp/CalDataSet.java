@@ -3,9 +3,9 @@ package com.romaka.fivepointapp;
 import java.util.*;
 
 
-public class CalDataSet {
+class CalDataSet {
    String Name;
-   ArrayList<DataRow> Data;
+    final ArrayList<DataRow> Data;
 
    public CalDataSet(String name, ArrayList<DataRow> data)
    {

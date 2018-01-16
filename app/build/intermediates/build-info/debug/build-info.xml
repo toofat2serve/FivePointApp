@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="arm64-v8a,armeabi-v7a,armeabi"
+    abi="x86"
     api-level="25"
-    build-mode="FULL"
+    build-mode="HOT_WARM"
     density="420dpi"
     format="10"
-    ir-eligibility="CLASS_ADDED"
     plugin-version="3.0.1"
-    timestamp="1515772642234"
+    timestamp="1516101270747"
     token="4414771072173668249"
-    verifier="COLD_SWAP_REQUESTED" >
+    verifier="COMPATIBLE" >
 
     <task
         name="javac"
@@ -19,56 +18,19 @@
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="216" />
+        duration="0" />
     <task
         name="verifier"
-        duration="330" />
+        duration="0" />
 
     <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
-        type="SPLIT" />
-    <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
-        type="SPLIT" />
-    <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
-        type="SPLIT" />
-    <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-        type="SPLIT" />
-    <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
-        type="SPLIT" />
-    <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
-        type="SPLIT" />
-    <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
-        type="SPLIT" />
-    <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
-        type="SPLIT" />
-    <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
-        type="SPLIT" />
-    <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
-        type="SPLIT" />
-    <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
-        type="SPLIT" />
-    <artifact
-        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\outputs\apk\debug\app-debug.apk"
-        type="SPLIT_MAIN" />
+        location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+        type="RESOURCES" />
 
     <build
         build-mode="FULL"
-        ir-eligibility="CLASS_ADDED"
-        timestamp="1515772642234"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
-            type="SPLIT" />
+        timestamp="1516100352867"
+        verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
             type="SPLIT" />
@@ -97,11 +59,22 @@
             location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
             type="SPLIT" />
         <artifact
-            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
-            type="SPLIT" />
-        <artifact
             location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\outputs\apk\debug\app-debug.apk"
             type="SPLIT_MAIN" />
+        <artifact
+            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_9.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="HOT_WARM"
+        timestamp="1516101270747"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\instant-run-resources\resources-debug.ir.ap_"
+            type="RESOURCES" />
     </build>
 
 </instant-run>

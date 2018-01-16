@@ -11,7 +11,7 @@ import java.util.*;
 
 public class HelpActivity extends Activity {
 
-   public ListView lv_help; 
+    private ListView lv_help;
    @Override
    protected void onCreate(Bundle savedInstanceState)
    {
@@ -34,8 +34,9 @@ public class HelpActivity extends Activity {
    }
    
    public class HelpViewAdapter extends BaseAdapter {
-	  private ArrayList data;
-	  public HelpViewAdapter(ArrayList<ArrayList> arr) 
+       private final ArrayList data;
+
+       public HelpViewAdapter(ArrayList<ArrayList> arr)
 	  { data = arr;
 		 //Log.i("ME", "arr: " + arr.toString());
 	  }

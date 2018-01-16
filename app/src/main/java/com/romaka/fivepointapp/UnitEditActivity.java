@@ -13,10 +13,10 @@ import android.util.*;
 import android.view.inputmethod.*;
 
 public class UnitEditActivity extends Activity {
-    ListView lv_unit_edit;
-    Button btn_add_unit;
-    EditText e_add_unit;
-    public ArrayList<String> units_values;
+    private ListView lv_unit_edit;
+    private Button btn_add_unit;
+    private EditText e_add_unit;
+    private ArrayList<String> units_values;
     Set<String> uvset;
 
     @Override
@@ -46,7 +46,7 @@ public class UnitEditActivity extends Activity {
     }
 
 
-    void setSharedPrefUnits(ArrayList<String> uv) {
+    private void setSharedPrefUnits(ArrayList<String> uv) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor spe = sp.edit();
         HashSet<String> uvSet;
@@ -60,19 +60,19 @@ public class UnitEditActivity extends Activity {
 
     }
 
-    void refreshAdapter(ArrayList<String> strs) {
+    private void refreshAdapter(ArrayList<String> strs) {
         ListAdapter adapter = new UnitAdapter(strs);
         lv_unit_edit.setAdapter(adapter);
     }
 
 
-    public void removeUnit(int index) {
+    private void removeUnit(int index) {
         units_values.remove(index);
         setSharedPrefUnits(units_values);
         refreshAdapter(units_values);
     }
 
-    public void addUnit(View view) {
+    void addUnit(View view) {
 
         String str = e_add_unit.getText().toString();
         units_values.add(str);
@@ -82,7 +82,7 @@ public class UnitEditActivity extends Activity {
     }
 
     public class UnitAdapter extends BaseAdapter {
-        ArrayList<String> arr;
+        final ArrayList<String> arr;
 
         UnitAdapter(ArrayList<String> strs) {
             arr = strs;

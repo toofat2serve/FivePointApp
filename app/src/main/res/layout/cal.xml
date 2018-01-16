@@ -1,203 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/linearLayout2"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:orientation="vertical">
+	tools:layout_editor_absoluteY="81dp">
 
-	<LinearLayout
+	<Button
+		android:id="@+id/btn_edit"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:focusable="true"
+		android:focusableInTouchMode="true"
+		android:onClick="clickEdit"
+		android:text="@string/edit" />
+
+	<TextView
+		android:id="@+id/t_pb_cal"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:gravity="center_vertical"
+		android:text="@string/calibration_progress"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		tools:layout_editor_absoluteX="285dp"
+		tools:layout_editor_absoluteY="0dp" />
+
+	<ProgressBar
+		android:id="@+id/pb_calibration"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		android:gravity="center_vertical"
+		android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+		tools:layout_editor_absoluteX="343dp"
+		tools:layout_editor_absoluteY="16dp" />
+
+	<Button
+		android:id="@+id/btn_save"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="#FFFFFF"
-		android:orientation="horizontal">
+		android:layout_weight="1"
+		android:onClick="clickSave"
+		android:text="@string/save_data"
+		android:visibility="gone" />
 
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:baselineAligned="false"
-			android:orientation="horizontal">
-
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="1dp"
-				android:layout_weight="2"
-				android:background="#303030"
-				android:orientation="horizontal">
-
-				<Button
-					android:id="@+id/btn_edit"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:onClick="clickEdit"
-					android:text="@string/edit"
-					android:focusable="true"
-					android:focusableInTouchMode="true"/>
-
-			</LinearLayout>
-
-			<LinearLayout
-				android:layout_width="match_parent"
-				android:layout_height="match_parent"
-				android:layout_gravity="center_vertical"
-				android:background="#303030"
-				android:orientation="vertical"
-				android:id="@+id/lv_progress"
-				android:layout_margin="1dp"
-				android:layout_weight="1"
-				android:gravity="center">
-
-				<Button
-					android:id="@+id/btn_save"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:onClick="clickSave"
-					android:text="Save Data"
-					android:visibility="gone"
-					android:layout_weight="1"/>
-
-				<TextView
-					android:id="@+id/t_pb_cal"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="@string/calibration_progress"
-					android:textAppearance="?android:attr/textAppearanceSmall"
-					android:layout_weight="1"
-					android:gravity="center_vertical"/>
-
-				<ProgressBar
-					android:id="@+id/pb_calibration"
-					style="?android:attr/progressBarStyleHorizontal"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:paddingLeft="10dp"
-					android:paddingRight="10dp"
-					android:layout_weight="1"
-					android:gravity="center_vertical"/>
-
-			</LinearLayout>
-
-		</LinearLayout>
-
-	</LinearLayout>
-
-	<LinearLayout
-		android:layout_width="match_parent"
+	<Button
+		android:id="@+id/btn_prev"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:background="#FFFFFF"
-		android:orientation="horizontal">
+		android:onClick="p_n_btns"
+		android:tag="prv"
+		android:text="@string/larrow"
+		tools:layout_editor_absoluteX="0dp"
+		tools:layout_editor_absoluteY="64dp" />
 
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="1dp"
-			android:background="#303030"
-			android:orientation="horizontal"
-			android:layout_weight="4.0">
+	<EditText
+		android:id="@+id/e_label"
+		android:layout_width="wrap_content"
+		android:layout_height="46dp"
+		android:layout_weight="1.0"
+		android:background="@drawable/bg"
+		android:gravity="center"
+		android:inputType="text"
+		android:maxLines="1"
+		tools:layout_editor_absoluteX="151dp"
+		tools:layout_editor_absoluteY="69dp" />
 
-			<Button
-				android:layout_height="wrap_content"
-				android:layout_width="match_parent"
-				android:onClick="p_n_btns"
-				android:text="←"
-				android:id="@+id/btn_prev"
-				android:tag="prv"
-				android:layout_margin="1dp"/>
-
-		</LinearLayout>
-
-		<EditText
-			android:layout_height="fill_parent"
-			android:layout_width="match_parent"
-			android:id="@+id/e_label"
-			android:background="#303030"
-			android:layout_margin="1dp"
-			android:layout_weight="1.0"
-			android:gravity="center"/>
-
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="1dp"
-			android:background="#303030"
-			android:orientation="horizontal"
-			android:layout_weight="4.0">
-
-			<Button
-				android:layout_height="wrap_content"
-				android:layout_width="match_parent"
-				android:onClick="p_n_btns"
-				android:text="→"
-				android:id="@+id/btn_next"
-				android:tag="nxt"
-				android:layout_margin="1dp"/>
-
-		</LinearLayout>
-
-	</LinearLayout>
-
-	<LinearLayout
-		android:id="@+id/lh_table_headers"
-		android:layout_width="match_parent"
+	<Button
+		android:id="@+id/btn_next"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:background="#FFFFFF"
-		android:orientation="horizontal">
+		android:onClick="p_n_btns"
+		android:tag="nxt"
+		android:text="@string/rarrow"
+		tools:layout_editor_absoluteX="323dp"
+		tools:layout_editor_absoluteY="60dp" />
 
-		<TextView
-			android:id="@+id/t_tbl_c1_head_inpt"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="1dp"
-			android:layout_weight="1.0"
-			android:background="#212121"
-			android:gravity="center_horizontal"
-			android:text="@string/input"
-			android:paddingTop="5dp"
-			android:paddingBottom="5dp"/>
+	<TextView
+		android:id="@+id/t_tbl_c1_head_inpt"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1.0"
+		android:background="#212121"
+		android:gravity="center_horizontal"
+		android:paddingBottom="5dp"
+		android:paddingTop="5dp"
+		android:text="@string/input"
+		app:layout_constraintEnd_toStartOf="@+id/t_tbl_c2_head_expt"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent"
+		tools:layout_editor_absoluteY="145dp" />
 
-		<TextView
-			android:id="@+id/t_tbl_c2_head_expt"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="1dp"
-			android:layout_weight="1.0"
-			android:background="#212121"
-			android:gravity="center_horizontal"
-			android:text="@string/expected"
-			android:paddingTop="5dp"
-			android:paddingBottom="5dp"/>
+	<TextView
+		android:id="@+id/t_tbl_c2_head_expt"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1.0"
+		android:background="#212121"
+		android:gravity="center_horizontal"
+		android:paddingBottom="5dp"
+		android:paddingTop="5dp"
+		android:text="@string/expected"
+		app:layout_constraintEnd_toStartOf="@+id/t_tbl_c3_head_read"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/t_tbl_c1_head_inpt"
+		tools:layout_editor_absoluteY="145dp" />
 
-		<TextView
-			android:id="@+id/t_tbl_c3_head_read"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="1dp"
-			android:layout_weight="1.0"
-			android:background="#212121"
-			android:gravity="center_horizontal"
-			android:text="@string/actual"
-			android:paddingTop="5dp"
-			android:paddingBottom="5dp"/>
+	<TextView
+		android:id="@+id/t_tbl_c3_head_read"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1.0"
+		android:background="#212121"
+		android:gravity="center_horizontal"
+		android:paddingBottom="5dp"
+		android:paddingTop="5dp"
+		android:text="@string/actual"
+		app:layout_constraintEnd_toStartOf="@+id/t_tbl_c4_head_devn"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/t_tbl_c2_head_expt"
+		tools:layout_editor_absoluteY="145dp" />
 
-		<TextView
-			android:id="@+id/t_tbl_c4_head_devn"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_margin="1dp"
-			android:layout_weight="1.0"
-			android:background="#212121"
-			android:gravity="center_horizontal"
-			android:text="@string/dev_"
-			android:paddingTop="5dp"
-			android:paddingBottom="5dp"/>
-
-	</LinearLayout>
+	<TextView
+		android:id="@+id/t_tbl_c4_head_devn"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1.0"
+		android:background="#212121"
+		android:gravity="center_horizontal"
+		android:paddingBottom="5dp"
+		android:paddingTop="5dp"
+		android:text="@string/dev_"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@+id/t_tbl_c3_head_read"
+		tools:layout_editor_absoluteY="145dp" />
 
 	<ListView
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:layout_weight="1.0"
-		android:id="@+id/lv_dataset"/>
+		android:id="@+id/lv_dataset"
+		android:layout_width="wrap_content"
+		android:layout_height="425dp"
+		tools:layout_editor_absoluteY="269dp" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
 

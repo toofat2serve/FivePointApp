@@ -34,14 +34,6 @@
 		<item>@drawable/help_4</item>
 	</integer-array>
 	<string-array
-        name="string_array_cal_keys">
-        <item>Step</item>
-		<item>Input</item>
-		<item>Expected</item>
-		<item>Read</item>
-		<item>Dev</item>
-    </string-array>
-	<string-array
 		name="unit_values">
 		<item>PSI</item>
 		<item>\"H2O</item>

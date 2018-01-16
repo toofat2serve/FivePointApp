@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 import android.util.Log;
 
-public class CalRecordAdapter extends TypeAdapter<CalRecord> {
+class CalRecordAdapter extends TypeAdapter<CalRecord> {
 
    @Override
    public CalRecord read(JsonReader p1) throws IOException

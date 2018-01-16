@@ -10,11 +10,11 @@ import com.google.gson.stream.*;
 
 
 public class CalRecord {
-   
-   String EquipID;
-   ArrayList<CalDataSet> CalData;
-   Date date;
-   String Notes;
+
+    private final String EquipID;
+    final ArrayList<CalDataSet> CalData;
+    final Date date;
+    private final String Notes;
    
    public CalRecord(String equipid, 
                     ArrayList<CalDataSet> calData, 
@@ -62,9 +62,9 @@ public class CalRecord {
    public void newDataSet(String name, int index) {
 	  CalData.add(index, new CalDataSet(name));
    }
-   
-   public ArrayList<DataRow> getSet(int index) {
-	  return CalData.get(index).Data;
+
+    private ArrayList<DataRow> getSet(int index) {
+        return CalData.get(index).Data;
    }
 
    

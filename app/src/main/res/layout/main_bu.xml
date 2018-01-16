@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainconstraint"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal"
+    tools:layout_editor_absoluteY="81dp">
+
+
+    <TextView
+
+        android:id="@+id/t_id"
+        android:layout_width="0dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:labelFor="@id/e_id"
+        android:text="@string/equip_id"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toStartOf="@+id/t_serial"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+
+        android:id="@+id/t_serial"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:labelFor="@id/e_serial"
+        android:text="@string/serial"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toStartOf="@+id/t_make"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/t_id"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+
+        android:id="@+id/t_make"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:labelFor="@id/e_make"
+        android:text="@string/make"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toStartOf="@+id/t_model"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/t_serial"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/t_model"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:labelFor="@id/e_model"
+        android:text="@string/model"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/t_make"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+
+        android:id="@+id/e_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+
+        android:ems="6"
+        android:gravity="center_horizontal"
+        android:inputType="textCapCharacters|textNoSuggestions"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toStartOf="@+id/e_serial"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/t_id" />
+
+    <EditText
+
+
+        android:id="@+id/e_serial"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:ems="6"
+        android:gravity="center_horizontal"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toStartOf="@+id/e_make"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/e_id"
+        app:layout_constraintTop_toBottomOf="@+id/t_serial" />
+
+
+    <EditText
+
+
+        android:id="@+id/e_make"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:ems="6"
+        android:gravity="center_horizontal"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toStartOf="@+id/e_model"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/e_serial"
+        app:layout_constraintTop_toBottomOf="@+id/t_make" />
+
+
+    <EditText
+
+
+        android:id="@+id/e_model"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:ems="6"
+        android:gravity="center_horizontal"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/e_make"
+        app:layout_constraintTop_toBottomOf="@+id/t_model" />
+
+
+    <TextView
+        android:id="@+id/t_device"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:text="@string/device"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toStartOf="@+id/t_calibrator"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/e_id" />
+
+    <TextView
+
+        android:id="@+id/t_calibrator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:text="@string/calibrator"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintBaseline_toBaselineOf="@+id/t_device"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/t_device" />
+
+    <TextView
+
+        android:id="@+id/t_dlrv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:labelFor="@id/e_dlrv"
+        android:text="@string/lrv"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toStartOf="@+id/t_durv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/t_device" />
+
+    <TextView
+
+        android:id="@+id/t_durv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:labelFor="@id/e_durv"
+        android:text="@string/urv"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toStartOf="@+id/t_dunits"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/t_dlrv"
+        app:layout_constraintTop_toBottomOf="@+id/t_device" />
+
+    <TextView
+
+        android:id="@+id/t_dunits"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:labelFor="@id/spin_dunit"
+        android:text="@string/units"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/t_durv"
+        app:layout_constraintTop_toBottomOf="@+id/t_device" />
+
+    <TextView
+
+        android:id="@+id/t_clrv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:labelFor="@id/e_clrv"
+        android:singleLine="true"
+        android:text="@string/lrv"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toStartOf="@+id/t_curv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/t_calibrator" />
+
+    <TextView
+
+        android:id="@+id/t_curv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:labelFor="@id/e_curv"
+        android:singleLine="true"
+        android:text="@string/urv"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toStartOf="@+id/t_cunits"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/t_clrv"
+        app:layout_constraintTop_toBottomOf="@+id/t_calibrator" />
+
+    <TextView
+
+        android:id="@+id/t_cunits"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:labelFor="@id/spin_cunit"
+        android:singleLine="true"
+        android:text="@string/units"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/t_curv"
+        app:layout_constraintTop_toBottomOf="@+id/t_calibrator" />
+
+    <EditText
+
+
+        android:id="@+id/e_dlrv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+
+        android:backgroundTintMode="add"
+        android:ems="6"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal|numberSigned"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toStartOf="@+id/e_durv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/t_dlrv" />
+
+    <EditText
+
+
+        android:id="@+id/e_durv"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+
+        android:backgroundTintMode="add"
+        android:ems="6"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal|numberSigned"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toStartOf="@+id/spin_dunit"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/e_dlrv"
+        app:layout_constraintTop_toBottomOf="@+id/t_durv" />
+
+    <Spinner
+        android:id="@+id/spin_dunit"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:background="@drawable/blankbg"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        app:layout_constraintEnd_toStartOf="@id/guideline6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/e_durv"
+        app:layout_constraintTop_toBottomOf="@+id/t_dunits" />
+
+    <EditText
+
+
+        android:id="@+id/e_clrv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+
+        android:backgroundTintMode="add"
+        android:ems="6"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal|numberSigned"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toStartOf="@+id/e_curv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/t_clrv" />
+
+    <EditText
+
+
+        android:id="@+id/e_curv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+
+        android:backgroundTintMode="add"
+        android:ems="6"
+        android:gravity="center_horizontal"
+        android:inputType="numberDecimal|numberSigned"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toStartOf="@+id/spin_cunit"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/e_clrv"
+        app:layout_constraintTop_toBottomOf="@+id/t_curv" />
+
+    <Spinner
+        android:id="@+id/spin_cunit"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:background="@drawable/blankbg"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:clipToPadding="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/e_curv"
+        app:layout_constraintTop_toBottomOf="@+id/t_cunits" />
+
+
+    <TextView
+
+        android:id="@+id/t_steps"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:labelFor="@id/e_steps"
+        android:singleLine="true"
+        android:text="@string/steps"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintBaseline_toBaselineOf="@+id/t_linearity"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/e_steps" />
+
+    <TextView
+
+        android:id="@+id/t_linearity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="@string/linearity"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/e_clrv" />
+
+    <EditText
+
+
+        android:id="@+id/e_steps"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:ems="10"
+
+        android:gravity="center_horizontal"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/t_steps" />
+
+
+    <RadioButton
+        android:id="@+id/rb_lin"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginStart="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:text="@string/linear_"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_reset"
+        app:layout_constraintEnd_toStartOf="@+id/rb_squ"
+        app:layout_constraintStart_toEndOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/t_linearity" />
+
+    <RadioButton
+        android:id="@+id/rb_squ"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginTop="1dp"
+        android:backgroundTint="?attr/colorPrimaryDark"
+        android:backgroundTintMode="add"
+        android:text="@string/square_"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_clr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/rb_lin"
+        app:layout_constraintTop_toBottomOf="@+id/t_linearity" />
+
+
+    <Button
+        android:id="@+id/btn_cal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:onClick="clickCal"
+        android:text="@string/calibrate"
+        app:layout_constraintEnd_toStartOf="@+id/btn_reset"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/e_steps" />
+
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:onClick="clickReset"
+        android:text="@string/reset"
+        app:layout_constraintEnd_toStartOf="@+id/btn_clr"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_cal"
+        app:layout_constraintTop_toBottomOf="@+id/e_steps" />
+
+
+    <Button
+        android:id="@+id/btn_clr"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:onClick="clickClear"
+        android:text="@string/clear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_reset"
+        app:layout_constraintTop_toBottomOf="@+id/e_steps" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="192dp" />
+
+
+</android.support.constraint.ConstraintLayout>
+

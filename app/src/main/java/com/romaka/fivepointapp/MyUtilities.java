@@ -2,7 +2,7 @@ package com.romaka.fivepointapp;
 import android.content.*;
 import android.widget.*;
 
-public class MyUtilities
+class MyUtilities
 {
    
    public static void myToast(String str, Context context)

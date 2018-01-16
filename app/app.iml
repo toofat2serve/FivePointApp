@@ -32,6 +32,7 @@
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/google-services/debug" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/debug" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/debug" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/apt/androidTest/debug" isTestSource="true" generated="true" />
@@ -119,20 +120,34 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="com.android.support:animated-vector-drawable-27.0.2" level="project" />
     <orderEntry type="library" name="com.android.support:appcompat-v7-27.0.2" level="project" />
-    <orderEntry type="library" name="android.arch.lifecycle:common:1.0.3@jar" level="project" />
     <orderEntry type="library" name="com.android.support:support-annotations:27.0.2@jar" level="project" />
-    <orderEntry type="library" name="com.android.support:support-v13-27.0.2" level="project" />
-    <orderEntry type="library" name="android.arch.core:common:1.0.0@jar" level="project" />
-    <orderEntry type="library" name="com.android.support:support-core-ui-27.0.2" level="project" />
-    <orderEntry type="library" name="com.google.code.gson:gson:2.2.4@jar" level="project" />
-    <orderEntry type="library" name="com.android.support:support-compat-27.0.2" level="project" />
-    <orderEntry type="library" name="com.android.support:support-core-utils-27.0.2" level="project" />
-    <orderEntry type="library" name="com.android.support:support-fragment-27.0.2" level="project" />
+    <orderEntry type="library" name="com.google.firebase:firebase-core-9.0.0" level="project" />
+    <orderEntry type="library" name="com.google.android.gms:play-services-basement-9.0.0" level="project" />
+    <orderEntry type="library" name="com.google.firebase:firebase-analytics-9.0.0" level="project" />
+    <orderEntry type="library" name="android.arch.lifecycle:extensions-1.0.0" level="project" />
+    <orderEntry type="library" name="android.arch.persistence.room:runtime-1.0.0" level="project" />
+    <orderEntry type="library" name="android.arch.persistence:db-1.0.0" level="project" />
+    <orderEntry type="library" name="com.google.firebase:firebase-analytics-impl-9.0.0" level="project" />
     <orderEntry type="library" name="com.android.support.constraint:constraint-layout-solver:1.0.2@jar" level="project" />
     <orderEntry type="library" name="com.android.support.constraint:constraint-layout-1.0.2" level="project" />
-    <orderEntry type="library" name="com.android.support:support-media-compat-27.0.2" level="project" />
+    <orderEntry type="library" name="com.google.android.gms:play-services-base-9.0.0" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.8.2@jar" level="project" />
     <orderEntry type="library" name="android.arch.lifecycle:runtime-1.0.3" level="project" />
     <orderEntry type="library" name="com.android.support:support-vector-drawable-27.0.2" level="project" />
+    <orderEntry type="library" name="com.google.firebase:firebase-iid-9.0.0" level="project" />
+    <orderEntry type="library" name="android.arch.lifecycle:common:1.0.3@jar" level="project" />
+    <orderEntry type="library" name="com.google.android.gms:play-services-tasks-9.0.0" level="project" />
+    <orderEntry type="library" name="com.google.firebase:firebase-common-9.0.0" level="project" />
+    <orderEntry type="library" name="com.android.support:support-v13-27.0.2" level="project" />
+    <orderEntry type="library" name="android.arch.core:common:1.0.0@jar" level="project" />
+    <orderEntry type="library" name="android.arch.persistence:db-framework-1.0.0" level="project" />
+    <orderEntry type="library" name="com.android.support:support-core-ui-27.0.2" level="project" />
+    <orderEntry type="library" name="com.android.support:support-compat-27.0.2" level="project" />
+    <orderEntry type="library" name="com.android.support:support-core-utils-27.0.2" level="project" />
+    <orderEntry type="library" name="android.arch.persistence.room:common:1.0.0@jar" level="project" />
+    <orderEntry type="library" name="com.android.support:support-fragment-27.0.2" level="project" />
+    <orderEntry type="library" name="com.android.support:support-media-compat-27.0.2" level="project" />
+    <orderEntry type="library" name="android.arch.core:runtime-1.0.0" level="project" />
     <orderEntry type="library" name="com.android.support:support-v4-27.0.2" level="project" />
   </component>
 </module>

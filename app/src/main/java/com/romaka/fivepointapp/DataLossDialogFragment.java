@@ -30,11 +30,12 @@ public class DataLossDialogFragment extends DialogFragment
    }
 
    public interface DataLossDialogListener {
-	  public void onDialogPositiveClick(DialogFragment dialog);
-	  public void onDialogNegativeClick(DialogFragment dialog);
+       void onDialogPositiveClick(DialogFragment dialog);
+
+       void onDialogNegativeClick(DialogFragment dialog);
    }
 
-   DataLossDialogListener mListener;
+    private DataLossDialogListener mListener;
 
    // Override the Fragment.onAttach() method to instantiate the NoticeDialogListener
    @Override
