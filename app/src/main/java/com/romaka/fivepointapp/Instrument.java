@@ -63,6 +63,23 @@ public class Instrument {
         DRange = calculateRange(DLRV, DURV);
         CRange = calculateRange(CLRV, CURV);
     }
+	
+   private String td(Object o) {
+	  return "<td>"+String.valueOf(o)+"</td>";
+   }
+	//TODO: check this function
+	public String hTable() {   
+	   String s = "<table>";
+	   s += "<tr><th>EquipmentID</th><th>Serial</th><th>Make</th><th>Model</th></tr>";
+	   s += "<tr>" + td(EquipID) + td(Serial) + td(Make) + td(Model) + "</tr>";
+	   s += "</table><table>";
+	   s += "<tr><th colspan=\"3\">Device</th><th colspan=\"3\">Calibrator</th></tr>";
+	   s += "<tr><th>LRV</th><th>URV</th><th>Units</th><th>LRV</th><th>URV</th><th>Units</th></tr>";
+	   s += "<tr>" + td(DLRV) + td(DURV) + td(DUnits)+ td(CLRV) + td(CURV) + td(CUnits) +"</tr>";
+	   s += "<tr><th colspan=\"3\">Steps</th><th colspan=\"3\">Liniarity</th></tr>";
+	   s += "<tr><td colspan=\"3\">" + Steps + "</td><td colspan=\"3\">" + (IsLinear?"Linear":"Square Root") + "</td></tr>";
+	   return s += "</table>";
+	}
 
     @Override
     public String toString() {

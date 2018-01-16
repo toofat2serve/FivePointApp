@@ -11,11 +11,11 @@ import com.google.gson.stream.*;
 
 public class CalRecord {
 
-    private final String EquipID;
-    final ArrayList<CalDataSet> CalData;
-    final Date date;
-    private final String Notes;
-   
+   private final String EquipID;
+   final ArrayList<CalDataSet> CalData;
+   final Date date;
+   private final String Notes;
+
    public CalRecord(String equipid, 
                     ArrayList<CalDataSet> calData, 
 					String notes)
@@ -34,7 +34,7 @@ public class CalRecord {
 	  date = new Date();
 	  Notes = "";
    }
-   
+
    public CalRecord()
    {
 	  EquipID = "DEFAULT_ID";
@@ -43,33 +43,55 @@ public class CalRecord {
 	  Notes = "";
    }
 
-  /* public CalRecord(String json)
+   /* public CalRecord(String json)
+	{
+	CalRecord cr = new CalRecord();
+	try {
+	Gson gson = new Gson();
+	cr.Device = gson.fromJson(json, Instrument.class); 
+	}
+	catch (Exception e) {
+	cr = new CalRecord();
+	}
+	Device = cr.Device;
+	CalData = cr.CalData;
+	date = cr.date;
+	Notes = cr.Notes;
+	} */
+
+   public void newDataSet(String name, int index)
    {
-      CalRecord cr = new CalRecord();
-	  try {
-		 Gson gson = new Gson();
-		 cr.Device = gson.fromJson(json, Instrument.class); 
-	  }
-	  catch (Exception e) {
-		 cr = new CalRecord();
-	  }
-	  Device = cr.Device;
-	  CalData = cr.CalData;
-	  date = cr.date;
-	  Notes = cr.Notes;
-   } */
-   
-   public void newDataSet(String name, int index) {
 	  CalData.add(index, new CalDataSet(name));
    }
 
-    private ArrayList<DataRow> getSet(int index) {
-        return CalData.get(index).Data;
+   private ArrayList<DataRow> getSet(int index)
+   {
+	  return CalData.get(index).Data;
+   }
+//TODO: check this function to see if it works
+   public String hTable()
+   {
+	  String s = "<table>";
+	  Iterator it = CalData.iterator();
+	  while (it.hasNext()) {
+		 CalDataSet ds = (CalDataSet) it.next();
+	     s += "<tr><th colspan=\"4\">" + ds.Name + "</th></tr>";
+		 for (int i = 0; i < ds.Data.size(); i++) {
+			DataRow dr = ds.Data.get(i);
+			s += "<tr>";
+			for (int j = 0; j < dr.toArray().size(); j++) {
+			   s += "<td>" + String.valueOf(dr.toArray().get(j)) + "</td>" ;
+			}
+			s += "</tr>";
+		 }
+	  }
+	  s += "</table>";
+	  return s;
    }
 
-   
 
-   
+
+
    public int countReadNulls(int index)
    {
 	  int nullCount = 0;
@@ -84,28 +106,29 @@ public class CalRecord {
 	  return nullCount;
    }
 
-   public String crToJson() {
-	  
-	  
+   public String crToJson()
+   {
+
+
 	  return "";
    }
-   
- /*  public String cdsToJson(){
-	  Gson g = new Gson();
-	  String json = g.toJson(this.CalData);
-	  return json;
-   }
-   
-   public String cdsdataToJson() {
-	  Gson g = new Gson();
-	  String json = "";
-	  for (int i = 0; i < CalData.size(); i++) {
-		 json += g.toJson(CalData.get(i).Data);
-	  }
-	  return json;
-	  
-   }*/
-   
+
+   /*  public String cdsToJson(){
+	Gson g = new Gson();
+	String json = g.toJson(this.CalData);
+	return json;
+	}
+
+	public String cdsdataToJson() {
+	Gson g = new Gson();
+	String json = "";
+	for (int i = 0; i < CalData.size(); i++) {
+	json += g.toJson(CalData.get(i).Data);
+	}
+	return json;
+
+	}*/
+
    public String dataRowsToJson()
    {
 	  Gson g = new Gson();
@@ -119,10 +142,10 @@ public class CalRecord {
 			json += g.toJson(it.next()) + "\n";
 		 }
 	  }
-	  
+
 	  return json;
    }
-   
+
    private ArrayList<Double> calculateSteps(Double lrv, 
                                             Double rng, 
 											Integer stps, 
@@ -143,8 +166,8 @@ public class CalRecord {
 
    public void createTestData(int index, Instrument inst)
    {
-     // Log.i("ME", "Creating Test Data...");
-	  
+	  // Log.i("ME", "Creating Test Data...");
+
 	  if (CalData.isEmpty()) {
 		 CalData.add(new CalDataSet());
 	  }
@@ -166,11 +189,11 @@ public class CalRecord {
 		 dr.Expected = expecteds.get(i);
 		 dr.Read = null;
 		 //myLog(dr.toString());
-		 
-		 CalData.get(index).Data.add(i,dr);
-		 }
-	//  Log.i("ME", "... Test Data Creation Complete.");
-	//  Log.i("ME", this.toString());
+
+		 CalData.get(index).Data.add(i, dr);
+	  }
+	  //  Log.i("ME", "... Test Data Creation Complete.");
+	  //  Log.i("ME", this.toString());
    }
 
    public Integer getProgress(int index)
@@ -204,25 +227,25 @@ public class CalRecord {
 	  return str;
    }
 
-   
 
-  /* @Override
-   public String toString()
-   {
-	  String str;
-	  str = "CALIBRATION RECORD - " + date.toString() + "\n";
-	  str += Device.toString() + "\n";
-	  for (int i = 0; i < CalData.size(); i++) {
-		 CalDataSet CalSet = CalData.get(i);
-		 Iterator it =    CalSet.Data.iterator();
-		  while (it.hasNext()) {
-			DataRow n = (DataRow) it.next();
-			str += n.toString() + "\n";
-		 }
-	  }
-	  return str;
-   }*/
 
-   
-   
+   /* @Override
+	public String toString()
+	{
+	String str;
+	str = "CALIBRATION RECORD - " + date.toString() + "\n";
+	str += Device.toString() + "\n";
+	for (int i = 0; i < CalData.size(); i++) {
+	CalDataSet CalSet = CalData.get(i);
+	Iterator it =    CalSet.Data.iterator();
+	while (it.hasNext()) {
+	DataRow n = (DataRow) it.next();
+	str += n.toString() + "\n";
+	}
+	}
+	return str;
+	}*/
+
+
+
 }

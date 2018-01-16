@@ -1,4 +1,5 @@
 package com.romaka.fivepointapp;
+import java.util.*;
 
 
 class DataRow {
@@ -39,6 +40,15 @@ class DataRow {
    public Boolean isNull(Integer i)
    {
 	  return i == null;
+   }
+   
+   public ArrayList<?> toArray() {
+	  ArrayList al = new ArrayList();
+	  al.add(0,Input);
+	  al.add(1,Expected);
+	  al.add(2,Read);
+	  al.add(3,Dev);
+	  return al;
    }
 
 
