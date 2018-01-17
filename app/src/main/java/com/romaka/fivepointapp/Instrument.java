@@ -67,20 +67,36 @@ public class Instrument {
    private String td(Object o) {
 	  return "<td>"+String.valueOf(o)+"</td>";
    }
-	//TODO: check this function
-	public String hTable() {   
-	   String s = "<table>";
-	   s += "<tr><th>EquipmentID</th><th>Serial</th><th>Make</th><th>Model</th></tr>";
-	   s += "<tr>" + td(EquipID) + td(Serial) + td(Make) + td(Model) + "</tr>";
-	   s += "</table><table>";
-	   s += "<tr><th colspan=\"3\">Device</th><th colspan=\"3\">Calibrator</th></tr>";
-	   s += "<tr><th>LRV</th><th>URV</th><th>Units</th><th>LRV</th><th>URV</th><th>Units</th></tr>";
-	   s += "<tr>" + td(DLRV) + td(DURV) + td(DUnits)+ td(CLRV) + td(CURV) + td(CUnits) +"</tr>";
-	   s += "<tr><th colspan=\"3\">Steps</th><th colspan=\"3\">Liniarity</th></tr>";
-	   s += "<tr><td colspan=\"3\">" + Steps + "</td><td colspan=\"3\">" + (IsLinear?"Linear":"Square Root") + "</td></tr>";
-	   return s += "</table>";
-	}
+   
+   public Instrument fromJSON(String json) {
+	  Gson gson = new Gson();
+	  Instrument i = gson.fromJson(json, Instrument.class);
+	  return i;
+   }
+   
+   public String hTable() {   
+	  String s = "<html><head></head><body><table>\n\t";
+	  s += "<tr>\n\t\t<th>EquipmentID</th>\n\t\t<th>Serial</th>\n\t\t<th>Make</th>\n\t\t<th>Model</th>\n\t</tr>";
+	  s += "\n\t<tr>" + td(EquipID) + td(Serial) + td(Make) + td(Model) + "\n\t</tr>";
+	  s += "\n</table>\n<table>";
+	  s += "\n\t<tr>\n\t\t<th colspan=\"3\">Device</th>\n\t\t<th colspan=\"3\">Calibrator</th>\n\t</tr>";
+	  s += "\n\t<tr>\n\t\t<th>LRV</th>\n\t\t<th>URV</th>\n\t\t<th>Units</th>\n\t\t<th>LRV</th>\n\t\t<th>URV</th>\n\t\t<th>Units</th>\n\t</tr>";
+	  s += "\n\t<tr>" + td(DLRV) + td(DURV) + td(DUnits)+ td(CLRV) + td(CURV) + td(CUnits) +"\n\t</tr>";
+	  s += "\n\t<tr>\n\t\t<th colspan=\"3\">Steps</th>\n\t\t<th colspan=\"3\">Liniarity</th>\n\t</tr>";
+	  s += "\n\t<tr>\n\t\t<td colspan=\"3\">" + Steps + "</td>\n\t\t<td colspan=\"3\">" + (IsLinear?"Linear":"Square Root") + "</td>\n\t</tr>";
+	  return s += "\n</table></body></html>";
+   }
 
+	private String tag(String t, Object o) {
+	   return "<" + t + ">" + String.valueOf(o) + "</" + t + ">";
+	}
+	
+	public String toXML() {
+	   String s = "";
+	   
+	   return s;
+	}
+	
     @Override
     public String toString() {
         String str;

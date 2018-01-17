@@ -43,21 +43,18 @@ public class CalRecord {
 	  Notes = "";
    }
 
-   /* public CalRecord(String json)
-	{
-	CalRecord cr = new CalRecord();
-	try {
-	Gson gson = new Gson();
-	cr.Device = gson.fromJson(json, Instrument.class); 
-	}
-	catch (Exception e) {
-	cr = new CalRecord();
-	}
-	Device = cr.Device;
-	CalData = cr.CalData;
-	date = cr.date;
-	Notes = cr.Notes;
-	} */
+   public CalRecord fromJSON(String json)
+   {
+	  CalRecord cr = new CalRecord();
+	  try {
+		 Gson gson = new Gson();
+		 cr = gson.fromJson(json, CalRecord.class); 
+	  }
+	  catch (Exception e) {
+		 cr = new CalRecord();
+	  }
+	  return cr;
+   }
 
    public void newDataSet(String name, int index)
    {
