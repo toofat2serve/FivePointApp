@@ -36,6 +36,10 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-mdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_background.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
@@ -180,12 +184,12 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable\\abc_textfield_search_material.xml"
     },
     {
-        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_primary_text_material_dark.xml.flat",
-        "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\color\\abc_primary_text_material_dark.xml"
-    },
-    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-mdpi-v4\\abc_text_select_handle_right_mtrl_light.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_primary_text_material_dark.xml.flat",
+        "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tooltip_frame_light.xml.flat",
@@ -238,6 +242,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_list_selector_holo_dark.xml.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable\\abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_background.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_background.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\color-v11_abc_background_cache_hint_selector_material_light.xml.flat",
@@ -296,12 +304,20 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxxhdpi-v4\\abc_btn_check_to_on_mtrl_015.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_black_36dp.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxxhdpi-v4\\abc_ic_star_black_36dp.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_edithold.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-hdpi\\edithold.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_btn.png.flat",
@@ -314,6 +330,14 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_plus_signin_btn_icon_dark_focused.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-mdpi-v4\\common_plus_signin_btn_icon_dark_focused.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_edithold.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-xhdpi\\edithold.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_text_dark_disabled.9.png.flat",
@@ -332,12 +356,12 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-hdpi-v4\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_plus_signin_btn_icon_light_pressed.9.png.flat",
-        "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-hdpi-v4\\common_plus_signin_btn_icon_light_pressed.9.png"
-    },
-    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ab_share_pack_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxhdpi-v4\\abc_ab_share_pack_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_common_plus_signin_btn_icon_light_pressed.9.png.flat",
+        "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-hdpi-v4\\common_plus_signin_btn_icon_light_pressed.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_text_light.xml.flat",
@@ -354,6 +378,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_plus_signin_btn_text_dark_normal.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_dark_normal.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_edithold.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-mdpi\\edithold.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_middle_mtrl_light.png.flat",
@@ -452,6 +480,10 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-xhdpi-v4\\common_plus_signin_btn_icon_light_pressed.9.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_bg6.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-mdpi\\bg6.9.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
@@ -504,6 +536,14 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-xhdpi-v4\\common_plus_signin_btn_icon_light_disabled.9.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_edithold.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable\\edithold.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_buttonhold.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable\\buttonhold.9.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_icon_light_pressed.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_light_pressed.9.png"
     },
@@ -548,8 +588,16 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg6.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable\\bg6.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4_common_google_signin_btn_icon_dark_focused.9.png.flat",
@@ -566,6 +614,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_search_api_material.xml.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable\\abc_ic_search_api_material.xml"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_buttonhold.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-mdpi\\buttonhold.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4_common_google_signin_btn_text_dark_disabled.9.png.flat",
@@ -606,6 +658,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_bg.xml.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\65b84fa42796f52f3ad0480c846d853a\\res\\drawable\\notification_bg.xml"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_background.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_background.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_google_signin_btn_icon_light_focused.9.png.flat",
@@ -674,6 +730,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_tab_indicator_material.xml.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_button4.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-hdpi\\button4.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_btn_check_material.xml.flat",
@@ -816,6 +876,10 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_fade_in.xml.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\anim\\abc_fade_in.xml"
     },
@@ -846,6 +910,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_black_48dp.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxhdpi-v4\\abc_ic_star_black_48dp.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_button4.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-xxhdpi\\button4.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4_common_plus_signin_btn_icon_dark_normal.9.png.flat",
@@ -926,6 +994,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_plus_signin_btn_text_light_focused.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-xxhdpi-v4\\common_plus_signin_btn_text_light_focused.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_menu_item_layout.xml.flat",
@@ -1014,6 +1086,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_multichoice_material.xml.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_plus_signin_btn_icon_light_pressed.9.png.flat",
@@ -1118,6 +1194,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_plus_signin_btn_text_light_pressed.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-xhdpi-v4\\common_plus_signin_btn_text_light_pressed.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_bg6.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-xxhdpi\\bg6.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_star_half_black_16dp.png.flat",
@@ -1274,6 +1354,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxhdpi-v4\\abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_bg6.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-xhdpi\\bg6.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -1508,6 +1592,10 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-mdpi-v4\\common_full_open_on_phone.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4_common_google_signin_btn_icon_light_disabled.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-tvdpi-v4\\common_google_signin_btn_icon_light_disabled.9.png"
     },
@@ -1552,6 +1640,10 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\65b84fa42796f52f3ad0480c846d853a\\res\\layout\\notification_template_part_time.xml"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_buttonhold.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-xhdpi\\buttonhold.9.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_plus_signin_btn_icon_dark_disabled.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_dark_disabled.9.png"
     },
@@ -1578,6 +1670,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_ic_googleplayservices.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-xxhdpi-v4\\common_ic_googleplayservices.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_bg6.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-hdpi\\bg6.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
@@ -1622,6 +1718,14 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_background.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_popup_enter.xml.flat",
@@ -1706,6 +1810,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_common_plus_signin_btn_icon_dark_pressed.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-xxhdpi-v4\\common_plus_signin_btn_icon_dark_pressed.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable\\ic_launcher_foreground.xml"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_expanded_menu_layout.xml.flat",
@@ -1872,6 +1980,10 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-xhdpi-v4\\common_plus_signin_btn_icon_light_focused.9.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_background.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_help_1.jpg.flat",
         "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-mdpi\\help_1.jpg"
     },
@@ -1932,6 +2044,10 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
     },
@@ -1942,6 +2058,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_tint_btn_checkable.xml.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\color\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_buttonhold.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-xxhdpi\\buttonhold.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_black_36dp.png.flat",
@@ -2006,6 +2126,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xhdpi-v4\\abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_plus_signin_btn_icon_light_normal.9.png.flat",
@@ -2196,6 +2320,10 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxhdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_button4.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-mdpi\\button4.9.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-tvdpi-v4_common_google_signin_btn_text_dark_pressed.9.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-tvdpi-v4\\common_google_signin_btn_text_dark_pressed.9.png"
     },
@@ -2296,6 +2424,10 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xhdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_star_black_36dp.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxhdpi-v4\\abc_ic_star_black_36dp.png"
     },
@@ -2332,6 +2464,10 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_48dp.png"
     },
@@ -2358,6 +2494,10 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxxhdpi-v4\\abc_text_select_handle_right_mtrl_dark.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_buttonhold.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-hdpi\\buttonhold.9.png"
     },
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
@@ -2408,6 +2548,14 @@
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-9.0.0.aar\\6470679471c44d93bd90d18aaafed9cc\\res\\drawable-hdpi-v4\\common_plus_signin_btn_text_dark_pressed.9.png"
     },
     {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_edithold.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-xxhdpi\\edithold.9.png"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button4.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable\\button4.9.png"
+    },
+    {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.0.2.aar\\0f0ff297a977abbf050416bd3909ba0f\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
@@ -2442,5 +2590,9 @@
     {
         "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_bg_low.xml.flat",
         "source": "C:\\Users\\georg\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.0.2.aar\\65b84fa42796f52f3ad0480c846d853a\\res\\drawable\\notification_bg_low.xml"
+    },
+    {
+        "merged": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_button4.9.png.flat",
+        "source": "G:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\src\\main\\res\\drawable-xhdpi\\button4.9.png"
     }
 ]

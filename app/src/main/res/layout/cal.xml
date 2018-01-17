@@ -12,6 +12,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_weight="1"
+        android:background="@drawable/button4"
 		android:focusable="true"
 		android:focusableInTouchMode="true"
 		android:onClick="clickEdit"
@@ -19,32 +20,41 @@
 
 	<TextView
 		android:id="@+id/t_pb_cal"
-		android:layout_width="wrap_content"
+        android:layout_width="0dp"
 		android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
 		android:layout_weight="1"
-		android:gravity="center_vertical"
+        android:background="@android:drawable/editbox_dropdown_dark_frame"
+        android:gravity="center_vertical|center_horizontal"
 		android:text="@string/calibration_progress"
 		android:textAppearance="?android:attr/textAppearanceSmall"
-		tools:layout_editor_absoluteX="285dp"
-		tools:layout_editor_absoluteY="0dp" />
+        app:layout_constraintEnd_toEndOf="@+id/pb_calibration"
+        app:layout_constraintStart_toEndOf="@+id/btn_edit"
+        app:layout_constraintTop_toTopOf="parent" />
 
 	<ProgressBar
 		android:id="@+id/pb_calibration"
 		style="?android:attr/progressBarStyleHorizontal"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="22dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
 		android:layout_weight="1"
 		android:gravity="center_vertical"
 		android:paddingLeft="10dp"
 		android:paddingRight="10dp"
-		tools:layout_editor_absoluteX="343dp"
-		tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_edit"
+        app:layout_constraintTop_toBottomOf="@+id/t_pb_cal" />
 
 	<Button
 		android:id="@+id/btn_save"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_weight="1"
+        android:background="@drawable/button4"
 		android:onClick="clickSave"
 		android:text="@string/save_data"
 		android:visibility="gone" />
@@ -53,38 +63,54 @@
 		android:id="@+id/btn_prev"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/button4"
 		android:onClick="p_n_btns"
 		android:tag="prv"
 		android:text="@string/larrow"
-		tools:layout_editor_absoluteX="0dp"
-		tools:layout_editor_absoluteY="64dp" />
+        app:layout_constraintEnd_toStartOf="@+id/e_label"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_edit" />
 
 	<EditText
 		android:id="@+id/e_label"
-		android:layout_width="wrap_content"
-		android:layout_height="46dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
 		android:layout_weight="1.0"
-		android:background="@drawable/bg"
+        android:background="@drawable/bg6"
 		android:gravity="center"
 		android:inputType="text"
 		android:maxLines="1"
-		tools:layout_editor_absoluteX="151dp"
-		tools:layout_editor_absoluteY="69dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_prev"
+        app:layout_constraintEnd_toStartOf="@+id/btn_next"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_prev"
+        app:layout_constraintTop_toBottomOf="@+id/pb_calibration" />
 
 	<Button
 		android:id="@+id/btn_next"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+        android:background="@drawable/button4"
 		android:onClick="p_n_btns"
 		android:tag="nxt"
 		android:text="@string/rarrow"
-		tools:layout_editor_absoluteX="323dp"
-		tools:layout_editor_absoluteY="60dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/e_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/e_label" />
 
 	<TextView
 		android:id="@+id/t_tbl_c1_head_inpt"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
 		android:layout_weight="1.0"
 		android:background="#212121"
 		android:gravity="center_horizontal"
@@ -94,12 +120,15 @@
 		app:layout_constraintEnd_toStartOf="@+id/t_tbl_c2_head_expt"
 		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toStartOf="parent"
-		tools:layout_editor_absoluteY="145dp" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_prev" />
 
 	<TextView
 		android:id="@+id/t_tbl_c2_head_expt"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
 		android:layout_weight="1.0"
 		android:background="#212121"
 		android:gravity="center_horizontal"
@@ -109,12 +138,15 @@
 		app:layout_constraintEnd_toStartOf="@+id/t_tbl_c3_head_read"
 		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toEndOf="@+id/t_tbl_c1_head_inpt"
-		tools:layout_editor_absoluteY="145dp" />
+        app:layout_constraintTop_toBottomOf="@+id/e_label" />
 
 	<TextView
 		android:id="@+id/t_tbl_c3_head_read"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
 		android:layout_weight="1.0"
 		android:background="#212121"
 		android:gravity="center_horizontal"
@@ -124,12 +156,15 @@
 		app:layout_constraintEnd_toStartOf="@+id/t_tbl_c4_head_devn"
 		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toEndOf="@+id/t_tbl_c2_head_expt"
-		tools:layout_editor_absoluteY="145dp" />
+        app:layout_constraintTop_toBottomOf="@+id/e_label" />
 
 	<TextView
 		android:id="@+id/t_tbl_c4_head_devn"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
 		android:layout_weight="1.0"
 		android:background="#212121"
 		android:gravity="center_horizontal"
@@ -139,13 +174,14 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintHorizontal_bias="0.5"
 		app:layout_constraintStart_toEndOf="@+id/t_tbl_c3_head_read"
-		tools:layout_editor_absoluteY="145dp" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_next" />
 
 	<ListView
 		android:id="@+id/lv_dataset"
 		android:layout_width="wrap_content"
-		android:layout_height="425dp"
-		tools:layout_editor_absoluteY="269dp" />
+        android:layout_height="550dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/t_tbl_c2_head_expt" />
 
 </android.support.constraint.ConstraintLayout>
 

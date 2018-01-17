@@ -55,7 +55,7 @@
         android:layout_marginBottom="1dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
-        android:background="@drawable/bg"
+        android:background="@drawable/bg6"
         android:gravity="center_horizontal"
         android:imeOptions="actionNext"
         android:inputType="numberDecimal|numberSigned"

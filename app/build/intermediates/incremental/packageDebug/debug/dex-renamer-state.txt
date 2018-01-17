@@ -1,4 +1,4 @@
-#Tue Jan 16 06:01:37 EST 2018
+#Tue Jan 16 19:14:07 EST 2018
 path.1=classes.dex
 path.0=classes.dex
 renamed.5=classes6.dex
@@ -7,12 +7,12 @@ renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.5=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\283
-base.4=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\280
-base.3=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\282
-base.2=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\279
-base.1=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\281
-base.0=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\278
+base.5=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\297
+base.4=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\302
+base.3=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\299
+base.2=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\301
+base.1=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\298
+base.0=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\300
 path.5=classes.dex
 path.4=classes.dex
 path.3=classes.dex

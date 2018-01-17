@@ -1,6 +1,9 @@
 package com.romaka.fivepointapp;
 import android.app.*;
+import android.net.Uri;
 import android.os.*;
+import android.preference.PreferenceManager;
+import android.text.Html;
 import android.view.*;
 import android.content.*;
 import java.util.*;
@@ -194,8 +197,28 @@ implements DataLossDialogFragment.DataLossDialogListener
 	  }
    }
 
-   public void clickSave(View view)
-   {
+
+	private void composeEmail() {
+		SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
+		Map<String, ?> dspMap = dsp.getAll();
+		String defaultEmail = (String) dspMap.get("pref_email");
+		String strSubject = "Calibration Results for " + device.EquipID; //+ " on " + cr.date.toString();
+		String strBody = "<body>";
+		strBody += device.hTable() + "\n";
+		strBody += cr.hTable() + "</body>";
+		Intent intent = new Intent(Intent.ACTION_SENDTO);
+		intent.setType("text/html");
+		intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+		intent.putExtra(Intent.EXTRA_EMAIL, new String[]{defaultEmail});
+		intent.putExtra(Intent.EXTRA_SUBJECT, strSubject);
+		intent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(strBody));
+		if (intent.resolveActivity(getPackageManager()) != null) {
+			startActivity(Intent.createChooser(intent, "Email:"));
+		}
+	}
+   public void clickSave(View view) {
+	   composeEmail();
+   }
 	  /*  try {
 	   //cr.Notes = e_notes.getText().toString();
 	   String state = Environment.getExternalStorageState();
@@ -221,7 +244,7 @@ implements DataLossDialogFragment.DataLossDialogListener
 	  //  String json = gson.toJson(cr, CalRecord.class);
 	  //  Log.i("ME",json);
 
-   }
+	//}
 
     private String str(Double d)
    {

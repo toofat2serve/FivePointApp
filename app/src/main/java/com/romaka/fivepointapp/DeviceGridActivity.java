@@ -83,7 +83,7 @@ public class DeviceGridActivity extends AppCompatActivity {
             } else {
                 view = (TextView) convertView;
             }
-            view.setBackground(getDrawable(R.drawable.bg));
+            view.setBackground(getDrawable(R.drawable.bg6));
             view.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             view.setText(recordString);
 

@@ -1,4 +1,4 @@
-#Tue Jan 16 06:00:52 EST 2018
-base.0=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\270
+#Tue Jan 16 18:53:44 EST 2018
+base.0=G\:\\Users\\georg\\AndroidStudioProjects\\FivePointApp\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\289
 path.0=classes.dex
 renamed.0=classes.dex

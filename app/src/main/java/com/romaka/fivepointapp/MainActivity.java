@@ -443,7 +443,7 @@ public class MainActivity extends FragmentActivity
             if (e.getText().length() == 0) {
                 e.setBackgroundColor(Color.RED);
             } else {
-                e.setBackground(getDrawable(R.drawable.bg));
+                e.setBackground(getDrawable(R.drawable.bg6));
             }
             gonogo = (e.getText().length() == 0) ? false : gonogo;
         }
@@ -478,7 +478,7 @@ public class MainActivity extends FragmentActivity
             View view = group.getChildAt(i);
             if (view instanceof EditText) {
                 ((EditText) view).setText("");
-                view.setBackground(getDrawable(R.drawable.bg));
+                view.setBackground(getDrawable(R.drawable.bg6));
             }
             if (view instanceof ViewGroup && (((ViewGroup) view).getChildCount() > 0)) {
                 ClearForm((ViewGroup) view);
