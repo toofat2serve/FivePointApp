@@ -74,9 +74,9 @@ public class Instrument {
 	  return i;
    }
    
-   public String hTable() {   
-	  String s = "<html><head></head><body><table>\n\t";
-	  s += "<tr>\n\t\t<th>EquipmentID</th>\n\t\t<th>Serial</th>\n\t\t<th>Make</th>\n\t\t<th>Model</th>\n\t</tr>";
+   public String hTable() {
+       String s = "<table>\n\t";
+       s += "<tr>\n\t\t<th>EquipmentID</th>\n\t\t<th>Serial</th>\n\t\t<th>Make</th>\n\t\t<th>Model</th>\n\t</tr>";
 	  s += "\n\t<tr>" + td(EquipID) + td(Serial) + td(Make) + td(Model) + "\n\t</tr>";
 	  s += "\n</table>\n<table>";
 	  s += "\n\t<tr>\n\t\t<th colspan=\"3\">Device</th>\n\t\t<th colspan=\"3\">Calibrator</th>\n\t</tr>";
@@ -84,7 +84,12 @@ public class Instrument {
 	  s += "\n\t<tr>" + td(DLRV) + td(DURV) + td(DUnits)+ td(CLRV) + td(CURV) + td(CUnits) +"\n\t</tr>";
 	  s += "\n\t<tr>\n\t\t<th colspan=\"3\">Steps</th>\n\t\t<th colspan=\"3\">Liniarity</th>\n\t</tr>";
 	  s += "\n\t<tr>\n\t\t<td colspan=\"3\">" + Steps + "</td>\n\t\t<td colspan=\"3\">" + (IsLinear?"Linear":"Square Root") + "</td>\n\t</tr>";
-	  return s += "\n</table></body></html>";
+       return s += "\n</table>";
+   }
+
+    public String toJSON() {
+        Gson g = new Gson();
+        return g.toJson(this);
    }
 
 	private String tag(String t, Object o) {

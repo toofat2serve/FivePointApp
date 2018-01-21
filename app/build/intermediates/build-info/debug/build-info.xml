@@ -7,22 +7,22 @@
     format="10"
     ir-eligibility="COMPATIBLE"
     plugin-version="3.0.1"
-    timestamp="1516148876377"
+    timestamp="1516311085144"
     token="4414771072173668249"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="2476" />
+        duration="2410" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="42" />
+        duration="58" />
     <task
         name="verifier"
-        duration="14" />
+        duration="16" />
 
     <artifact
         location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
@@ -30,10 +30,16 @@
 
     <build
         build-mode="FULL"
-        timestamp="1516146743069"
+        timestamp="1516309717196"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
+            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            type="SPLIT" />
+        <artifact
             location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\dep\dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
             type="SPLIT" />
         <artifact
             location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_0.apk"
@@ -42,22 +48,16 @@
             location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
-            type="SPLIT" />
-        <artifact
-            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
+            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
             type="SPLIT" />
         <artifact
             location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_4.apk"
             type="SPLIT" />
         <artifact
-            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_5.apk"
+            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_6.apk"
-            type="SPLIT" />
-        <artifact
-            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_7.apk"
+            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_2.apk"
             type="SPLIT" />
         <artifact
             location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_8.apk"
@@ -71,16 +71,8 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1516148029303"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\outputs\apk\debug\app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
         ir-eligibility="COMPATIBLE"
-        timestamp="1516148876377"
+        timestamp="1516311085144"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="G:\Users\georg\AndroidStudioProjects\FivePointApp\app\build\intermediates\split-apk\debug\slices\slice_7.apk"

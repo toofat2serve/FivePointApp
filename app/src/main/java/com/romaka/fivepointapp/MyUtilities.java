@@ -13,7 +13,9 @@ class MyUtilities
 	  toast.show();
    }
 
-   
-   
+
+    public static String htmlWrapper(String s) {
+        return "<!DOCTYPE html><html><head></head><body>" + s + "\n</body></html>";
+    }
    
 }

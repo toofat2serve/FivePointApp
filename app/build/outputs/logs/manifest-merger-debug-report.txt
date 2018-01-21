@@ -1,9 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-48:12
+ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-54:12
+INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-54:12
+INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-54:12
+INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-54:12
+MERGED from [de.cketti.mailto:email-intent-builder:1.0.0] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\email-intent-builder-1.0.0.aar\024743f1b9c4f52e0838c93e8e51b5f2\AndroidManifest.xml:2:1-8:12
 MERGED from [com.google.firebase:firebase-core:9.0.0] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\firebase-core-9.0.0.aar\86b3d02ff4ee6af306e8d955c6d94863\AndroidManifest.xml:2:1-6:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7ac536cf16e5a1d590b8118ec65fd1ad\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:support-v13:27.0.2] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\support-v13-27.0.2.aar\152b9900530b4e2ffdb12509f4c0602c\AndroidManifest.xml:17:1-22:12
@@ -29,20 +30,20 @@ MERGED from [android.arch.persistence:db-framework:1.0.0] C:\Users\georg\.gradle
 MERGED from [android.arch.persistence:db:1.0.0] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\db-1.0.0.aar\04a756c6cc87e4d8ec4513a5ccc5ad1f\AndroidManifest.xml:17:1-24:12
 MERGED from [android.arch.core:runtime:1.0.0] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\37627ca3a44f9248d7af41b6090888b0\AndroidManifest.xml:17:1-24:12
 MERGED from [android.arch.lifecycle:runtime:1.0.3] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\runtime-1.0.3.aar\bb75c6e50eaf6be6f42d97a03f6a7131\AndroidManifest.xml:17:1-24:12
-INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-48:12
-INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-48:12
+INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-54:12
+INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-54:12
+INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-54:12
 	package
 		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:3:5-38
 		INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml
 		INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-48:12
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-54:12
 		INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-48:12
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:1-54:12
 		INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:2:11-69
@@ -51,7 +52,7 @@ ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\Androi
 	android:name
 		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:5:22-78
 application
-ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:7:5-46:19
+ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:7:5-52:19
 MERGED from [com.google.firebase:firebase-core:9.0.0] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\firebase-core-9.0.0.aar\86b3d02ff4ee6af306e8d955c6d94863\AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-core:9.0.0] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\firebase-core-9.0.0.aar\86b3d02ff4ee6af306e8d955c6d94863\AndroidManifest.xml:5:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7ac536cf16e5a1d590b8118ec65fd1ad\AndroidManifest.xml:9:5-20
@@ -85,7 +86,7 @@ ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\Androi
 	android:windowSoftInputMode
 		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:14:13-60
 	android:theme
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:15:13-49
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:15:13-45
 	android:name
 		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:12:13-41
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
@@ -99,57 +100,59 @@ ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\Androi
 	android:name
 		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:19:27-74
 activity#com.romaka.fivepointapp.CalActivity
-ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:22:9-25:52
+ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:22:9-25:47
 	android:label
 		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:24:13-40
 	android:theme
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:25:13-49
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:25:13-45
 	android:name
 		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:23:13-40
 activity#com.romaka.fivepointapp.SettingsActivity
-ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:26:9-29:52
+ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:27:9-30:47
 	android:label
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:28:13-37
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:29:13-37
 	android:theme
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:29:13-49
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:30:13-45
 	android:name
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:27:13-45
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:28:13-45
 activity#com.romaka.fivepointapp.UnitEditActivity
-ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:30:9-33:61
+ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:32:9-35:47
 	android:label
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:32:13-40
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:34:13-40
 	android:theme
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:33:13-58
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:35:13-45
 	android:name
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:31:13-45
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:33:13-45
 activity#com.romaka.fivepointapp.HelpActivity
-ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:34:9-37:52
+ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:37:9-40:47
 	android:label
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:36:13-33
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:39:13-33
 	android:theme
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:37:13-49
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:40:13-45
 	android:name
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:35:13-41
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:38:13-41
 activity#com.romaka.fivepointapp.Contact
-ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:38:9-41:52
+ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:42:9-45:47
 	android:label
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:40:13-36
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:44:13-36
 	android:theme
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:41:13-49
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:45:13-45
 	android:name
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:39:13-36
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:43:13-36
 activity#com.romaka.fivepointapp.DeviceGridActivity
-ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:42:9-45:52
+ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:47:9-50:47
 	android:label
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:44:13-42
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:49:13-42
 	android:theme
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:45:13-49
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:50:13-45
 	android:name
-		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:43:13-47
+		ADDED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml:48:13-47
 uses-sdk
 INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml
 INJECTED from G:\Users\georg\AndroidStudioProjects\FivePointApp\app\src\main\AndroidManifest.xml
+MERGED from [de.cketti.mailto:email-intent-builder:1.0.0] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\email-intent-builder-1.0.0.aar\024743f1b9c4f52e0838c93e8e51b5f2\AndroidManifest.xml:6:5-43
+MERGED from [de.cketti.mailto:email-intent-builder:1.0.0] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\email-intent-builder-1.0.0.aar\024743f1b9c4f52e0838c93e8e51b5f2\AndroidManifest.xml:6:5-43
 MERGED from [com.google.firebase:firebase-core:9.0.0] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\firebase-core-9.0.0.aar\86b3d02ff4ee6af306e8d955c6d94863\AndroidManifest.xml:4:5-42
 MERGED from [com.google.firebase:firebase-core:9.0.0] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\firebase-core-9.0.0.aar\86b3d02ff4ee6af306e8d955c6d94863\AndroidManifest.xml:4:5-42
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\georg\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\7ac536cf16e5a1d590b8118ec65fd1ad\AndroidManifest.xml:5:5-7:41

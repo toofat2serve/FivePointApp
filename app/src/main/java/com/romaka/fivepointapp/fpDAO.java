@@ -15,8 +15,19 @@ public interface fpDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertDevice(Instrument... devices);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertCalRecord(CalRecord... calrecords);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertCalDataSet(CalDataSet... caldatasets);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertDataRow(DataRow... datarows);
+
     @Query("SELECT EquipID FROM devices")
     List<String> getEquipIDs();
+
+    @Query("SELECT * FROM datarows ")
 
     @Query("SELECT * FROM devices")
     List<Instrument> getDevices();
@@ -27,7 +38,11 @@ public interface fpDAO {
     @Query("SELECT Make, Model, Serial, DLRV, DURV, DUnits FROM devices WHERE EquipID = :eID")
     DevFields getDevFields(String eID);
 
+    @Query("SELECT * FROM calrecords INNER JOIN caldatasets ON calrecords.crID = caldatasets.crID")
+    CalDataSet getCalDataSet();
+
     @Delete
     void deleteDevice(Instrument... instruments);
+
 
 }

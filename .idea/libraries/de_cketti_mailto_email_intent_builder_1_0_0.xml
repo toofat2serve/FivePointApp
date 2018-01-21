@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="de.cketti.mailto:email-intent-builder-1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/email-intent-builder-1.0.0.aar/024743f1b9c4f52e0838c93e8e51b5f2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/email-intent-builder-1.0.0.aar/024743f1b9c4f52e0838c93e8e51b5f2/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/de.cketti.mailto/email-intent-builder/1.0.0/40afcf6383356783c26a546fba57eec9e7992412/email-intent-builder-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

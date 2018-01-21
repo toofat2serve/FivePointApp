@@ -18,16 +18,17 @@ package com.romaka.fivepointapp;
 //TODO: ADD other formats (CSV, HTML, PDF, ...)
 
 import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -45,6 +46,8 @@ import android.widget.Spinner;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -52,7 +55,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-public class MainActivity extends FragmentActivity
+
+public class MainActivity extends AppCompatActivity
         implements WarningDialogFragment.OnFragmentInteractionListener {
     private static final String DFLT_DEVICE = "dd";
     private static FivePointDB db;
@@ -127,7 +131,7 @@ public class MainActivity extends FragmentActivity
 
         device = new Instrument();
         refreshSP();
-        loadDefaultDevice();
+
         checkSharedPreferences();
 
         ////Log.i("ME", "...Initialized.");
@@ -137,6 +141,7 @@ public class MainActivity extends FragmentActivity
 
         cl.setFocusableInTouchMode(true);
         cl.requestFocus();
+        loadDefaultDevice();
 
 
         spin_dunit.setOnLongClickListener(new View.OnLongClickListener() {
@@ -322,22 +327,39 @@ public class MainActivity extends FragmentActivity
         checkSharedPreferences();
     }
 
+
     private void composeEmail() {
+        Log.i("ME", "Started Composition Method");
         SharedPreferences dsp = PreferenceManager.getDefaultSharedPreferences(this);
         Map<String, ?> dspMap = dsp.getAll();
         String defaultEmail = (String) dspMap.get("pref_email");
         String strSubject = "Calibration Results for " + device.EquipID; //+ " on " + cr.date.toString();
-        String strBody = device.toString() + "\n";
-        strBody += "JSON String\n";
+        String strHTML = MyUtilities.htmlWrapper(device.hTable());
+        String strJSON = device.toJSON();
+        String strDevice = device.toString();
 
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
+
+        String fileName = "cal.html";
+        FileOutputStream outputStream;
+        File file = new File(getFilesDir(), fileName);
+        Log.i("ME", file.toString());
+        try {
+            outputStream = openFileOutput(fileName, 0);
+            outputStream.write(strHTML.getBytes());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Log.i("ME", String.valueOf(file.exists()));
+       /* Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setType("text/html");
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{defaultEmail});
         intent.putExtra(Intent.EXTRA_SUBJECT, strSubject);
-        intent.putExtra(Intent.EXTRA_TEXT, strBody);
+        intent.putExtra(Intent.EXTRA_TEXT, strDevice);
         if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
+            startActivity(Intent.createChooser(intent, "Email:"));
+        }*/
     }
 
     private void clickShare() {

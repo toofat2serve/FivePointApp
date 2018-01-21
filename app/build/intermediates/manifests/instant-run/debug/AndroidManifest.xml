@@ -31,7 +31,7 @@
         <activity
             android:name="com.romaka.fivepointapp.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/FivePointDark"
+            android:theme="@style/FivePoint"
             android:windowSoftInputMode="stateAlwaysHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,27 +42,27 @@
         <activity
             android:name="com.romaka.fivepointapp.CalActivity"
             android:label="Calibration"
-            android:theme="@style/FivePointDark" />
+            android:theme="@style/FivePoint" />
         <activity
             android:name="com.romaka.fivepointapp.SettingsActivity"
             android:label="Settings"
-            android:theme="@style/FivePointDark" />
+            android:theme="@style/FivePoint" />
         <activity
             android:name="com.romaka.fivepointapp.UnitEditActivity"
             android:label="Unit Editor"
-            android:theme="@style/Theme.AppCompat.Dialog" />
+            android:theme="@style/FivePoint" />
         <activity
             android:name="com.romaka.fivepointapp.HelpActivity"
             android:label="Help"
-            android:theme="@style/FivePointDark" />
+            android:theme="@style/FivePoint" />
         <activity
             android:name="com.romaka.fivepointapp.Contact"
             android:label="Contact"
-            android:theme="@style/FivePointDark" />
+            android:theme="@style/FivePoint" />
         <activity
             android:name="com.romaka.fivepointapp.DeviceGridActivity"
             android:label="Select Device"
-            android:theme="@style/FivePointDark" />
+            android:theme="@style/FivePoint" />
 
         <receiver
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"

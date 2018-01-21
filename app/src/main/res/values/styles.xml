@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="FivePointDark" parent="android:Theme.Material" />
+
+    <style name="FivePoint" parent="Theme.AppCompat">
+
+        <item name="windowActionBar">true</item>
+        <item name="android:windowFullscreen">true</item>
+
+    </style>
 </resources>
